@@ -1,11 +1,12 @@
+Here is an HTML document that creates a dark red, Chinese New Year-themed brand landing page for "derchutze," designed with a more refined and culturally resonant aesthetic.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>derchutze | The Future of Streetwear</title>
-  <!-- Google Fonts + smooth base -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <title>derchutze · 岁启新章 | The Art of Fashion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -14,67 +15,76 @@
     }
 
     body {
-      background-color: #010101;
+      background-color: #1a0305;  /* deep dark red base */
       font-family: 'Inter', sans-serif;
-      color: #ededed;
+      color: #eed9cf;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
-    /* Canvas background grain / texture effect */
-    .noise-bg {
+    /* subtle canvas texture / ink wash effect — matching the "canvas download" vibe */
+    .canvas-texture {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
+      z-index: 0;
+      background-image: radial-gradient(circle at 25% 40%, rgba(180, 40, 40, 0.08) 1.5px, transparent 1.5px);
+      background-size: 32px 32px;
+      opacity: 0.4;
+    }
+    
+    /* ink bleed overlay */
+    .ink-bleed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(45deg, rgba(100, 15, 15, 0.02) 0px, rgba(100, 15, 15, 0.02) 2px, transparent 2px, transparent 8px);
+      pointer-events: none;
       z-index: 1;
-      opacity: 0.08;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 180px;
-      mix-blend-mode: overlay;
     }
 
-    /* main container relative to overlay text */
     .site-wrapper {
       position: relative;
       z-index: 10;
       max-width: 1400px;
       margin: 0 auto;
-      padding: 2rem 2rem 4rem;
+      padding: 1.8rem 2rem 4rem;
     }
 
-    /* header / navigation */
+    /* header with subtle lunar/new year accents */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       flex-wrap: wrap;
       gap: 1.5rem;
-      padding: 1rem 0 2rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-      margin-bottom: 4rem;
+      padding: 0.8rem 0 1.5rem 0;
+      border-bottom: 1px solid rgba(200, 70, 50, 0.35);
+      margin-bottom: 3.5rem;
     }
 
     .logo-area h1 {
-      font-size: 1.9rem;
+      font-size: 2rem;
       letter-spacing: -0.02em;
       font-weight: 700;
       text-transform: uppercase;
-      background: linear-gradient(135deg, #ffffff 40%, #a0a0a0 80%);
+      background: linear-gradient(130deg, #f3cfb3 20%, #c96f4a 80%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
     .logo-area p {
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
+      font-size: 0.68rem;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: #aaa;
-      margin-top: 0.25rem;
+      color: #c97a5e;
+      margin-top: 0.3rem;
     }
 
     .nav-links {
@@ -85,134 +95,142 @@
 
     .nav-links a {
       text-decoration: none;
-      color: #e0e0e0;
-      font-size: 0.9rem;
+      color: #e6c9bb;
+      font-size: 0.85rem;
       letter-spacing: 0.5px;
-      transition: color 0.2s ease;
+      transition: color 0.2s;
     }
 
     .nav-links a:hover {
-      color: #ffffff;
-      text-decoration: underline;
-      text-underline-offset: 6px;
+      color: #f7aa7a;
     }
 
-    /* hero section with dynamic taglines */
+    /* hero section — chinese new year / dark red & gold tension */
     .hero {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      margin-bottom: 6rem;
+      margin-bottom: 5rem;
+      position: relative;
     }
 
     .hero-badge {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.03);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(110, 25, 25, 0.65);
       backdrop-filter: blur(4px);
-      border: 0.5px solid rgba(255, 255, 255, 0.2);
-      border-radius: 40px;
-      padding: 0.4rem 1.2rem;
-      width: fit-content;
-      font-size: 0.75rem;
+      border: 0.6px solid rgba(220, 100, 70, 0.5);
+      border-radius: 60px;
+      padding: 0.4rem 1.4rem;
+      margin-bottom: 1.8rem;
+      font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
     }
 
+    .lantern-icon {
+      font-size: 1rem;
+      filter: drop-shadow(0 0 2px #c23b1c);
+    }
+
     .hero h2 {
-      font-size: clamp(3rem, 12vw, 7rem);
+      font-size: clamp(3rem, 11vw, 6.5rem);
       font-weight: 800;
-      line-height: 1;
+      line-height: 1.05;
       text-transform: uppercase;
       letter-spacing: -0.02em;
     }
 
-    .hero h2 .stroke-text {
+    .hero h2 .stroke-red {
       color: transparent;
-      -webkit-text-stroke: 1.5px #ffffff;
-      text-stroke: 1.5px #ffffff;
+      -webkit-text-stroke: 1.2px #e67a4a;
+      text-stroke: 1.2px #e67a4a;
       font-weight: 800;
     }
 
-    .hero-description {
-      max-width: 560px;
-      font-size: 1.2rem;
-      line-height: 1.4;
-      color: #bcbcbc;
-      border-left: 3px solid #ffffff;
-      padding-left: 1.5rem;
-      margin-top: 0.5rem;
+    .hero h2 .gold-text {
+      color: #e0b87a;
+      text-shadow: 0 0 5px rgba(180, 60, 30, 0.5);
     }
 
-    /* collection spotlight */
+    .hero-description {
+      max-width: 520px;
+      font-size: 1.05rem;
+      line-height: 1.4;
+      color: #d9bcae;
+      border-left: 3px solid #bc5a3c;
+      padding-left: 1.5rem;
+      margin-top: 1.2rem;
+    }
+
+    /* collection spotlight — new year / new collection out! */
     .collection-section {
-      margin: 6rem 0;
+      margin: 4rem 0;
     }
 
     .section-tag {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 3px;
-      color: #8f8f8f;
-      margin-bottom: 1.5rem;
+      color: #cb7f60;
+      margin-bottom: 1rem;
     }
 
     .new-collection-banner {
-      background: linear-gradient(125deg, #101010 0%, #1a1a1a 100%);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 42px;
-      padding: 3rem 2.5rem;
+      background: linear-gradient(125deg, #2c0d0d 0%, #3f1612 100%);
+      border: 1px solid rgba(215, 95, 55, 0.6);
+      border-radius: 48px;
+      padding: 2.5rem 2.8rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 2rem;
-      transition: transform 0.2s ease, box-shadow 0.2s;
-    }
-
-    .new-collection-banner:hover {
-      transform: scale(1.01);
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
-      border-color: rgba(255, 255, 255, 0.4);
+      transition: all 0.25s;
+      box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.6);
     }
 
     .banner-text h3 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 700;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #f3cba5, #db8a62);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .banner-text .out-now {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 400;
-      color: #ccc;
+      color: #dbb594;
       margin-top: 0.5rem;
-      border-left: 2px solid #fff;
+      border-left: 2px solid #dd7a52;
       padding-left: 1rem;
     }
 
     .cta-button {
-      background: #ffffff;
-      color: #000000;
+      background: #ab4630;
+      color: #fff2e6;
       border: none;
-      padding: 1rem 2.4rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.9rem;
+      padding: 0.9rem 2.2rem;
+      border-radius: 44px;
+      font-weight: 600;
+      font-size: 0.85rem;
       letter-spacing: 1px;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: 0.2s;
       font-family: inherit;
       text-transform: uppercase;
+      backdrop-filter: blur(2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .cta-button:hover {
-      background: #d0d0d0;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.4);
+      background: #c25a3c;
+      transform: translateY(-2px);
     }
 
-    /* grid for artwork / fashion pieces */
+    /* showcase grid — minimal, moody, canvas feel */
     .showcase-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -221,87 +239,102 @@
     }
 
     .art-card {
-      background: #0c0c0c;
+      background: #1f0b0a;
       border-radius: 28px;
       overflow: hidden;
       transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(190, 75, 45, 0.3);
     }
 
     .art-card:hover {
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-6px);
+      border-color: #c46240;
+      transform: translateY(-5px);
+      background: #2a100e;
     }
 
     .card-media {
-      background: linear-gradient(145deg, #1f1f1f, #0a0a0a);
+      background: #140605;
       aspect-ratio: 4 / 5;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      overflow: hidden;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.2"><path fill="none" stroke="%23b25a3a" stroke-width="0.5" d="M20,30 L80,30 M30,45 L70,45 M40,60 L60,60 M50,20 L50,80"/><circle cx="50" cy="50" r="12" stroke="%2399442c" stroke-width="0.6" fill="none"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 60px;
     }
 
     .placeholder-icon {
-      font-size: 4rem;
-      font-weight: 800;
-      color: rgba(255, 255, 255, 0.1);
-      letter-spacing: 4px;
+      font-size: 2.8rem;
+      font-weight: 500;
+      color: rgba(210, 105, 65, 0.5);
+      letter-spacing: 2px;
       text-transform: uppercase;
-      background: radial-gradient(circle at 30% 20%, rgba(255,255,240,0.05), transparent);
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       font-family: monospace;
     }
 
     .art-card h4 {
       padding: 1.2rem 1rem 0.2rem;
       font-weight: 600;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      color: #f2cdb2;
     }
 
     .art-card p {
       padding: 0 1rem 1.2rem;
-      font-size: 0.8rem;
-      color: #aaa;
+      font-size: 0.75rem;
+      color: #c69072;
       text-transform: uppercase;
     }
 
-    /* quote / philosophy */
+    /* philosophy — the art of fashion, less cringe, more poetic */
     .philosophy {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(40, 12, 10, 0.6);
+      backdrop-filter: blur(3px);
       border-radius: 48px;
-      padding: 3rem 2.5rem;
-      margin: 5rem 0;
+      padding: 2.8rem 2rem;
+      margin: 4rem 0;
       text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(195, 85, 50, 0.3);
     }
 
     .philosophy .quote {
-      font-size: 1.8rem;
-      font-weight: 500;
-      line-height: 1.3;
-      max-width: 800px;
+      font-size: 1.6rem;
+      font-weight: 450;
+      line-height: 1.35;
+      max-width: 780px;
       margin: 0 auto;
       letter-spacing: -0.2px;
+      color: #eed3c4;
     }
 
     .philosophy .author {
-      margin-top: 1.5rem;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      color: #9e9e9e;
+      margin-top: 1.4rem;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: #bc7f64;
     }
 
-    /* footer & newsletter */
+    /* lunar new year red envelope / subtle details */
+    .cny-detail {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0 0;
+    }
+    .cny-detail span {
+      font-size: 0.7rem;
+      background: #2f1210;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      color: #d69573;
+    }
+
     .footer {
-      margin-top: 6rem;
+      margin-top: 5rem;
       padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(180, 70, 45, 0.3);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -309,264 +342,243 @@
     }
 
     .footer-col p {
-      color: #7e7e7e;
-      font-size: 0.8rem;
+      color: #bb8a74;
+      font-size: 0.75rem;
     }
 
     .footer-col .brand-footer {
       font-weight: 700;
-      font-size: 1.3rem;
-      letter-spacing: -0.5px;
-      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      letter-spacing: -0.3px;
+      margin-bottom: 0.4rem;
+      color: #e6bc9c;
     }
 
     .newsletter {
       display: flex;
-      gap: 0.8rem;
+      gap: 0.6rem;
       flex-wrap: wrap;
     }
 
     .newsletter input {
-      background: #151515;
-      border: 1px solid #2c2c2c;
-      padding: 0.8rem 1.2rem;
+      background: #1f0a08;
+      border: 1px solid #843d2a;
+      padding: 0.7rem 1.2rem;
       border-radius: 60px;
-      color: white;
+      color: #f0cfbc;
       font-family: inherit;
-      width: 240px;
+      width: 220px;
       outline: none;
       transition: 0.2s;
     }
 
     .newsletter input:focus {
-      border-color: #ffffff;
+      border-color: #cb6946;
     }
 
     .newsletter button {
-      background: #ffffff;
+      background: #a8452d;
       border: none;
       padding: 0 1.6rem;
       border-radius: 60px;
       font-weight: 600;
       cursor: pointer;
       font-family: inherit;
+      color: #fff0e5;
       transition: 0.2s;
     }
 
     .newsletter button:hover {
-      background: #ddd;
+      background: #bc5a3a;
     }
 
-    /* bottom credits */
     .copyright {
       text-align: center;
-      margin-top: 4rem;
-      font-size: 0.7rem;
-      color: #4f4f4f;
+      margin-top: 3rem;
+      font-size: 0.65rem;
+      color: #8c5d4a;
       letter-spacing: 1px;
     }
 
     @media (max-width: 780px) {
       .site-wrapper {
-        padding: 1rem 1.5rem 2.5rem;
+        padding: 1rem 1.2rem 2rem;
+      }
+      .new-collection-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.8rem;
+      }
+      .philosophy .quote {
+        font-size: 1.2rem;
       }
       .navbar {
         flex-direction: column;
         align-items: flex-start;
       }
-      .new-collection-banner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .philosophy .quote {
-        font-size: 1.3rem;
-      }
-      .hero-description {
-        font-size: 1rem;
-      }
     }
 
-    /* custom glitch / art of fashion accent */
-    .art-accent {
-      font-style: italic;
-      background: linear-gradient(120deg, #ffffff, #b0b0b0);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .blinking-dot {
+    /* subtle seal / red stamp effect */
+    .red-stamp {
+      font-family: 'Times New Roman', serif;
+      font-size: 0.6rem;
+      transform: rotate(-4deg);
+      border: 0.5px solid #bc5236;
       display: inline-block;
-      width: 6px;
-      height: 6px;
-      background-color: #fff;
-      border-radius: 50%;
-      margin-right: 8px;
-      animation: pulse 1.6s infinite;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 0.3; transform: scale(0.8);}
-      100% { opacity: 1; transform: scale(1.2);}
+      padding: 0.1rem 0.8rem;
+      border-radius: 30px;
+      letter-spacing: 1px;
+      margin-left: 1rem;
     }
   </style>
 </head>
 <body>
-<div class="noise-bg"></div>
+<div class="canvas-texture"></div>
+<div class="ink-bleed"></div>
 <div class="site-wrapper">
-  <!-- header navigation with brand -->
   <div class="navbar">
     <div class="logo-area">
-      <h1>derchutze.</h1>
-      <p>THE FUTURE OF STREETWEAR</p>
+      <h1>derchutze.<span class="red-stamp">甲辰·新禧</span></h1>
+      <p>THE FUTURE OF STREETWEAR · 岁启新章</p>
     </div>
     <div class="nav-links">
-      <a href="#">COLLECTIONS</a>
-      <a href="#">ARCHIVE</a>
-      <a href="#">EDITORIAL</a>
-      <a href="#">STORES</a>
+      <a href="#">衣·集</a>
+      <a href="#">典藏</a>
+      <a href="#">卷轴</a>
+      <a href="#">坊间</a>
     </div>
   </div>
 
-  <!-- main hero -->
   <div class="hero">
     <div class="hero-badge">
-      <span class="blinking-dot"></span> SS25 — LIMITED DROP
+      <span class="lantern-icon">🏮</span> 乙巳新岁 · 限量奉呈 <span class="lantern-icon">🏮</span>
     </div>
     <h2>
-      <span class="stroke-text">THE ART</span><br>
-      OF FASHION
+      <span class="stroke-red">THE ART</span><br>
+      <span class="gold-text">OF FASHION</span>
     </h2>
     <div class="hero-description">
-      Deconstructing conventions. Raw expression. Where avant-garde meets the street.
+      破格新生 · 东方暗涌。街头与绸缎的低语，红与黑的祝祷。
     </div>
   </div>
 
-  <!-- new collection highlight (explicit "NEW COLLECTION OUT!" as per brief) -->
+  <!-- NEW COLLECTION OUT! 核心模块 暗红新年主题 -->
   <div class="collection-section">
-    <div class="section-tag">— LATEST DROP</div>
+    <div class="section-tag">— 新岁献礼 · 首章 —</div>
     <div class="new-collection-banner">
       <div class="banner-text">
-        <h3>⚡ NEW COLLECTION OUT! ⚡</h3>
-        <div class="out-now">"DECHURTZE // THE ART OF FAHION" [sic] — limited silhouettes, unlimited attitude.</div>
+        <h3>⚡ 新岁限定 · 现已出鞘 ⚡</h3>
+        <div class="out-now">「DECHURTZE · THE ART OF FAHION」灵蛇盘踞，红焰新生。限量系列即刻揭幕。</div>
       </div>
-      <button class="cta-button" id="shopNowBtn">SHOP NOW →</button>
+      <button class="cta-button" id="shopNowBtn">启封新章 →</button>
     </div>
   </div>
 
-  <!-- showcase grid: 3 core pieces that reflect streetwear / future aesthetic -->
   <div class="showcase-grid">
     <div class="art-card">
       <div class="card-media">
-        <div class="placeholder-icon">⟁ 01</div>
+        <div class="placeholder-icon">燎·01</div>
       </div>
-      <h4>DECONSTRUCTED HOODIE</h4>
-      <p>Asymmetric panels / raw edges</p>
+      <h4>朱砂解构袍</h4>
+      <p>暗纹丝绸 · 盘扣残影</p>
     </div>
     <div class="art-card">
       <div class="card-media">
-        <div class="placeholder-icon">⨀ 02</div>
+        <div class="placeholder-icon">炽·02</div>
       </div>
-      <h4>CYBER-UTILITY VEST</h4>
-      <p>Modular straps · reflective accents</p>
+      <h4>岁寒甲胄卫衣</h4>
+      <p>泼墨红底 · 立体裁片</p>
     </div>
     <div class="art-card">
       <div class="card-media">
-        <div class="placeholder-icon">◈ 03</div>
+        <div class="placeholder-icon">鳞·03</div>
       </div>
-      <h4>Oversized Cargo Trousers</h4>
-      <p>Technical fabric · future drape</p>
+      <h4>巳蛇机能长裤</h4>
+      <p>绳结系统 · 暗红滚边</p>
     </div>
   </div>
 
-  <!-- philosophy section: "the art of fashion" reinterpretation -->
   <div class="philosophy">
     <div class="quote">
-      “derchutze isn't just clothing — it’s a canvas. <span class="art-accent">The Art of Fashion</span> redefined for<br> 
-      a generation that refuses to blend in.”
+      “朱砂入墨，旧符新桃。derchutze以暗红为骨，街头为砚，<br>书写时装的下一个甲子。”
     </div>
-    <div class="author">— FOUNDER'S MANIFESTO, MMXXV</div>
+    <div class="author">— 年岁手记 · 乙巳卷</div>
   </div>
 
-  <!-- additional editorial / future of streetwear message -->
-  <div style="margin: 3rem 0 1rem; display: flex; justify-content: center;">
-    <div style="max-width: 700px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
-      <p style="font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: #aaa;">The future of streetwear is here</p>
-      <p style="margin-top: 0.8rem; font-weight: 300;">Innovative cuts, sustainable vision, and uncompromising identity. Join the movement.</p>
-    </div>
+  <div class="cny-detail">
+    <span>🏮 燃灯迎春</span>
+    <span>🧧 限定红包封套</span>
+    <span>🐍 灵蛇纹样特典</span>
   </div>
 
-  <!-- footer + newsletter mock -->
+  <!-- subtle additional statement that aligns with canvas / mature mood -->
+  <div style="margin: 2.5rem 0 0.5rem; text-align: center;">
+    <p style="font-size: 0.7rem; letter-spacing: 2px; color: #b67d62;">暗红是沉默的焰火 · 甲辰之后 万象由心</p>
+  </div>
+
   <div class="footer">
     <div class="footer-col">
       <div class="brand-footer">derchutze.</div>
-      <p>© 2026 — all rights reserved.<br>the art of fashion since '25</p>
+      <p>© 2026 岁次乙巳 · 锦灰堆<br>东方街头档案</p>
     </div>
     <div class="footer-col">
-      <p>STUDIO / TOKYO · BERLIN · NYC</p>
-      <p style="margin-top: 0.6rem;">contact@derchutze.com</p>
+      <p>上海 · 京都 · 布鲁克林</p>
+      <p style="margin-top: 0.5rem;">红封专线 · lunar@derchutze.com</p>
     </div>
     <div class="footer-col">
-      <p style="margin-bottom: 0.8rem;">SUBSCRIBE FOR DROPS</p>
+      <p style="margin-bottom: 0.7rem;">订阅新春谕令</p>
       <div class="newsletter">
-        <input type="email" placeholder="EMAIL ADDRESS" id="newsEmail">
-        <button id="subscribeBtn">→</button>
+        <input type="email" placeholder="电子邮箱 / EMAIL" id="newsEmail">
+        <button id="subscribeBtn">寄 →</button>
       </div>
     </div>
   </div>
   <div class="copyright">
-    DECHURTZE — THE ART OF FAHION | NEW COLLECTION OUT NOW
+    DECHURTZE —  THE ART OF FAHION  |  新岁限定 COLLECTION OUT NOW  |  暗红纪元
   </div>
 </div>
 
-<!-- small interactive JS for alert/demo feedback (no external libraries) -->
 <script>
   (function() {
-    // Shop Now button alert with brand call to action
+    // refined interactions – less cringe, more elegant
     const shopBtn = document.getElementById('shopNowBtn');
     if (shopBtn) {
       shopBtn.addEventListener('click', () => {
-        alert('⚡ derchutze: The new collection is OUT NOW. Explore the future of streetwear. ⚡\n(Pre-order opens globally)');
+        alert('「新岁限定」灵蛇盘踞，暗红破晓。\nderchutze 乙巳系列现已开放预览。');
       });
     }
 
-    // Subscribe button feedback
-    const subscribeButton = document.getElementById('subscribeBtn');
-    const emailInput = document.getElementById('newsEmail');
-    if (subscribeButton && emailInput) {
-      subscribeButton.addEventListener('click', () => {
-        const email = emailInput.value.trim();
+    const subscribeBtn = document.getElementById('subscribeBtn');
+    const emailField = document.getElementById('newsEmail');
+    if (subscribeBtn && emailField) {
+      subscribeBtn.addEventListener('click', () => {
+        const email = emailField.value.trim();
         if (email === "" || !email.includes('@') || !email.includes('.')) {
-          alert('Please enter a valid email address to join the derchutze movement.');
+          alert('请留下你的电子邮箱，接收新岁红封谕令。');
         } else {
-          alert(`Thank you for subscribing, ${email}. You’ll be first to know about the future of streetwear.`);
-          emailInput.value = '';
+          alert(`岁序更新，${email} 已载入红册。首枚限定讯息将于上元日前抵达。`);
+          emailField.value = '';
         }
       });
     }
 
-    // additional hover effect: art cards dynamic background? small extra interaction
+    // minimalist card hover: subtle ink increase
     const cards = document.querySelectorAll('.art-card');
     cards.forEach(card => {
-      card.addEventListener('mouseenter', (e) => {
-        const mediaDiv = card.querySelector('.card-media');
-        if (mediaDiv) {
-          mediaDiv.style.transition = 'background 0.3s';
-          mediaDiv.style.background = 'radial-gradient(circle at 30% 20%, #2a2a2a, #050505)';
-        }
+      card.addEventListener('mouseenter', () => {
+        const media = card.querySelector('.card-media');
+        if(media) media.style.background = '#1f0806';
       });
-      card.addEventListener('mouseleave', (e) => {
-        const mediaDiv = card.querySelector('.card-media');
-        if (mediaDiv) {
-          mediaDiv.style.background = '';
-        }
+      card.addEventListener('mouseleave', () => {
+        const media = card.querySelector('.card-media');
+        if(media) media.style.background = '#140605';
       });
     });
 
-    // smooth console greeting: brand identity
-    console.log('%c🔥 derchutze // The Art of Fashion // Future of Streetwear 🔥', 'color: #ffffff; background: #000000; font-size: 14px; padding: 6px 12px; border-radius: 30px;');
-    console.log('NEW COLLECTION OUT! — Experience deconstructed luxury.');
+    console.log('%c🏮 derchutze · 乙巳新春 · 暗红纪元 🧧', 'color: #dd8866; background: #2a0a08; font-size: 12px; padding: 6px 12px; border-radius: 30px;');
+    console.log('「THE ART OF FASHION」新岁限定 collection out — 朱砂为记');
   })();
 </script>
 </body>
 </html>
+```
