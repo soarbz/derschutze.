@@ -1,1 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>derchutze | The Future of Streetwear</title>
+  <!-- Google Fonts + smooth base -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      background-color: #010101;
+      font-family: 'Inter', sans-serif;
+      color: #ededed;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Canvas background grain / texture effect */
+    .noise-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.08;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 180px;
+      mix-blend-mode: overlay;
+    }
+
+    /* main container relative to overlay text */
+    .site-wrapper {
+      position: relative;
+      z-index: 10;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+    }
+
+    /* header / navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 1rem 0 2rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      margin-bottom: 4rem;
+    }
+
+    .logo-area h1 {
+      font-size: 1.9rem;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff 40%, #a0a0a0 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo-area p {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-top: 0.25rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #e0e0e0;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+
+    /* hero section with dynamic taglines */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 6rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(4px);
+      border: 0.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 40px;
+      padding: 0.4rem 1.2rem;
+      width: fit-content;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero h2 {
+      font-size: clamp(3rem, 12vw, 7rem);
+      font-weight: 800;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h2 .stroke-text {
+      color: transparent;
+      -webkit-text-stroke: 1.5px #ffffff;
+      text-stroke: 1.5px #ffffff;
+      font-weight: 800;
+    }
+
+    .hero-description {
+      max-width: 560px;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      color: #bcbcbc;
+      border-left: 3px solid #ffffff;
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    /* collection spotlight */
+    .collection-section {
+      margin: 6rem 0;
+    }
+
+    .section-tag {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #8f8f8f;
+      margin-bottom: 1.5rem;
+    }
+
+    .new-collection-banner {
+      background: linear-gradient(125deg, #101010 0%, #1a1a1a 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 42px;
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      transition: transform 0.2s ease, box-shadow 0.2s;
+    }
+
+    .new-collection-banner:hover {
+      transform: scale(1.01);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .banner-text h3 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .banner-text .out-now {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #ccc;
+      margin-top: 0.5rem;
+      border-left: 2px solid #fff;
+      padding-left: 1rem;
+    }
+
+    .cta-button {
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      padding: 1rem 2.4rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+      text-transform: uppercase;
+    }
+
+    .cta-button:hover {
+      background: #d0d0d0;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.4);
+    }
+
+    /* grid for artwork / fashion pieces */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0 5rem;
+    }
+
+    .art-card {
+      background: #0c0c0c;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .art-card:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-6px);
+    }
+
+    .card-media {
+      background: linear-gradient(145deg, #1f1f1f, #0a0a0a);
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .placeholder-icon {
+      font-size: 4rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.1);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,240,0.05), transparent);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: monospace;
+    }
+
+    .art-card h4 {
+      padding: 1.2rem 1rem 0.2rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .art-card p {
+      padding: 0 1rem 1.2rem;
+      font-size: 0.8rem;
+      color: #aaa;
+      text-transform: uppercase;
+    }
+
+    /* quote / philosophy */
+    .philosophy {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 48px;
+      padding: 3rem 2.5rem;
+      margin: 5rem 0;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .philosophy .quote {
+      font-size: 1.8rem;
+      font-weight: 500;
+      line-height: 1.3;
+      max-width: 800px;
+      margin: 0 auto;
+      letter-spacing: -0.2px;
+    }
+
+    .philosophy .author {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: #9e9e9e;
+    }
+
+    /* footer & newsletter */
+    .footer {
+      margin-top: 6rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-col p {
+      color: #7e7e7e;
+      font-size: 0.8rem;
+    }
+
+    .footer-col .brand-footer {
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .newsletter {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .newsletter input {
+      background: #151515;
+      border: 1px solid #2c2c2c;
+      padding: 0.8rem 1.2rem;
+      border-radius: 60px;
+      color: white;
+      font-family: inherit;
+      width: 240px;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .newsletter input:focus {
+      border-color: #ffffff;
+    }
+
+    .newsletter button {
+      background: #ffffff;
+      border: none;
+      padding: 0 1.6rem;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: 0.2s;
+    }
+
+    .newsletter button:hover {
+      background: #ddd;
+    }
+
+    /* bottom credits */
+    .copyright {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.7rem;
+      color: #4f4f4f;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 780px) {
+      .site-wrapper {
+        padding: 1rem 1.5rem 2.5rem;
+      }
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .new-collection-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .philosophy .quote {
+        font-size: 1.3rem;
+      }
+      .hero-description {
+        font-size: 1rem;
+      }
+    }
+
+    /* custom glitch / art of fashion accent */
+    .art-accent {
+      font-style: italic;
+      background: linear-gradient(120deg, #ffffff, #b0b0b0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .blinking-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: #fff;
+      border-radius: 50%;
+      margin-right: 8px;
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.3; transform: scale(0.8);}
+      100% { opacity: 1; transform: scale(1.2);}
+    }
+  </style>
+</head>
+<body>
+<div class="noise-bg"></div>
+<div class="site-wrapper">
+  <!-- header navigation with brand -->
+  <div class="navbar">
+    <div class="logo-area">
+      <h1>derchutze.</h1>
+      <p>THE FUTURE OF STREETWEAR</p>
+    </div>
+    <div class="nav-links">
+      <a href="#">COLLECTIONS</a>
+      <a href="#">ARCHIVE</a>
+      <a href="#">EDITORIAL</a>
+      <a href="#">STORES</a>
+    </div>
+  </div>
+
+  <!-- main hero -->
+  <div class="hero">
+    <div class="hero-badge">
+      <span class="blinking-dot"></span> SS25 — LIMITED DROP
+    </div>
+    <h2>
+      <span class="stroke-text">THE ART</span><br>
+      OF FASHION
+    </h2>
+    <div class="hero-description">
+      Deconstructing conventions. Raw expression. Where avant-garde meets the street.
+    </div>
+  </div>
+
+  <!-- new collection highlight (explicit "NEW COLLECTION OUT!" as per brief) -->
+  <div class="collection-section">
+    <div class="section-tag">— LATEST DROP</div>
+    <div class="new-collection-banner">
+      <div class="banner-text">
+        <h3>⚡ NEW COLLECTION OUT! ⚡</h3>
+        <div class="out-now">"DECHURTZE // THE ART OF FAHION" [sic] — limited silhouettes, unlimited attitude.</div>
+      </div>
+      <button class="cta-button" id="shopNowBtn">SHOP NOW →</button>
+    </div>
+  </div>
+
+  <!-- showcase grid: 3 core pieces that reflect streetwear / future aesthetic -->
+  <div class="showcase-grid">
+    <div class="art-card">
+      <div class="card-media">
+        <div class="placeholder-icon">⟁ 01</div>
+      </div>
+      <h4>DECONSTRUCTED HOODIE</h4>
+      <p>Asymmetric panels / raw edges</p>
+    </div>
+    <div class="art-card">
+      <div class="card-media">
+        <div class="placeholder-icon">⨀ 02</div>
+      </div>
+      <h4>CYBER-UTILITY VEST</h4>
+      <p>Modular straps · reflective accents</p>
+    </div>
+    <div class="art-card">
+      <div class="card-media">
+        <div class="placeholder-icon">◈ 03</div>
+      </div>
+      <h4>Oversized Cargo Trousers</h4>
+      <p>Technical fabric · future drape</p>
+    </div>
+  </div>
+
+  <!-- philosophy section: "the art of fashion" reinterpretation -->
+  <div class="philosophy">
+    <div class="quote">
+      “derchutze isn't just clothing — it’s a canvas. <span class="art-accent">The Art of Fashion</span> redefined for<br> 
+      a generation that refuses to blend in.”
+    </div>
+    <div class="author">— FOUNDER'S MANIFESTO, MMXXV</div>
+  </div>
+
+  <!-- additional editorial / future of streetwear message -->
+  <div style="margin: 3rem 0 1rem; display: flex; justify-content: center;">
+    <div style="max-width: 700px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
+      <p style="font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: #aaa;">The future of streetwear is here</p>
+      <p style="margin-top: 0.8rem; font-weight: 300;">Innovative cuts, sustainable vision, and uncompromising identity. Join the movement.</p>
+    </div>
+  </div>
+
+  <!-- footer + newsletter mock -->
+  <div class="footer">
+    <div class="footer-col">
+      <div class="brand-footer">derchutze.</div>
+      <p>© 2026 — all rights reserved.<br>the art of fashion since '25</p>
+    </div>
+    <div class="footer-col">
+      <p>STUDIO / TOKYO · BERLIN · NYC</p>
+      <p style="margin-top: 0.6rem;">contact@derchutze.com</p>
+    </div>
+    <div class="footer-col">
+      <p style="margin-bottom: 0.8rem;">SUBSCRIBE FOR DROPS</p>
+      <div class="newsletter">
+        <input type="email" placeholder="EMAIL ADDRESS" id="newsEmail">
+        <button id="subscribeBtn">→</button>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    DECHURTZE — THE ART OF FAHION | NEW COLLECTION OUT NOW
+  </div>
+</div>
+
+<!-- small interactive JS for alert/demo feedback (no external libraries) -->
+<script>
+  (function() {
+    // Shop Now button alert with brand call to action
+    const shopBtn = document.getElementById('shopNowBtn');
+    if (shopBtn) {
+      shopBtn.addEventListener('click', () => {
+        alert('⚡ derchutze: The new collection is OUT NOW. Explore the future of streetwear. ⚡\n(Pre-order opens globally)');
+      });
+    }
+
+    // Subscribe button feedback
+    const subscribeButton = document.getElementById('subscribeBtn');
+    const emailInput = document.getElementById('newsEmail');
+    if (subscribeButton && emailInput) {
+      subscribeButton.addEventListener('click', () => {
+        const email = emailInput.value.trim();
+        if (email === "" || !email.includes('@') || !email.includes('.')) {
+          alert('Please enter a valid email address to join the derchutze movement.');
+        } else {
+          alert(`Thank you for subscribing, ${email}. You’ll be first to know about the future of streetwear.`);
+          emailInput.value = '';
+        }
+      });
+    }
+
+    // additional hover effect: art cards dynamic background? small extra interaction
+    const cards = document.querySelectorAll('.art-card');
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', (e) => {
+        const mediaDiv = card.querySelector('.card-media');
+        if (mediaDiv) {
+          mediaDiv.style.transition = 'background 0.3s';
+          mediaDiv.style.background = 'radial-gradient(circle at 30% 20%, #2a2a2a, #050505)';
+        }
+      });
+      card.addEventListener('mouseleave', (e) => {
+        const mediaDiv = card.querySelector('.card-media');
+        if (mediaDiv) {
+          mediaDiv.style.background = '';
+        }
+      });
+    });
+
+    // smooth console greeting: brand identity
+    console.log('%c🔥 derchutze // The Art of Fashion // Future of Streetwear 🔥', 'color: #ffffff; background: #000000; font-size: 14px; padding: 6px 12px; border-radius: 30px;');
+    console.log('NEW COLLECTION OUT! — Experience deconstructed luxury.');
+  })();
+</script>
+</body>
+</html>
