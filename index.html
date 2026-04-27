@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>DERCHUTZE — STREETWEAR</title>
+    <title>DERCHUTZE — DARK RED LABEL</title>
     <!-- Google Fonts: Courier Prime (monospace, clean, brutal) -->
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -22,12 +22,12 @@
             background-repeat: no-repeat;
             font-family: 'Courier Prime', 'Courier New', monospace;
             overflow-x: hidden;
-            color: #000000; /* pure black text */
+            color: #8b1a1a; /* dark red base for text */
             scroll-behavior: smooth;
             position: relative;
         }
 
-        /* deep black overlay (not faded, solid darkness) */
+        /* deep black overlay (solid, not faded) for contrast */
         body::before {
             content: "";
             position: fixed;
@@ -35,12 +35,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(0, 0, 0, 0.88);
             z-index: 0;
             pointer-events: none;
         }
 
-        /* floating particle canvas (very subtle, almost black atmosphere) */
+        /* floating particle canvas (very subtle, dark mood) */
         canvas {
             position: fixed;
             top: 0;
@@ -50,7 +50,7 @@
             display: block;
             pointer-events: none;
             z-index: 2;
-            opacity: 0.3;
+            opacity: 0.25;
         }
 
         .site-content {
@@ -61,7 +61,7 @@
             padding: 2rem 2rem 5rem;
         }
 
-        /* navbar — black and white, sharp */
+        /* navbar — dark red & black */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -69,7 +69,7 @@
             flex-wrap: wrap;
             gap: 1.5rem;
             padding: 1rem 0 2rem 0;
-            border-bottom: 2px solid #000000;
+            border-bottom: 2px solid #8b1a1a;
             margin-bottom: 3rem;
         }
 
@@ -77,14 +77,14 @@
             font-size: 2rem;
             letter-spacing: 3px;
             font-weight: 700;
-            color: #000000;
+            color: #8b1a1a;
             text-transform: uppercase;
         }
 
         .logo-area p {
             font-size: 0.65rem;
             letter-spacing: 2px;
-            color: #222222;
+            color: #a52a2a;
             text-transform: uppercase;
             font-weight: 400;
         }
@@ -98,18 +98,18 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #000000;
+            color: #8b1a1a;
             transition: 0.2s;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         .nav-links a:hover {
-            color: #333333;
+            color: #c0392b;
             transform: translateY(-2px);
         }
 
-        /* Hero — pure black text, sharp edges */
+        /* Hero — dark red text, sharp edges */
         .hero {
             display: flex;
             flex-direction: column;
@@ -122,7 +122,7 @@
             font-size: 4rem;
             font-weight: 700;
             line-height: 1.2;
-            color: #000000;
+            color: #8b1a1a;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -132,30 +132,30 @@
             letter-spacing: 3px;
             margin-top: 1rem;
             font-weight: 400;
-            color: #111111;
-            background: rgba(0,0,0,0.05);
+            color: #a52a2a;
+            background: rgba(0,0,0,0.4);
             display: inline-block;
             padding: 0.3rem 1.5rem;
             border-radius: 0px;
-            border: 1px solid #000000;
+            border: 1px solid #8b1a1a;
         }
 
         .tagline {
             font-size: 0.8rem;
             margin-top: 1.2rem;
-            color: #1a1a1a;
+            color: #b03a2e;
             max-width: 520px;
             font-weight: 400;
             letter-spacing: 0.5px;
         }
 
-        /* Collection Card — solid black/dark background, no fading */
+        /* Collection Card — solid dark background, dark red accents */
         .collection-highlight {
             background: #0a0a0a;
             border-radius: 0px;
             padding: 2.5rem 2rem;
             margin: 2rem 0 4rem;
-            border: 1px solid #000000;
+            border: 1px solid #8b1a1a;
             box-shadow: none;
             text-align: center;
         }
@@ -164,20 +164,21 @@
             font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #ffffff;
+            color: #b33b2b;
         }
 
         .new-badge {
-            background: #000000;
+            background: #4a0e0e;
             display: inline-block;
             padding: 0.2rem 1.2rem;
             border-radius: 0px;
             font-size: 0.75rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #ffffff;
+            color: #e6b8a8;
             letter-spacing: 1px;
             text-transform: uppercase;
+            border: 1px solid #8b1a1a;
         }
 
         .collection-grid {
@@ -194,17 +195,17 @@
             padding: 1rem;
             width: 200px;
             transition: 0.2s ease;
-            border: 1px solid #2a2a2a;
+            border: 1px solid #5e1818;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            border-color: #000000;
-            background: #050505;
+            border-color: #a3261a;
+            background: #1c0808;
         }
 
         .product-img {
-            background: #1a1a1a;
+            background: #1f0a0a;
             border-radius: 0px;
             height: 180px;
             display: flex;
@@ -213,23 +214,24 @@
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #cccccc;
+            color: #b34a3a;
             font-family: 'Courier Prime', monospace;
+            border: 1px solid #551a1a;
         }
 
         .product-card h4 {
             font-weight: 700;
             letter-spacing: 0;
-            color: #ffffff;
+            color: #c9513f;
         }
 
         .price {
-            color: #aaaaaa;
+            color: #b64836;
             font-weight: 700;
             margin-top: 0.5rem;
         }
 
-        /* Art of Fashion block — stark black */
+        /* Art of Fashion block — stark black with red border */
         .art-section {
             display: flex;
             flex-wrap: wrap;
@@ -240,7 +242,7 @@
             background: #080808;
             padding: 2rem;
             border-radius: 0px;
-            border: 1px solid #222;
+            border: 1px solid #8b1a1a;
         }
 
         .art-text {
@@ -252,25 +254,26 @@
             font-size: 2.5rem;
             font-weight: 700;
             font-family: 'Courier Prime', monospace;
-            color: #ffffff;
+            color: #bc4232;
         }
 
         .art-text p {
             margin-top: 1rem;
             line-height: 1.45;
-            color: #bbbbbb;
+            color: #bd6b5a;
             font-weight: 400;
         }
 
         .art-icon {
             font-size: 2rem;
-            background: #000000;
+            background: #1f0a0a;
             padding: 1rem 1.8rem;
             border-radius: 0px;
-            color: #ffffff;
+            color: #b33b2b;
+            border: 1px solid #8b1a1a;
         }
 
-        /* INFO CARDS — pure black & white */
+        /* INFO CARDS — dark red & black */
         .info-row {
             display: flex;
             justify-content: center;
@@ -280,12 +283,12 @@
         }
 
         .info-card {
-            background: #0d0d0d;
+            background: #0a0505;
             border-radius: 0px;
             padding: 1rem 1.5rem;
             width: 210px;
             text-align: center;
-            border: 1px solid #2a2a2a;
+            border: 1px solid #6b1c1c;
             transition: all 0.2s;
         }
 
@@ -294,13 +297,13 @@
             display: block;
             letter-spacing: 1px;
             font-weight: 700;
-            color: #ffffff;
+            color: #c04432;
         }
 
         .info-card small {
             font-size: 0.7rem;
             letter-spacing: 2px;
-            color: #aaaaaa;
+            color: #aa5a4a;
             font-weight: 400;
             text-transform: uppercase;
         }
@@ -308,51 +311,52 @@
         .info-card p {
             font-size: 0.7rem;
             margin-top: 8px;
-            color: #888888;
+            color: #bc6e5c;
             font-weight: 400;
         }
 
-        /* button — solid black */
+        /* button — dark red base */
         button {
-            background: #000000;
+            background: #5e1515;
             border: none;
             padding: 10px 32px;
             border-radius: 0px;
             font-weight: 700;
             font-family: 'Courier Prime', monospace;
-            color: #ffffff;
+            color: #f0cfc0;
             letter-spacing: 1.5px;
             margin-top: 1.5rem;
             cursor: pointer;
             transition: 0.15s;
+            border: 1px solid #9e3020;
         }
 
         button:active {
             transform: translateY(2px);
-            background: #1a1a1a;
+            background: #3e0e0e;
         }
 
         footer {
             margin-top: 5rem;
             text-align: center;
-            border-top: 1px solid #222222;
+            border-top: 1px solid #6b1c1c;
             padding-top: 2rem;
             font-size: 0.7rem;
-            color: #555555;
+            color: #9a4e3e;
             letter-spacing: 1px;
         }
 
         .brand-motto {
             display: inline-flex;
             gap: 0.8rem;
-            background: rgba(0,0,0,0.7);
+            background: rgba(30, 8, 8, 0.8);
             padding: 0.5rem 1.2rem;
             border-radius: 0px;
             margin-bottom: 1rem;
             font-size: 0.7rem;
             font-weight: 600;
-            color: #cccccc;
-            border: 1px solid #333;
+            color: #cc7766;
+            border: 1px solid #8b1a1a;
         }
 
         @media (max-width: 750px) {
@@ -374,7 +378,7 @@
 </head>
 <body>
 
-<!-- Canvas for atmospheric particles (very subtle) -->
+<!-- Canvas for atmospheric particles (very subtle dark red tint) -->
 <canvas id="darkCanvas" width="800" height="800"></canvas>
 
 <div class="site-content">
@@ -427,22 +431,22 @@
                 <div class="price">¥22,500</div>
             </div>
         </div>
-        <div style="margin-top: 20px; font-size: 0.7rem; letter-spacing: 1px; color: #aaa;">500 UNITS // MADE IN JAPAN</div>
+        <div style="margin-top: 20px; font-size: 0.7rem; letter-spacing: 1px; color: #bb6a58;">500 UNITS // MADE IN JAPAN</div>
     </div>
 
-    <!-- THE ART OF FASHION — clean narrative -->
+    <!-- THE ART OF FASHION — dark red narrative -->
     <div class="art-section">
         <div class="art-text">
             <h2>THE ART<br>OF FASHION</h2>
-            <p>Silhouette, shadow, and substance. DERCHUTZE redefines Tokyo streetwear through uncompromising cuts, deep black signatures, and raw craftsmanship. No performance — only presence.</p>
-            <button style="background: #000000; margin-top: 1rem;" onclick="alert('MANIFESTO: CORE IDENTITY')">READ MANIFESTO</button>
+            <p>Silhouette, shadow, and substance. DERCHUTZE redefines Tokyo streetwear through uncompromising cuts, deep dark red signatures, and raw craftsmanship. No performance — only presence.</p>
+            <button style="background: #601818; margin-top: 1rem;" onclick="alert('MANIFESTO: CORE IDENTITY')">READ MANIFESTO</button>
         </div>
         <div class="art-icon">
-            BLACK
+            RED
         </div>
     </div>
 
-    <!-- INFO CARDS — pure brand pillars, minimal -->
+    <!-- INFO CARDS — pure brand pillars, dark red minimal -->
     <div class="info-row">
         <div class="info-card">
             <span>SILENT</span>
@@ -466,32 +470,32 @@
         </div>
     </div>
     
-    <!-- brand philosophy — stark black block -->
-    <div style="background: #050505; border-radius: 0px; padding: 1.8rem; text-align: center; margin: 2rem 0; border: 1px solid #222;">
-        <span style="font-size: 1.5rem; font-weight: 700; color: #fff;">BLACK // BLOOM // VOID</span>
-        <p style="max-width: 700px; margin: 0.8rem auto 0; font-weight: 300; letter-spacing: 0.3px; color: #aaa;">
+    <!-- brand philosophy — stark black block with red text -->
+    <div style="background: #080202; border-radius: 0px; padding: 1.8rem; text-align: center; margin: 2rem 0; border: 1px solid #8b1a1a;">
+        <span style="font-size: 1.5rem; font-weight: 700; color: #b54432;">RED // BLOOM // VOID</span>
+        <p style="max-width: 700px; margin: 0.8rem auto 0; font-weight: 300; letter-spacing: 0.3px; color: #bb6a58;">
             “Dark blossoms — transient, sharp, authentic. Streetwear as ritual.”<br>— DERCHUTZE STUDIO
         </p>
         <div style="display: flex; justify-content: center; gap: 0.8rem; margin-top: 1rem;">
-            <span style="background:#111; padding: 3px 14px; border-radius: 0px; font-size: 0.65rem; font-weight: 500; color:#ddd;">#derchutze</span>
-            <span style="background:#111; padding: 3px 14px; border-radius: 0px; font-size: 0.65rem; font-weight: 500; color:#ddd;">#tokyoblack</span>
+            <span style="background:#2a0c0c; padding: 3px 14px; border-radius: 0px; font-size: 0.65rem; font-weight: 500; color:#d9907a;">#derchutze</span>
+            <span style="background:#2a0c0c; padding: 3px 14px; border-radius: 0px; font-size: 0.65rem; font-weight: 500; color:#d9907a;">#tokyored</span>
         </div>
     </div>
     
     <footer>
         <p>© 2026 DERCHUTZE — TOKYO. ALL RIGHTS RESERVED.</p>
-        <p style="margin-top: 0.5rem;">BLACK LABEL // SHIBUYA</p>
+        <p style="margin-top: 0.5rem;">DARK RED LABEL // SHIBUYA</p>
     </footer>
 </div>
 
 <script>
     (function() {
-        // very subtle dark particle system (almost invisible, just adds texture)
+        // very subtle dark particle system with slight red tint
         const canvas = document.getElementById('darkCanvas');
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
-        const PARTICLE_COUNT = 50;
+        const PARTICLE_COUNT = 55;
         
         function initCanvas() {
             width = window.innerWidth;
@@ -507,7 +511,9 @@
                 this.size = 2 + Math.random() * 5;
                 this.speedY = 0.3 + Math.random() * 0.9;
                 this.speedX = (Math.random() - 0.5) * 0.3;
-                this.opacity = 0.15 + Math.random() * 0.25;
+                this.opacity = 0.2 + Math.random() * 0.3;
+                // dark red hue for particles
+                this.red = 100 + Math.random() * 60;
             }
             
             update() {
@@ -526,6 +532,7 @@
                 this.speedY = 0.4 + Math.random() * 1.0;
                 this.speedX = (Math.random() - 0.5) * 0.4;
                 this.size = 1.5 + Math.random() * 4;
+                this.red = 90 + Math.random() * 65;
             }
             
             draw(ctx) {
@@ -533,7 +540,7 @@
                 ctx.globalAlpha = this.opacity;
                 ctx.beginPath();
                 ctx.rect(this.x, this.y, this.size * 0.7, this.size * 1.2);
-                ctx.fillStyle = '#000000';
+                ctx.fillStyle = `rgba(130, 30, 20, ${this.opacity * 0.8})`;
                 ctx.fill();
                 ctx.restore();
             }
