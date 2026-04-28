@@ -1,5 +1,3 @@
-Here is the updated HTML code for the DERCHUTZE brand landing page. It now features the image `processed_thangka_release_lookbook_35 (1).webp` inside the product card, along with social media icons and links at the footer.
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -158,7 +156,7 @@ Here is the updated HTML code for the DERCHUTZE brand landing page. It now featu
             background: #0a0a0a;
             border-radius: 0px;
             padding: 2.5rem 2rem;
-            margin: 2rem 0 4rem;
+            margin: 2rem 0 2rem;
             border: 1px solid #8b1a1a;
             box-shadow: none;
             text-align: center;
@@ -224,7 +222,6 @@ Here is the updated HTML code for the DERCHUTZE brand landing page. It now featu
             overflow: hidden;
         }
         
-        /* actual image inside the product card */
         .product-img img {
             width: 100%;
             height: 100%;
@@ -242,6 +239,30 @@ Here is the updated HTML code for the DERCHUTZE brand landing page. It now featu
             color: #b64836;
             font-weight: 700;
             margin-top: 0.5rem;
+        }
+
+        /* SEE MORE button area */
+        .see-more-container {
+            text-align: center;
+            margin: 1rem 0 3rem 0;
+        }
+        .see-more-btn {
+            background: #5e1515;
+            border: 1px solid #9e3020;
+            padding: 10px 32px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            font-family: 'Courier Prime', monospace;
+            color: #f0cfc0;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: 0.15s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .see-more-btn:hover {
+            background: #7e2020;
+            transform: translateY(-2px);
         }
 
         /* ========== ART SECTION with FULL BACKGROUND IMAGE (9).jfif ========== */
@@ -313,46 +334,33 @@ Here is the updated HTML code for the DERCHUTZE brand landing page. It now featu
             font-weight: 700;
         }
 
-        /* INFO CARDS — dark red & black */
-        .info-row {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin: 3rem 0;
-        }
-
-        .info-card {
+        /* ========== ABOUT THE BRAND SECTION (replaced the old info cards) ========== */
+        .about-brand {
             background: #0a0505;
-            border-radius: 0px;
-            padding: 1rem 1.5rem;
-            width: 210px;
-            text-align: center;
             border: 1px solid #6b1c1c;
-            transition: all 0.2s;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
         }
-
-        .info-card span {
+        .about-brand h3 {
             font-size: 1.8rem;
-            display: block;
+            color: #c04432;
+            margin-bottom: 1.2rem;
             letter-spacing: 1px;
             font-weight: 700;
-            color: #c04432;
         }
-
-        .info-card small {
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            color: #aa5a4a;
-            font-weight: 400;
-            text-transform: uppercase;
+        .about-brand p {
+            max-width: 850px;
+            margin: 0 auto 1rem auto;
+            line-height: 1.6;
+            color: #ddb7a8;
+            font-size: 0.9rem;
         }
-
-        .info-card p {
-            font-size: 0.7rem;
-            margin-top: 8px;
-            color: #bc6e5c;
-            font-weight: 400;
+        .about-brand .brand-highlight {
+            margin-top: 1.5rem;
+            font-weight: 700;
+            color: #bc5a46;
+            letter-spacing: 0.5px;
         }
 
         /* button — dark red base */
@@ -446,6 +454,9 @@ Here is the updated HTML code for the DERCHUTZE brand landing page. It now featu
             .social-links a {
                 font-size: 1.5rem;
             }
+            .about-brand {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -478,12 +489,12 @@ Here is the updated HTML code for the DERCHUTZE brand landing page. It now featu
         <button onclick="alert('NEW COLLECTION PRE-ORDER — LIMITED EDITION')">ENTER COLLECTION →</button>
     </div>
     
-    <!-- NEW COLLECTION OUT! — brand products with image inside SCALE product card -->
+    <!-- NEW COLLECTION OUT! — brand products with images -->
     <div class="collection-highlight">
         <div class="new-badge">NEW COLLECTION OUT // LIMITED</div>
         <h3>YAMIZAKURA</h3>
         <div class="collection-grid">
-            <!-- CARD 1: SCALE KIMONO JACKET with custom image -->
+            <!-- CARD 1: SCALE KIMONO JACKET with processed_thangka_release_lookbook_35 (1).webp -->
             <div class="product-card">
                 <div class="product-img">
                     <img src="processed_thangka_release_lookbook_35 (1).webp" alt="KIMONO JACKET">
@@ -491,8 +502,11 @@ Here is the updated HTML code for the DERCHUTZE brand landing page. It now featu
                 <h4>KIMONO JACKET</h4>
                 <div class="price">¥26,800</div>
             </div>
+            <!-- CARD 2: VOID BOMBER JKT with processed_thangka_release_lookbook_43.avif -->
             <div class="product-card">
-                <div class="product-img">VOID</div>
+                <div class="product-img">
+                    <img src="processed_thangka_release_lookbook_43.avif" alt="BOMBER JACKET">
+                </div>
                 <h4>BOMBER JKT</h4>
                 <div class="price">¥39,900</div>
             </div>
@@ -510,6 +524,11 @@ Here is the updated HTML code for the DERCHUTZE brand landing page. It now featu
         <div style="margin-top: 20px; font-size: 0.7rem; letter-spacing: 1px; color: #bb6a58;">500 UNITS // MADE IN JAPAN</div>
     </div>
 
+    <!-- SEE MORE BUTTON that redirects to a new page (collection overview) -->
+    <div class="see-more-container">
+        <a href="#" class="see-more-btn" id="seeMoreBtn">SEE MORE → FULL COLLECTION</a>
+    </div>
+
     <!-- THE ART OF FASHION — FULL RECTANGLE BACKGROUND (9).jfif -->
     <div class="art-section">
         <div class="art-text">
@@ -522,28 +541,12 @@ Here is the updated HTML code for the DERCHUTZE brand landing page. It now featu
         </div>
     </div>
 
-    <!-- INFO CARDS — pure brand pillars -->
-    <div class="info-row">
-        <div class="info-card">
-            <span>SILENT</span>
-            <small>ESSENCE</small>
-            <p>unspoken intensity</p>
-        </div>
-        <div class="info-card">
-            <span>CORE</span>
-            <small>LINEAGE</small>
-            <p>tokyo dna</p>
-        </div>
-        <div class="info-card">
-            <span>VOID</span>
-            <small>DISCIPLINE</small>
-            <p>raw precision</p>
-        </div>
-        <div class="info-card">
-            <span>OBSIDIAN</span>
-            <small>DARKNESS</small>
-            <p>shadow construct</p>
-        </div>
+    <!-- ========== ABOUT THE BRAND SECTION (replaces SILENT, CORE, VOID, OBSIDIAN cards) ========== -->
+    <div class="about-brand">
+        <h3>ABOUT DERCHUTZE</h3>
+        <p>Founded in the shadows of Tokyo's underground fashion scene, DERCHUTZE is a rebellion against the ordinary. We merge traditional Japanese garment philosophy with brutalist streetwear architecture. Every stitch, every cut, every drop of dark red is intentional — a nod to the transient beauty of blossoms and the permanence of steel.</p>
+        <p>Our collections are crafted for those who move in silence: the architects of their own reality. We don't follow trends. We carve new paths through darkness. Raw textures, monochromatic palettes, and an unwavering commitment to authenticity define the DERCHUTZE identity.</p>
+        <div class="brand-highlight">〄 無常 (MUJŌ) — THE BEAUTY OF IMPERMANENCE 〄</div>
     </div>
     
     <!-- brand philosophy — stark black block -->
@@ -580,6 +583,57 @@ Here is the updated HTML code for the DERCHUTZE brand landing page. It now featu
 
 <script>
     (function() {
+        // SEE MORE button functionality: navigate to a new page (collection page)
+        const seeMoreBtn = document.getElementById('seeMoreBtn');
+        if (seeMoreBtn) {
+            seeMoreBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Open a new page showing all collection options (simulated)
+                // For demo, we open a new tab with a simple collection gallery.
+                // In a real scenario, you'd link to "/collection.html". Here we create a data URI or new window.
+                const newWindow = window.open();
+                if (newWindow) {
+                    newWindow.document.write(`
+                        <!DOCTYPE html>
+                        <html>
+                        <head><title>DERCHUTZE — FULL COLLECTION</title>
+                        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+                        <style>
+                            body { background: #0a0a0a; font-family: 'Courier Prime', monospace; margin:0; padding:2rem; color:#e0b494; }
+                            .container { max-width:1200px; margin:0 auto; text-align:center; }
+                            h1 { color:#c04432; border-bottom:2px solid #8b1a1a; display:inline-block; padding-bottom:0.5rem; }
+                            .grid { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; margin-top:2rem; }
+                            .item { background:#111; border:1px solid #6b1c1c; padding:1rem; width:220px; }
+                            .item h3 { color:#b64836; }
+                            .back-btn { margin-top:2rem; background:#5e1515; padding:8px 24px; border:none; color:#f0cfc0; font-family:'Courier Prime', monospace; cursor:pointer; }
+                            .back-btn:hover { background:#7a1f1f; }
+                        </style>
+                        </head>
+                        <body>
+                        <div class="container">
+                            <h1>FULL YAMIZAKURA COLLECTION</h1>
+                            <div class="grid">
+                                <div class="item"><h3>KIMONO JACKET</h3><p>¥26,800</p></div>
+                                <div class="item"><h3>BOMBER JKT</h3><p>¥39,900</p></div>
+                                <div class="item"><h3>STRUCTURE CAP</h3><p>¥7,800</p></div>
+                                <div class="item"><h3>MILITARY PANT</h3><p>¥22,500</p></div>
+                                <div class="item"><h3>OBI BELT</h3><p>¥12,400</p></div>
+                                <div class="item"><h3>DARK TOTE</h3><p>¥9,200</p></div>
+                                <div class="item"><h3>GLOVES</h3><p>¥6,500</p></div>
+                                <div class="item"><h3>SCARF</h3><p>¥5,800</p></div>
+                            </div>
+                            <button class="back-btn" onclick="window.close()">CLOSE WINDOW</button>
+                        </div>
+                        </body>
+                        </html>
+                    `);
+                    newWindow.document.close();
+                } else {
+                    alert("Please allow pop-ups to see the full collection.");
+                }
+            });
+        }
+
         // very subtle dark particle system with slight red tint (atmospheric)
         const canvas = document.getElementById('darkCanvas');
         const ctx = canvas.getContext('2d');
@@ -668,4 +722,3 @@ Here is the updated HTML code for the DERCHUTZE brand landing page. It now featu
 </script>
 </body>
 </html>
-```
