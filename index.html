@@ -1,3 +1,5 @@
+Here is the updated HTML code for the DERCHUTZE brand landing page. It now features the image `processed_thangka_release_lookbook_35 (1).webp` inside the product card, along with social media icons and links at the footer.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,8 @@
     <title>DERCHUTZE — DARK RED LABEL</title>
     <!-- Google Fonts: Courier Prime (monospace, clean, brutal) -->
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons for socials) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -211,12 +215,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1rem;
             font-weight: 700;
             margin-bottom: 1rem;
             color: #b34a3a;
             font-family: 'Courier Prime', monospace;
             border: 1px solid #551a1a;
+            overflow: hidden;
+        }
+        
+        /* actual image inside the product card */
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .product-card h4 {
@@ -231,8 +244,7 @@
             margin-top: 0.5rem;
         }
 
-        /* ========== ART SECTION with FULL BACKGROUND IMAGE (9).jfif ==========
-           The image covers the whole rectangle (title, caption, button, icon) */
+        /* ========== ART SECTION with FULL BACKGROUND IMAGE (9).jfif ========== */
         .art-section {
             display: flex;
             flex-wrap: wrap;
@@ -243,19 +255,14 @@
             padding: 2.5rem 2rem;
             border-radius: 0px;
             border: 2px solid #8b1a1a;
-            
-            /* BACKGROUND IMAGE (9).jfif — covers the entire rectangle */
             background-image: url('(9).jfif');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            
-            /* Dark semi-transparent overlay to ensure text is fully readable while image shows */
             position: relative;
             z-index: 1;
         }
         
-        /* Overlay: dark enough for contrast, but lets the background image be clearly seen */
         .art-section::before {
             content: "";
             position: absolute;
@@ -279,7 +286,7 @@
             font-size: 2.8rem;
             font-weight: 700;
             font-family: 'Courier Prime', monospace;
-            color: #e65c48; /* bright dark red for pop */
+            color: #e65c48;
             text-shadow: 1px 1px 0px #2f0a0a;
             letter-spacing: 1px;
         }
@@ -348,7 +355,7 @@
             font-weight: 400;
         }
 
-        /* button — dark red base, fits with art section */
+        /* button — dark red base */
         button {
             background: #5e1515;
             border: none;
@@ -369,16 +376,40 @@
             background: #3e0e0e;
         }
 
-        footer {
-            margin-top: 5rem;
+        /* ========== SOCIAL FOOTER ========== */
+        .social-footer {
+            margin-top: 4rem;
             text-align: center;
             border-top: 1px solid #6b1c1c;
             padding-top: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-links a {
+            color: #b54533;
+            font-size: 1.8rem;
+            transition: 0.2s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            color: #e05a44;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
             font-size: 0.7rem;
             color: #9a4e3e;
             letter-spacing: 1px;
         }
-
+        
         .brand-motto {
             display: inline-flex;
             gap: 0.8rem;
@@ -408,6 +439,12 @@
             }
             .art-text h2 {
                 font-size: 2rem;
+            }
+            .social-links {
+                gap: 1.5rem;
+            }
+            .social-links a {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -441,13 +478,16 @@
         <button onclick="alert('NEW COLLECTION PRE-ORDER — LIMITED EDITION')">ENTER COLLECTION →</button>
     </div>
     
-    <!-- NEW COLLECTION OUT! — brand products -->
+    <!-- NEW COLLECTION OUT! — brand products with image inside SCALE product card -->
     <div class="collection-highlight">
         <div class="new-badge">NEW COLLECTION OUT // LIMITED</div>
         <h3>YAMIZAKURA</h3>
         <div class="collection-grid">
+            <!-- CARD 1: SCALE KIMONO JACKET with custom image -->
             <div class="product-card">
-                <div class="product-img">SCALE</div>
+                <div class="product-img">
+                    <img src="processed_thangka_release_lookbook_35 (1).webp" alt="KIMONO JACKET">
+                </div>
                 <h4>KIMONO JACKET</h4>
                 <div class="price">¥26,800</div>
             </div>
@@ -470,8 +510,7 @@
         <div style="margin-top: 20px; font-size: 0.7rem; letter-spacing: 1px; color: #bb6a58;">500 UNITS // MADE IN JAPAN</div>
     </div>
 
-    <!-- ========== THE ART OF FASHION — FULL RECTANGLE BACKGROUND (9).jfif ==========
-         The whole block (title, paragraph, button, red badge) sits on top of the image -->
+    <!-- THE ART OF FASHION — FULL RECTANGLE BACKGROUND (9).jfif -->
     <div class="art-section">
         <div class="art-text">
             <h2>THE ART<br>OF FASHION</h2>
@@ -483,7 +522,7 @@
         </div>
     </div>
 
-    <!-- INFO CARDS — pure brand pillars, dark red minimal -->
+    <!-- INFO CARDS — pure brand pillars -->
     <div class="info-row">
         <div class="info-card">
             <span>SILENT</span>
@@ -507,7 +546,7 @@
         </div>
     </div>
     
-    <!-- brand philosophy — stark black block with red text -->
+    <!-- brand philosophy — stark black block -->
     <div style="background: #080202; border-radius: 0px; padding: 1.8rem; text-align: center; margin: 2rem 0; border: 1px solid #8b1a1a;">
         <span style="font-size: 1.5rem; font-weight: 700; color: #b54432;">RED // BLOOM // VOID</span>
         <p style="max-width: 700px; margin: 0.8rem auto 0; font-weight: 300; letter-spacing: 0.3px; color: #bb6a58;">
@@ -519,10 +558,24 @@
         </div>
     </div>
     
-    <footer>
-        <p>© 2026 DERCHUTZE — TOKYO. ALL RIGHTS RESERVED.</p>
-        <p style="margin-top: 0.5rem;">DARK RED LABEL // SHIBUYA</p>
-    </footer>
+    <!-- SOCIAL FOOTER with Instagram, TikTok, Snapchat -->
+    <div class="social-footer">
+        <div class="social-links">
+            <a href="https://instagram.com/derchutze" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://tiktok.com/@derchutze" target="_blank" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://snapchat.com/add/derchutze" target="_blank" aria-label="Snapchat">
+                <i class="fab fa-snapchat"></i>
+            </a>
+        </div>
+        <div class="copyright">
+            <p>© 2026 DERCHUTZE — TOKYO. ALL RIGHTS RESERVED. DARK RED LABEL // SHIBUYA</p>
+            <p style="margin-top: 0.4rem;">FOLLOW US: @DERCHUTZE</p>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -615,3 +668,4 @@
 </script>
 </body>
 </html>
+```
