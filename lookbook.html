@@ -1,1 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Galactic Lookbook | Frames of Discovery</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    /* ---------- GLOBAL BASE ---------- */
+    body {
+      /* Background image: 9.jfif (ensure file "9.jfif" exists in same directory) */
+      background-image: url('9.jfif');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      
+      /* Fallback deep space color while loading */
+      background-color: #050b17;
+      
+      font-family: 'Segoe UI', 'Roboto', 'Poppins', system-ui, -apple-system, 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1.5rem;
+    }
+
+    /* main glassmorphic container that holds all frames + footer */
+    .lookbook {
+      max-width: 1300px;
+      width: 100%;
+      background: rgba(8, 12, 25, 0.55);
+      backdrop-filter: blur(8px);
+      border-radius: 3rem;
+      padding: 2rem 1.8rem 2rem 1.8rem;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* title / subtle header */
+    .lookbook-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .lookbook-header h1 {
+      font-size: 2.8rem;
+      letter-spacing: -0.02em;
+      font-weight: 500;
+      background: linear-gradient(135deg, #f0eff5, #c0c7e0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      font-family: 'Inter', 'Segoe UI', system-ui;
+      word-break: keep-all;
+    }
+
+    .lookbook-header p {
+      color: #dfe6ff;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      opacity: 0.8;
+      margin-top: 0.3rem;
+    }
+
+    /* ---------- FRAMES GRID: 5 elegant frames (with images inside) ---------- */
+    .frames-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    /* each frame card : elegant glass-frame effect */
+    .frame-card {
+      flex: 1 1 180px;
+      min-width: 160px;
+      max-width: 220px;
+      background: rgba(18, 22, 40, 0.65);
+      backdrop-filter: blur(4px);
+      border-radius: 28px;
+      padding: 1rem 0.9rem 1rem 0.9rem;
+      transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.25s;
+      box-shadow: 0 18px 32px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .frame-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 38px -15px rgba(0, 0, 0, 0.5);
+      background: rgba(28, 34, 60, 0.75);
+      border-color: rgba(255, 230, 140, 0.5);
+    }
+
+    /* image container inside frame */
+    .frame-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #11141f;
+      box-shadow: inset 0 0 0 1px rgba(255,255,240,0.15), 0 6px 12px rgba(0,0,0,0.2);
+      margin-bottom: 1rem;
+      transition: all 0.2s;
+    }
+
+    .frame-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .frame-card:hover .frame-img img {
+      transform: scale(1.02);
+    }
+
+    /* subtle frame label (optional minimal text) */
+    .frame-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 500;
+      color: #e6e9ff;
+      background: rgba(0,0,0,0.35);
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+      font-family: monospace;
+    }
+
+    /* bottom area with quote and button */
+    .lookbook-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.3);
+      padding-top: 2rem;
+    }
+
+    .galaxy-quote {
+      font-size: 1.25rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      word-break: keep-all;
+      font-family: 'Times New Roman', 'Georgia', 'Inter', serif;
+      text-transform: lowercase;
+      color: #f8f5f0;
+      background: rgba(0, 0, 0, 0.35);
+      display: inline-block;
+      padding: 0.5rem 1.8rem;
+      border-radius: 60px;
+      backdrop-filter: blur(3px);
+      margin-bottom: 1.8rem;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    /* go back button style */
+    .back-button {
+      background: rgba(20, 25, 50, 0.8);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 220, 150, 0.6);
+      padding: 0.9rem 2.3rem;
+      font-size: 1rem;
+      font-weight: 500;
+      font-family: inherit;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ffe9c7;
+      border-radius: 3rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .back-button:hover {
+      background: rgba(55, 65, 110, 0.9);
+      border-color: #ffdd99;
+      color: white;
+      transform: scale(1.02);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+    }
+
+    .back-button:active {
+      transform: scale(0.97);
+    }
+
+    /* responsive: smaller screens frames become more flexible */
+    @media (max-width: 780px) {
+      .lookbook {
+        padding: 1.5rem;
+      }
+      .frames-grid {
+        gap: 1.2rem;
+      }
+      .frame-card {
+        min-width: 140px;
+        max-width: 180px;
+      }
+      .galaxy-quote {
+        font-size: 1rem;
+        padding: 0.3rem 1.2rem;
+      }
+      .lookbook-header h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .frames-grid {
+        gap: 1rem;
+      }
+      .frame-card {
+        min-width: 130px;
+        max-width: 160px;
+      }
+    }
+
+    /* no image broken fallback style */
+    img {
+      background: #1a1f2e;
+    }
+  </style>
+</head>
+<body>
+
+<div class="lookbook">
+  <div class="lookbook-header">
+    <h1>✦ L O O K B O O K ✦</h1>
+    <p>celestial fragments · visual odyssey</p>
+  </div>
+
+  <!-- 5 FRAMES: each holds a distinct picture (using unsplash or placeholder images but placed inside to match "frames thing to add pictures inside" -->
+  <div class="frames-grid">
+    <!-- Frame 1 -->
+    <div class="frame-card">
+      <div class="frame-img">
+        <img src="https://picsum.photos/id/104/300/300" alt="Nebula drift" loading="lazy">
+      </div>
+      <div class="frame-label">✦ ORIONIS</div>
+    </div>
+    <!-- Frame 2 -->
+    <div class="frame-card">
+      <div class="frame-img">
+        <img src="https://picsum.photos/id/119/300/300" alt="Cosmic mountains" loading="lazy">
+      </div>
+      <div class="frame-label">✦ ANDROMEDA</div>
+    </div>
+    <!-- Frame 3 -->
+    <div class="frame-card">
+      <div class="frame-img">
+        <img src="https://picsum.photos/id/29/300/300" alt="Stellar waves" loading="lazy">
+      </div>
+      <div class="frame-label">✦ CASSIOPEIA</div>
+    </div>
+    <!-- Frame 4 -->
+    <div class="frame-card">
+      <div class="frame-img">
+        <img src="https://picsum.photos/id/96/300/300" alt="Galactic core" loading="lazy">
+      </div>
+      <div class="frame-label">✦ LYRA</div>
+    </div>
+    <!-- Frame 5 -->
+    <div class="frame-card">
+      <div class="frame-img">
+        <img src="https://picsum.photos/id/12/300/300" alt="Nova remnant" loading="lazy">
+      </div>
+      <div class="frame-label">✦ DRACO</div>
+    </div>
+  </div>
+
+  <div class="lookbook-footer">
+    <div class="galaxy-quote">where a new galaxy is discovered.</div>
+    <div>
+      <button class="back-button" id="goBackBtn">⟲ GO BACK</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // "GO BACK" button functionality
+  // Standard: goes back to previous page in history if available, else simulates a gentle fallback.
+  // Also includes optional behaviour: if no history exists, it will reload or show a message? 
+  // But typical expected behaviour: goes one step back in browser history.
+  const backBtn = document.getElementById('goBackBtn');
+  if (backBtn) {
+    backBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // If there is previous history entry, go back
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        // fallback: if there is no back history, we can reload or alert but best to simulate "return"
+        // but we'll make it go to a safe dummy action: reload current? no, better to show subtle message
+        // but also we can set location to same page? Actually user would expect to go somewhere.
+        // We'll make an elegant fallback: shows a small snack-like message and then does nothing, 
+        // but usually in lookbooks, people might also revisit homepage, but we stay consistent: 
+        // redirect to "#" but not spam. Instead: create subtle notice - but specification says "make it have a go back button"
+        // meaning typical browser back. If no history, we can notify no previous page.
+        // but I'll implement a smooth "You are at the start" message then preserve look.
+        const toastMsg = document.createElement('div');
+        toastMsg.innerText = '✨ no previous page — you are at the edge of the galaxy ✨';
+        toastMsg.style.position = 'fixed';
+        toastMsg.style.bottom = '30px';
+        toastMsg.style.left = '50%';
+        toastMsg.style.transform = 'translateX(-50%)';
+        toastMsg.style.backgroundColor = 'rgba(0,0,0,0.8)';
+        toastMsg.style.backdropFilter = 'blur(12px)';
+        toastMsg.style.color = '#ffe9bb';
+        toastMsg.style.padding = '10px 24px';
+        toastMsg.style.borderRadius = '60px';
+        toastMsg.style.fontFamily = 'monospace';
+        toastMsg.style.fontSize = '0.85rem';
+        toastMsg.style.zIndex = '9999';
+        toastMsg.style.border = '1px solid rgba(255,215,120,0.6)';
+        toastMsg.style.letterSpacing = '0.5px';
+        document.body.appendChild(toastMsg);
+        setTimeout(() => {
+          toastMsg.style.opacity = '0';
+          setTimeout(() => toastMsg.remove(), 800);
+        }, 2300);
+      }
+    });
+  }
+
+  // Optional: add a subtle animation on frames that shows "frame activated" on click, but not necessary.
+  // just extra polish: click on any frame card triggers a miniature "zoom preview" fade? but not mandatory.
+  // However, we want the frames to feel interactive. For better experience, clicking a frame we can just console 
+  // but it adds to lookbook magic? not needed but shows 'image selected' but we keep minimal.
+  // For requirement: background image uses '9.jfif' as body image. The URL '9.jfif' must be present,
+  // but in case image not found we provide fallback. The user needs to have 9.jfif in same folder. 
+  // Also note: the frames images are external placeholder images (high quality unsplash/loremflick but safe)
+  // I chose picsum variety that fit space / nature vibe to match galaxy theme. User can replace any frame img src with local.
+  // Also note: If any '9.jfif' missing, background will still be dark space due to bg-color.
+  // Giving extra robustness: preload or warning but it's fine
+  console.log('Lookbook ready — galaxies await ✨');
+</script>
+
+<!-- Explanation notes within code (design details)
+  - The main background uses '9.jfif' as requested, repeated none, cover, fixed.
+  - 5 distinct "frame cards" each containing an image (via img) and a small label, acting as frames.
+  - The frames are elevated with border radius, glassmorphism, hover lift effect, matching the website "lookbook" feel.
+  - At the bottom: exact phrase "where a new galaxy is discovered." with lowercase style, custom font-family and italic subtle touch.
+  - Under that: a "GO BACK" button that performs history back, with fallback snackbar if no previous history.
+  - All text styling, lower caps only on the quoted sentence (but the sentence itself is lowercase as requested). 
+    The rest maintains elegant title but the quote exactly matches given phrase.
+  - Adjusted to be fully responsive, ensures the background covers entire viewport, no overflow issues.
+  - The lookbook container creates a semi-transparent overlay that makes content readable regardless of background.
+  - Frames grid uses flex-wrap to accommodate smaller screens, keeping at least 5 items displayed properly.
+  - Also I created smooth transitions and modern glass feeling.
+  - Note: background image '9.jfif' — please confirm the file is present at './9.jfif' relative to HTML.
+  - The images inside frames are from Lorem Picsum (beautiful curated nature/space-like): they represent galactic photography style.
+  - The "frame thing" exactly what was requested: frames to add pictures inside: done with 5 frames, each contains image.
+  - Additionally hover and click integrity.
+-->
+</body>
+</html>
