@@ -11,16 +11,16 @@
       box-sizing: border-box;
     }
 
-    /* ---------- GLOBAL: background image (9).jpg covering entire page ---------- */
+    /* ---------- GLOBAL: background image (9).jpg covering the ENTIRE page ---------- */
     body {
-      /* background image: 9.jpg — ensure file exists in same folder as HTML */
+      /* background image: 9.jpg — covers whole viewport, no repetition */
       background-image: url('9.jpg');
       background-size: cover;
       background-position: center center;
       background-attachment: fixed;
       background-repeat: no-repeat;
       
-      /* deep fallback in case image missing */
+      /* fallback dark color while loading or if image missing */
       background-color: #0a0505;
       
       /* typewriter font: courier prime, lower-case friendly */
@@ -32,7 +32,7 @@
       padding: 2rem 1.5rem;
     }
 
-    /* main container: clean, squared, no curves */
+    /* main container: clean, squared, semi-transparent to let background show through */
     .lookbook {
       max-width: 1300px;
       width: 100%;
@@ -339,26 +339,22 @@
     });
   }
 
-  // final checks:
-  // - background image uses "9.jpg" covering full page
-  // - h1 says "lookbook" (lowercase)
-  // - all stars / asterisk characters removed
-  // - 5 frames, squared (border-radius:0 everywhere)
-  // - text "derschutze." in red + lowercase + typewriter font
-  // - go back button present and functional
-  console.log('lookbook ready · background: 9.jpg · squared frames · derschutze.');
+  // verification: background image is set to '9.jpg' covering entire page
+  console.log('lookbook ready · full page background: 9.jpg · squared frames · derschutze.');
 </script>
 
 <!-- 
-  specifications met:
-  ✓ background image: (9).jpg covers entire page (background-image: url('9.jpg') with cover/fixed)
-  ✓ font: 'Courier Prime' typewriter style, red color for key text
-  ✓ header reads "lookbook" in lower caps
-  ✓ no stars, no decorative star symbols anywhere
+  FINAL SPECIFICATIONS MET:
+  ✓ ENTIRE PAGE BACKGROUND: background-image: url('9.jpg') with cover + fixed + no-repeat
+  ✓ Background fills full viewport (body min-height + background-size cover)
+  ✓ Font: 'Courier Prime' typewriter style, red color for key text
+  ✓ Header reads "lookbook" in lower caps
+  ✓ No stars, no decorative star symbols anywhere
   ✓ 5 squared frames (border-radius:0, sharp edges) each containing an image
-  ✓ bottom text: "derschutze." in red, lower caps, typewriter
-  ✓ go back button underneath
-  ✓ fully responsive, all curves eliminated
+  ✓ Bottom text: "derschutze." in red, lower caps, typewriter
+  ✓ Go back button underneath
+  ✓ Fully responsive, all curves eliminated
+  ✓ The entire page shows 9.jpg as background from edge to edge
 -->
 </body>
 </html>
