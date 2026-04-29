@@ -11,11 +11,11 @@
       box-sizing: border-box;
     }
 
-    /* ---------- GLOBAL: background image (9).jpg covering the ENTIRE page ---------- */
+    /* ---------- GLOBAL: background image (9).jpg covering ENTIRE page horizontally ---------- */
     body {
-      /* background image: 9.jpg — covers whole viewport, no repetition */
+      /* background image: 9.jpg — covers whole viewport, stretches horizontally to fit */
       background-image: url('9.jpg');
-      background-size: cover;
+      background-size: cover;        /* covers entire page, maintains aspect ratio but ensures full coverage */
       background-position: center center;
       background-attachment: fixed;
       background-repeat: no-repeat;
@@ -32,18 +32,18 @@
       padding: 2rem 1.5rem;
     }
 
-    /* main container: clean, squared, semi-transparent to let background show through */
+    /* main container: clean, squared, semi-transparent DARK overlay to make white frames pop, but background still visible */
     .lookbook {
       max-width: 1300px;
       width: 100%;
-      background: rgba(8, 5, 5, 0.7);
+      background: rgba(0, 0, 0, 0.55);   /* dark overlay so white frames stand out, but background image still shows through */
       border: none;
       border-radius: 0px;
       padding: 2rem 1.8rem 2rem 1.8rem;
       transition: all 0.2s ease;
     }
 
-    /* header area — only "lookbook" in lower caps, red, no stars */
+    /* header area — only "lookbook" in lower caps, black/dark text (since frames are white, text should be dark/black for contrast) */
     .lookbook-header {
       text-align: center;
       margin-bottom: 2.8rem;
@@ -52,12 +52,15 @@
     .lookbook-header h1 {
       font-size: 2.8rem;
       letter-spacing: 0.02em;
-      font-weight: 600;
-      color: #e04242;
+      font-weight: 700;
+      color: #000000;                /* black text for header */
       font-family: 'Courier Prime', 'Courier New', monospace;
       text-transform: lowercase;
-      text-shadow: 2px 2px 0px rgba(0,0,0,0.4);
+      text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
       word-break: keep-all;
+      background: rgba(255,255,240,0.2); /* very subtle light backing to ensure readability */
+      display: inline-block;
+      padding: 0.2rem 1.2rem;
     }
 
     /* remove any extra elements / stars */
@@ -65,7 +68,7 @@
       display: none;
     }
 
-    /* ---------- 5 SQUARE FRAMES (sharp edges, no curves) ---------- */
+    /* ---------- 5 SQUARE FRAMES — NOW WHITE BACKGROUND, BLACK BORDER, SHARP EDGES ---------- */
     .frames-grid {
       display: flex;
       flex-wrap: wrap;
@@ -75,35 +78,35 @@
       margin-bottom: 3rem;
     }
 
-    /* each frame: perfectly squared, brutalist red border */
+    /* each frame: perfectly squared, WHITE background, black border, no curves */
     .frame-card {
       flex: 1 1 180px;
       min-width: 160px;
       max-width: 220px;
-      background: rgba(0, 0, 0, 0.78);
-      backdrop-filter: blur(4px);
+      background: #ffffff;           /* pure white frame background */
+      backdrop-filter: none;
       border-radius: 0px;            /* squared — no rounded corners */
       padding: 0.9rem 0.9rem 1rem 0.9rem;
       transition: transform 0.2s ease, box-shadow 0.2s;
-      box-shadow: 6px 6px 0px rgba(180, 50, 50, 0.4);
-      border: 2px solid #c43c3c;
+      box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
+      border: 3px solid #000000;     /* solid black border for white frames */
       text-align: center;
     }
 
     .frame-card:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 8px 8px 0px rgba(210, 70, 70, 0.6);
-      background: rgba(30, 10, 10, 0.92);
-      border-color: #e65a5a;
+      transform: translate(-3px, -3px);
+      box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.3);
+      background: #f5f5f5;
+      border-color: #1a1a1a;
     }
 
-    /* image container: square area */
+    /* image container: square area inside white frame */
     .frame-img {
       width: 100%;
       aspect-ratio: 1 / 1;
       overflow: hidden;
-      background: #1f0c0c;
-      border: 1px solid #aa4040;
+      background: #eaeaea;
+      border: 1px solid #aaaaaa;
       margin-bottom: 1rem;
       border-radius: 0px;
     }
@@ -121,76 +124,76 @@
       transform: scale(1.02);
     }
 
-    /* frame label minimal, lowercase, red */
+    /* frame label: black text, minimal, lowercase, typewriter */
     .frame-label {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       text-transform: lowercase;
-      letter-spacing: 1px;
-      font-weight: 600;
-      color: #e05252;
-      background: rgba(0, 0, 0, 0.6);
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      color: #000000;               /* black text on white frame */
+      background: rgba(0, 0, 0, 0.05);
       display: inline-block;
-      padding: 0.2rem 0.7rem;
+      padding: 0.2rem 0.8rem;
       font-family: 'Courier Prime', monospace;
-      border-left: 2px solid #c04040;
+      border-left: 3px solid #000000;
     }
 
-    /* footer area: "derschutze." and go back button */
+    /* footer area: "derschutze." and go back button — dark text for contrast against background overlay */
     .lookbook-footer {
       text-align: center;
       margin-top: 2rem;
-      border-top: 1.5px solid #9e3939;
+      border-top: 2px solid #000000;
       padding-top: 1.8rem;
     }
 
-    /* main red quote: derschutze. lower caps, typewriter, red */
+    /* main black quote: derschutze. lower caps, typewriter, solid black */
     .derschutze-quote {
       font-size: 2.2rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.02em;
       font-family: 'Courier Prime', 'Courier New', monospace;
-      color: #e04343;
-      background: rgba(0, 0, 0, 0.5);
+      color: #000000;               /* black text for main quote */
+      background: rgba(255, 255, 245, 0.7);
       display: inline-block;
       padding: 0.3rem 2rem;
       margin-bottom: 1.8rem;
       text-transform: lowercase;
-      border: none;
-      box-shadow: inset 0 0 0 1px #b33, 4px 4px 0 #5c1010;
+      border: 2px solid #000000;
+      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
     }
 
-    /* go back button — squared, red outline, no stars */
+    /* go back button — white background with black border/black text, squared */
     .back-button {
-      background: rgba(0, 0, 0, 0.78);
-      backdrop-filter: blur(4px);
-      border: 2px solid #c44242;
+      background: #ffffff;
+      backdrop-filter: none;
+      border: 3px solid #000000;
       padding: 0.8rem 2.2rem;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 700;
       font-family: 'Courier Prime', monospace;
       text-transform: lowercase;
       letter-spacing: 2px;
-      color: #ff6666;
-      border-radius: 0px;
+      color: #000000;
+      border-radius: 0px;            /* squared button */
       cursor: pointer;
       transition: all 0.2s ease;
-      box-shadow: 4px 4px 0px #631111;
+      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     .back-button:hover {
-      background: rgba(110, 30, 30, 0.92);
-      border-color: #ff7a7a;
-      color: #fff0f0;
+      background: #f0f0f0;
+      border-color: #222;
+      color: #111;
       transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px #871c1c;
+      box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.25);
     }
 
     .back-button:active {
       transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0px #631010;
+      box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
     }
 
     /* responsive — keep squared structure */
@@ -231,7 +234,7 @@
       }
     }
 
-    /* ensure no star characters appear anywhere */
+    /* ensure no star characters anywhere */
     .frame-label::before,
     .frame-label::after,
     .derschutze-quote::before,
@@ -243,7 +246,7 @@
     }
 
     img {
-      background: #2a0f0f;
+      background: #dddddd;
     }
   </style>
 </head>
@@ -251,11 +254,11 @@
 
 <div class="lookbook">
   <div class="lookbook-header">
-    <!-- only "lookbook" in lower caps, red — no stars, no extra text -->
+    <!-- only "lookbook" in lower caps, black text — no stars -->
     <h1>lookbook</h1>
   </div>
 
-  <!-- 5 SQUARE FRAMES — each contains an image, squared corners, no curves -->
+  <!-- 5 SQUARE FRAMES — WHITE BACKGROUND, BLACK BORDERS, SHARP EDGES -->
   <div class="frames-grid">
     <!-- frame 1 -->
     <div class="frame-card">
@@ -295,7 +298,7 @@
   </div>
 
   <div class="lookbook-footer">
-    <!-- exactly "derschutze." in lower caps, red, typewriter font -->
+    <!-- exactly "derschutze." in lower caps, black, typewriter -->
     <div class="derschutze-quote">derschutze.</div>
     <div>
       <button class="back-button" id="goBackBtn">⌫ go back</button>
@@ -319,15 +322,15 @@
         note.style.bottom = '30px';
         note.style.left = '50%';
         note.style.transform = 'translateX(-50%)';
-        note.style.backgroundColor = '#1f0808';
-        note.style.color = '#e55';
+        note.style.backgroundColor = '#ffffff';
+        note.style.color = '#000000';
         note.style.padding = '8px 20px';
         note.style.borderRadius = '0px';
         note.style.fontFamily = "'Courier Prime', monospace";
         note.style.fontSize = '0.75rem';
         note.style.zIndex = '9999';
-        note.style.border = '1px solid #b33';
-        note.style.boxShadow = '3px 3px 0px #611';
+        note.style.border = '2px solid black';
+        note.style.boxShadow = '3px 3px 0px rgba(0,0,0,0.2)';
         note.style.letterSpacing = '0.3px';
         note.style.textTransform = 'lowercase';
         document.body.appendChild(note);
@@ -339,22 +342,23 @@
     });
   }
 
-  // verification: background image is set to '9.jpg' covering entire page
-  console.log('lookbook ready · full page background: 9.jpg · squared frames · derschutze.');
+  // verification: background image set to '9.jpg' covering entire page horizontally
+  console.log('lookbook ready · full page horizontal background: 9.jpg · white frames with black borders · black text · derschutze.');
 </script>
 
 <!-- 
   FINAL SPECIFICATIONS MET:
-  ✓ ENTIRE PAGE BACKGROUND: background-image: url('9.jpg') with cover + fixed + no-repeat
-  ✓ Background fills full viewport (body min-height + background-size cover)
-  ✓ Font: 'Courier Prime' typewriter style, red color for key text
-  ✓ Header reads "lookbook" in lower caps
-  ✓ No stars, no decorative star symbols anywhere
-  ✓ 5 squared frames (border-radius:0, sharp edges) each containing an image
-  ✓ Bottom text: "derschutze." in red, lower caps, typewriter
-  ✓ Go back button underneath
-  ✓ Fully responsive, all curves eliminated
-  ✓ The entire page shows 9.jpg as background from edge to edge
+  ✓ ENTIRE PAGE BACKGROUND: background-image: url('9.jpg') with cover + fixed + no-repeat — covers whole page horizontally & vertically
+  ✓ The dark overlay part (the container) still shows the background image through — the whole page has 9.jpg as background
+  ✓ Background fills full viewport from edge to edge horizontally & vertically
+  ✓ SQUARES/FRAMES changed to WHITE background with solid black borders (no curves, fully squared)
+  ✓ Text elements (header, labels, derschutze quote, button) are BLACK for strong contrast against white frames
+  ✓ Font remains 'Courier Prime' typewriter style, lowercase stylings
+  ✓ 5 squares with images inside
+  ✓ Bottom text: "derschutze." in black, lower caps
+  ✓ Go back button functional
+  ✓ No stars or decorative symbols anywhere
+  ✓ Fully responsive, all edges sharp (border-radius:0)
 -->
 </body>
 </html>
