@@ -334,7 +334,7 @@
             font-weight: 700;
         }
 
-        /* ========== ABOUT THE BRAND SECTION (replaced the old info cards) ========== */
+        /* ========== ABOUT THE BRAND SECTION ========== */
         .about-brand {
             background: #0a0505;
             border: 1px solid #6b1c1c;
@@ -472,7 +472,7 @@
             <p>STREETWEAR | TOKYO</p>
         </div>
         <div class="nav-links">
-            <a href="lookbook.html">LOOKBOOK</a>
+            <a href="#">LOOKBOOK</a>
             <a href="#">COLLECTION</a>
             <a href="#">EDITORIAL</a>
             <a href="#">CORE</a>
@@ -489,12 +489,12 @@
         <button onclick="alert('NEW COLLECTION PRE-ORDER — LIMITED EDITION')">ENTER COLLECTION →</button>
     </div>
     
-    <!-- NEW COLLECTION OUT! — brand products with images -->
+    <!-- YAMIZAKURA COLLECTION — updated with image (1).jpj for YAMUKARUKA BAG -->
     <div class="collection-highlight">
         <div class="new-badge">NEW COLLECTION OUT // LIMITED</div>
         <h3>YAMIZAKURA</h3>
         <div class="collection-grid">
-            <!-- CARD 1: SCALE KIMONO JACKET with processed_thangka_release_lookbook_35 (1).webp -->
+            <!-- CARD 1: SCALE KIMONO JACKET -->
             <div class="product-card">
                 <div class="product-img">
                     <img src="processed_thangka_release_lookbook_35 (1).webp" alt="KIMONO JACKET">
@@ -502,7 +502,7 @@
                 <h4>KIMONO JACKET</h4>
                 <div class="price">¥26,800</div>
             </div>
-            <!-- CARD 2: VOID BOMBER JKT with processed_thangka_release_lookbook_43.avif -->
+            <!-- CARD 2: VOID BOMBER JKT -->
             <div class="product-card">
                 <div class="product-img">
                     <img src="processed_thangka_release_lookbook_43.avif" alt="BOMBER JACKET">
@@ -510,11 +510,15 @@
                 <h4>BOMBER JKT</h4>
                 <div class="price">¥39,900</div>
             </div>
+            <!-- CARD 3: REPLACED STRUCTURE CAP HORN → YAMUKARUKA BAG with image (1).jpj -->
             <div class="product-card">
-                <div class="product-img">HORN</div>
-                <h4>STRUCTURE CAP</h4>
+                <div class="product-img">
+                    <img src="(1).jpj" alt="YAMUKARUKA BAG">
+                </div>
+                <h4>YAMUKARUKA BAG</h4>
                 <div class="price">¥7,800</div>
             </div>
+            <!-- CARD 4: MILITARY PANT -->
             <div class="product-card">
                 <div class="product-img">CARGO</div>
                 <h4>MILITARY PANT</h4>
@@ -541,7 +545,7 @@
         </div>
     </div>
 
-    <!-- ========== ABOUT THE BRAND SECTION (replaces SILENT, CORE, VOID, OBSIDIAN cards) ========== -->
+    <!-- ABOUT THE BRAND SECTION -->
     <div class="about-brand">
         <h3>ABOUT DERCHUTZE</h3>
         <p>Founded in the shadows of Tokyo's underground fashion scene, DERCHUTZE is a rebellion against the ordinary. We merge traditional Japanese garment philosophy with brutalist streetwear architecture. Every stitch, every cut, every drop of dark red is intentional — a nod to the transient beauty of blossoms and the permanence of steel.</p>
@@ -549,7 +553,7 @@
         <div class="brand-highlight">〄 無常 (MUJŌ) — THE BEAUTY OF IMPERMANENCE 〄</div>
     </div>
     
-    <!-- brand philosophy — stark black block -->
+    <!-- brand philosophy block -->
     <div style="background: #080202; border-radius: 0px; padding: 1.8rem; text-align: center; margin: 2rem 0; border: 1px solid #8b1a1a;">
         <span style="font-size: 1.5rem; font-weight: 700; color: #b54432;">RED // BLOOM // VOID</span>
         <p style="max-width: 700px; margin: 0.8rem auto 0; font-weight: 300; letter-spacing: 0.3px; color: #bb6a58;">
@@ -583,14 +587,11 @@
 
 <script>
     (function() {
-        // SEE MORE button functionality: navigate to a new page (collection page)
+        // SEE MORE button functionality: navigate to a new page (collection overview)
         const seeMoreBtn = document.getElementById('seeMoreBtn');
         if (seeMoreBtn) {
             seeMoreBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                // Open a new page showing all collection options (simulated)
-                // For demo, we open a new tab with a simple collection gallery.
-                // In a real scenario, you'd link to "/collection.html". Here we create a data URI or new window.
                 const newWindow = window.open();
                 if (newWindow) {
                     newWindow.document.write(`
@@ -615,7 +616,7 @@
                             <div class="grid">
                                 <div class="item"><h3>KIMONO JACKET</h3><p>¥26,800</p></div>
                                 <div class="item"><h3>BOMBER JKT</h3><p>¥39,900</p></div>
-                                <div class="item"><h3>STRUCTURE CAP</h3><p>¥7,800</p></div>
+                                <div class="item"><h3>YAMUKARUKA BAG</h3><p>¥7,800</p></div>
                                 <div class="item"><h3>MILITARY PANT</h3><p>¥22,500</p></div>
                                 <div class="item"><h3>OBI BELT</h3><p>¥12,400</p></div>
                                 <div class="item"><h3>DARK TOTE</h3><p>¥9,200</p></div>
@@ -656,7 +657,6 @@
                 this.speedY = 0.3 + Math.random() * 0.9;
                 this.speedX = (Math.random() - 0.5) * 0.3;
                 this.opacity = 0.2 + Math.random() * 0.3;
-                this.red = 100 + Math.random() * 60;
             }
             
             update() {
@@ -675,7 +675,6 @@
                 this.speedY = 0.4 + Math.random() * 1.0;
                 this.speedX = (Math.random() - 0.5) * 0.4;
                 this.size = 1.5 + Math.random() * 4;
-                this.red = 90 + Math.random() * 65;
             }
             
             draw(ctx) {
