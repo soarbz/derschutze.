@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>lookbook · derschutze</title>
+  <title>lookbook · derschutze · red frames</title>
   <style>
     * {
       margin: 0;
@@ -11,19 +11,19 @@
       box-sizing: border-box;
     }
 
-    /* ---------- GLOBAL: background image (9).jpg covering ENTIRE page horizontally ---------- */
+    /* ---------- GLOBAL: background image (9).jpg covering ENTIRE page ---------- */
     body {
-      /* background image: 9.jpg — covers whole viewport, stretches horizontally to fit */
+      /* background image: 9.jpg — covers whole viewport */
       background-image: url('9.jpg');
-      background-size: cover;        /* covers entire page, maintains aspect ratio but ensures full coverage */
+      background-size: cover;
       background-position: center center;
       background-attachment: fixed;
       background-repeat: no-repeat;
       
-      /* fallback dark color while loading or if image missing */
+      /* fallback dark color */
       background-color: #0a0505;
       
-      /* typewriter font: courier prime, lower-case friendly */
+      /* typewriter font */
       font-family: 'Courier Prime', 'Courier New', Courier, monospace;
       min-height: 100vh;
       display: flex;
@@ -32,43 +32,43 @@
       padding: 2rem 1.5rem;
     }
 
-    /* main container: clean, squared, semi-transparent DARK overlay to make white frames pop, but background still visible */
+    /* main container: dark overlay to make red frames pop */
     .lookbook {
-      max-width: 1300px;
+      max-width: 1400px;
       width: 100%;
-      background: rgba(0, 0, 0, 0.55);   /* dark overlay so white frames stand out, but background image still shows through */
+      background: rgba(0, 0, 0, 0.55);
       border: none;
       border-radius: 0px;
       padding: 2rem 1.8rem 2rem 1.8rem;
       transition: all 0.2s ease;
     }
 
-    /* header area — only "lookbook" in lower caps, black/dark text (since frames are white, text should be dark/black for contrast) */
+    /* header area */
     .lookbook-header {
       text-align: center;
       margin-bottom: 2.8rem;
     }
 
     .lookbook-header h1 {
-      font-size: 2.8rem;
+      font-size: 2.2rem;
       letter-spacing: 0.02em;
       font-weight: 700;
-      color: #000000;                /* black text for header */
+      color: #ffffff;
       font-family: 'Courier Prime', 'Courier New', monospace;
       text-transform: lowercase;
-      text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
       word-break: keep-all;
-      background: rgba(255,255,240,0.2); /* very subtle light backing to ensure readability */
+      background: rgba(0, 0, 0, 0.6);
       display: inline-block;
-      padding: 0.2rem 1.2rem;
+      padding: 0.3rem 1.5rem;
+      border: 2px solid #cc3333;
     }
 
-    /* remove any extra elements / stars */
     .lookbook-header p {
       display: none;
     }
 
-    /* ---------- 5 SQUARE FRAMES — NOW WHITE BACKGROUND, BLACK BORDER, SHARP EDGES ---------- */
+    /* ---------- FRAMES GRID — NOW ALL RED BACKGROUNDS ---------- */
     .frames-grid {
       display: flex;
       flex-wrap: wrap;
@@ -78,36 +78,38 @@
       margin-bottom: 3rem;
     }
 
-    /* each frame: perfectly squared, WHITE background, black border, no curves */
+    /* each frame: RED background, black border, sharp edges */
     .frame-card {
       flex: 1 1 180px;
       min-width: 160px;
       max-width: 220px;
-      background: #ffffff;           /* pure white frame background */
+      background: #cc2222;           /* vibrant red frame background */
       backdrop-filter: none;
       border-radius: 0px;            /* squared — no rounded corners */
       padding: 0.9rem 0.9rem 1rem 0.9rem;
-      transition: transform 0.2s ease, box-shadow 0.2s;
-      box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
-      border: 3px solid #000000;     /* solid black border for white frames */
+      transition: transform 0.2s ease, box-shadow 0.2s, background 0.2s;
+      box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.3);
+      border: 3px solid #000000;     /* solid black border */
       text-align: center;
+      display: flex;
+      flex-direction: column;
     }
 
     .frame-card:hover {
       transform: translate(-3px, -3px);
-      box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.3);
-      background: #f5f5f5;
+      box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.4);
+      background: #dd3a3a;
       border-color: #1a1a1a;
     }
 
-    /* image container: square area inside white frame */
+    /* image container: square area inside red frame */
     .frame-img {
       width: 100%;
       aspect-ratio: 1 / 1;
       overflow: hidden;
-      background: #eaeaea;
-      border: 1px solid #aaaaaa;
-      margin-bottom: 1rem;
+      background: #2a0a0a;
+      border: 2px solid #000000;
+      margin-bottom: 0.75rem;
       border-radius: 0px;
     }
 
@@ -124,47 +126,86 @@
       transform: scale(1.02);
     }
 
-    /* frame label: black text, minimal, lowercase, typewriter */
+    /* frame label: white text for contrast on red */
     .frame-label {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: lowercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       font-weight: 700;
-      color: #000000;               /* black text on white frame */
-      background: rgba(0, 0, 0, 0.05);
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.5);
       display: inline-block;
-      padding: 0.2rem 0.8rem;
+      padding: 0.2rem 0.7rem;
       font-family: 'Courier Prime', monospace;
-      border-left: 3px solid #000000;
+      border-left: 3px solid #ffffff;
+      margin-top: 0.25rem;
     }
 
-    /* footer area: "derschutze." and go back button — dark text for contrast against background overlay */
+    /* --- PRODUCT CARD STYLES (for structure cap & bomber jkt) --- */
+    .frame-card.product-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-title {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ffffff;
+      margin: 0.5rem 0 0.25rem 0;
+      line-height: 1.2;
+      word-break: break-word;
+      text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
+    }
+
+    .product-price {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.5);
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      margin-top: 0.3rem;
+      margin-bottom: 0.2rem;
+      border: 1px solid #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    .frame-card.product-card .frame-label {
+      margin-top: 0.2rem;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* footer area */
     .lookbook-footer {
       text-align: center;
       margin-top: 2rem;
-      border-top: 2px solid #000000;
+      border-top: 2px solid #cc3333;
       padding-top: 1.8rem;
     }
 
-    /* main black quote: derschutze. lower caps, typewriter, solid black */
     .derschutze-quote {
       font-size: 2.2rem;
       font-weight: 700;
       letter-spacing: 0.02em;
       font-family: 'Courier Prime', 'Courier New', monospace;
-      color: #000000;               /* black text for main quote */
-      background: rgba(255, 255, 245, 0.7);
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.65);
       display: inline-block;
       padding: 0.3rem 2rem;
       margin-bottom: 1.8rem;
       text-transform: lowercase;
-      border: 2px solid #000000;
-      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+      border: 2px solid #cc3333;
+      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
     }
 
-    /* go back button — white background with black border/black text, squared */
+    /* go back button — red and black theme */
     .back-button {
-      background: #ffffff;
+      background: #cc2222;
       backdrop-filter: none;
       border: 3px solid #000000;
       padding: 0.8rem 2.2rem;
@@ -173,30 +214,30 @@
       font-family: 'Courier Prime', monospace;
       text-transform: lowercase;
       letter-spacing: 2px;
-      color: #000000;
-      border-radius: 0px;            /* squared button */
+      color: #ffffff;
+      border-radius: 0px;
       cursor: pointer;
       transition: all 0.2s ease;
-      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
 
     .back-button:hover {
-      background: #f0f0f0;
-      border-color: #222;
-      color: #111;
+      background: #dd3a3a;
+      border-color: #111;
+      color: #fff;
       transform: translate(-2px, -2px);
-      box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.25);
+      box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.35);
     }
 
     .back-button:active {
       transform: translate(2px, 2px);
-      box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+      box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
     }
 
-    /* responsive — keep squared structure */
+    /* responsive */
     @media (max-width: 780px) {
       .lookbook {
         padding: 1.5rem;
@@ -213,7 +254,13 @@
         padding: 0.2rem 1rem;
       }
       .lookbook-header h1 {
-        font-size: 2rem;
+        font-size: 1.6rem;
+      }
+      .product-title {
+        font-size: 0.7rem;
+      }
+      .product-price {
+        font-size: 0.75rem;
       }
     }
 
@@ -232,21 +279,29 @@
       .derschutze-quote {
         font-size: 1.4rem;
       }
+      .product-title {
+        font-size: 0.65rem;
+      }
+      .product-price {
+        font-size: 0.7rem;
+      }
     }
 
-    /* ensure no star characters anywhere */
+    /* no star characters anywhere */
     .frame-label::before,
     .frame-label::after,
     .derschutze-quote::before,
     .derschutze-quote::after,
     .back-button::before,
     .lookbook-header h1::before,
-    .lookbook-header h1::after {
+    .lookbook-header h1::after,
+    .product-title::before,
+    .product-title::after {
       content: none !important;
     }
 
     img {
-      background: #dddddd;
+      background: #331111;
     }
   </style>
 </head>
@@ -254,51 +309,65 @@
 
 <div class="lookbook">
   <div class="lookbook-header">
-    <!-- only "lookbook" in lower caps, black text — no stars -->
-    <h1>lookbook</h1>
+    <h1>lookbook full collection</h1>
   </div>
 
-  <!-- 5 SQUARE FRAMES — WHITE BACKGROUND, BLACK BORDERS, SHARP EDGES -->
+  <!-- 6 SQUARE FRAMES — ALL RED BACKGROUNDS -->
   <div class="frames-grid">
-    <!-- frame 1 -->
-    <div class="frame-card">
+    <!-- Frame 1: Structure Cap Horn (using (1).jpg) -->
+    <div class="frame-card product-card">
       <div class="frame-img">
-        <img src="https://picsum.photos/id/155/300/300" alt="frame one" loading="lazy">
+        <img src="(1).jpg" alt="structure cap HORN" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/155/300/300'; this.alt='(1).jpg missing, fallback'">
       </div>
+      <div class="product-title">STRUCTURE CAP HORN</div>
+      <div class="product-price">7,800 yon</div>
       <div class="frame-label">i</div>
     </div>
-    <!-- frame 2 -->
-    <div class="frame-card">
+
+    <!-- Frame 2: BOMBER JKT with image (3).jpg -->
+    <div class="frame-card product-card">
       <div class="frame-img">
-        <img src="https://picsum.photos/id/169/300/300" alt="frame two" loading="lazy">
+        <img src="(3).jpg" alt="BOMBER JKT" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/169/300/300'; this.alt='(3).jpg missing, fallback'">
       </div>
+      <div class="product-title">BOMBER JKT</div>
+      <div class="product-price">12,400 yon</div>
       <div class="frame-label">ii</div>
     </div>
-    <!-- frame 3 -->
+
+    <!-- Frame 3: editorial placeholder -->
     <div class="frame-card">
       <div class="frame-img">
-        <img src="https://picsum.photos/id/22/300/300" alt="frame three" loading="lazy">
+        <img src="https://picsum.photos/id/22/300/300" alt="editorial 01" loading="lazy">
       </div>
       <div class="frame-label">iii</div>
     </div>
-    <!-- frame 4 -->
+
+    <!-- Frame 4: editorial placeholder -->
     <div class="frame-card">
       <div class="frame-img">
-        <img src="https://picsum.photos/id/42/300/300" alt="frame four" loading="lazy">
+        <img src="https://picsum.photos/id/42/300/300" alt="editorial 02" loading="lazy">
       </div>
       <div class="frame-label">iv</div>
     </div>
-    <!-- frame 5 -->
+
+    <!-- Frame 5: editorial placeholder -->
     <div class="frame-card">
       <div class="frame-img">
-        <img src="https://picsum.photos/id/76/300/300" alt="frame five" loading="lazy">
+        <img src="https://picsum.photos/id/76/300/300" alt="editorial 03" loading="lazy">
       </div>
       <div class="frame-label">v</div>
+    </div>
+
+    <!-- Frame 6: extra editorial -->
+    <div class="frame-card">
+      <div class="frame-img">
+        <img src="https://picsum.photos/id/20/300/300" alt="editorial 04" loading="lazy">
+      </div>
+      <div class="frame-label">vi</div>
     </div>
   </div>
 
   <div class="lookbook-footer">
-    <!-- exactly "derschutze." in lower caps, black, typewriter -->
     <div class="derschutze-quote">derschutze.</div>
     <div>
       <button class="back-button" id="goBackBtn">⌫ go back</button>
@@ -307,7 +376,7 @@
 </div>
 
 <script>
-  // "go back" button functionality: returns to previous page if available
+  // "go back" button functionality
   const backBtn = document.getElementById('goBackBtn');
   if (backBtn) {
     backBtn.addEventListener('click', (e) => {
@@ -315,22 +384,21 @@
       if (window.history.length > 1) {
         window.history.back();
       } else {
-        // polite fallback message without stars or symbols
         const note = document.createElement('div');
         note.innerText = 'no previous page · edge of archive';
         note.style.position = 'fixed';
         note.style.bottom = '30px';
         note.style.left = '50%';
         note.style.transform = 'translateX(-50%)';
-        note.style.backgroundColor = '#ffffff';
-        note.style.color = '#000000';
+        note.style.backgroundColor = '#cc2222';
+        note.style.color = '#ffffff';
         note.style.padding = '8px 20px';
         note.style.borderRadius = '0px';
         note.style.fontFamily = "'Courier Prime', monospace";
         note.style.fontSize = '0.75rem';
         note.style.zIndex = '9999';
         note.style.border = '2px solid black';
-        note.style.boxShadow = '3px 3px 0px rgba(0,0,0,0.2)';
+        note.style.boxShadow = '3px 3px 0px rgba(0,0,0,0.3)';
         note.style.letterSpacing = '0.3px';
         note.style.textTransform = 'lowercase';
         document.body.appendChild(note);
@@ -342,23 +410,20 @@
     });
   }
 
-  // verification: background image set to '9.jpg' covering entire page horizontally
-  console.log('lookbook ready · full page horizontal background: 9.jpg · white frames with black borders · black text · derschutze.');
+  console.log('lookbook full collection · RED FRAMES · BOMBER JKT with (3).jpg · STRUCTURE CAP HORN with (1).jpg · background 9.jpg');
 </script>
 
 <!-- 
-  FINAL SPECIFICATIONS MET:
-  ✓ ENTIRE PAGE BACKGROUND: background-image: url('9.jpg') with cover + fixed + no-repeat — covers whole page horizontally & vertically
-  ✓ The dark overlay part (the container) still shows the background image through — the whole page has 9.jpg as background
-  ✓ Background fills full viewport from edge to edge horizontally & vertically
-  ✓ SQUARES/FRAMES changed to WHITE background with solid black borders (no curves, fully squared)
-  ✓ Text elements (header, labels, derschutze quote, button) are BLACK for strong contrast against white frames
-  ✓ Font remains 'Courier Prime' typewriter style, lowercase stylings
-  ✓ 5 squares with images inside
-  ✓ Bottom text: "derschutze." in black, lower caps
-  ✓ Go back button functional
-  ✓ No stars or decorative symbols anywhere
-  ✓ Fully responsive, all edges sharp (border-radius:0)
+  FINAL SPECIFICATIONS:
+  ✓ ALL FRAMES ARE NOW RED (#cc2222) with black borders
+  ✓ Text on frames (labels, product titles, prices) changed to white for contrast
+  ✓ Background: 9.jpg covers entire page
+  ✓ Header: "lookbook full collection" in typewriter style
+  ✓ STRUCTURE CAP HORN with image (1).jpg, price 7,800 yon
+  ✓ BOMBER JKT with image (3).jpg, price 12,400 yon
+  ✓ Sharp squared edges, no curves, no stars
+  ✓ Go back button functional, now styled red/black
+  ✓ Fully responsive
 -->
 </body>
 </html>
