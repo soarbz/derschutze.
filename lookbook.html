@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>lookbook · derschutze · red frames</title>
+  <title>YAMIZAKURA · lookbook collection</title>
   <style>
     * {
       margin: 0;
@@ -13,17 +13,12 @@
 
     /* ---------- GLOBAL: background image (9).jpg covering ENTIRE page ---------- */
     body {
-      /* background image: 9.jpg — covers whole viewport */
       background-image: url('9.jpg');
       background-size: cover;
       background-position: center center;
       background-attachment: fixed;
       background-repeat: no-repeat;
-      
-      /* fallback dark color */
       background-color: #0a0505;
-      
-      /* typewriter font */
       font-family: 'Courier Prime', 'Courier New', Courier, monospace;
       min-height: 100vh;
       display: flex;
@@ -34,83 +29,71 @@
 
     /* main container: dark overlay to make red frames pop */
     .lookbook {
-      max-width: 1400px;
+      max-width: 1300px;
       width: 100%;
-      background: rgba(0, 0, 0, 0.55);
+      background: rgba(0, 0, 0, 0.6);
       border: none;
       border-radius: 0px;
-      padding: 2rem 1.8rem 2rem 1.8rem;
-      transition: all 0.2s ease;
+      padding: 2rem 2rem 2rem 2rem;
     }
 
-    /* header area */
+    /* header area — exactly "FULL YAMIZAKURA COLLECTION" as in screenshot */
     .lookbook-header {
       text-align: center;
-      margin-bottom: 2.8rem;
+      margin-bottom: 2.5rem;
     }
 
     .lookbook-header h1 {
-      font-size: 2.2rem;
-      letter-spacing: 0.02em;
+      font-size: 2rem;
+      letter-spacing: 0.03em;
       font-weight: 700;
       color: #ffffff;
       font-family: 'Courier Prime', 'Courier New', monospace;
-      text-transform: lowercase;
+      text-transform: uppercase;
       text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
-      word-break: keep-all;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.5);
       display: inline-block;
-      padding: 0.3rem 1.5rem;
+      padding: 0.5rem 2rem;
       border: 2px solid #cc3333;
     }
 
-    .lookbook-header p {
-      display: none;
-    }
-
-    /* ---------- FRAMES GRID — NOW ALL RED BACKGROUNDS ---------- */
+    /* ---------- GRID: 8 items exactly as reference (2 rows x 4 columns on desktop) ---------- */
     .frames-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: stretch;
-      gap: 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.8rem;
       margin-bottom: 3rem;
     }
 
-    /* each frame: RED background, black border, sharp edges */
+    /* each frame: RED background, black border, sharp edges, product card style */
     .frame-card {
-      flex: 1 1 180px;
-      min-width: 160px;
-      max-width: 220px;
-      background: #cc2222;           /* vibrant red frame background */
-      backdrop-filter: none;
-      border-radius: 0px;            /* squared — no rounded corners */
-      padding: 0.9rem 0.9rem 1rem 0.9rem;
+      background: #cc2222;
+      border-radius: 0px;
+      padding: 1.2rem 1rem 1.2rem 1rem;
       transition: transform 0.2s ease, box-shadow 0.2s, background 0.2s;
-      box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.3);
-      border: 3px solid #000000;     /* solid black border */
+      box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.35);
+      border: 3px solid #000000;
       text-align: center;
       display: flex;
       flex-direction: column;
+      cursor: default;
     }
 
     .frame-card:hover {
       transform: translate(-3px, -3px);
-      box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.4);
+      box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.45);
       background: #dd3a3a;
-      border-color: #1a1a1a;
+      border-color: #111;
     }
 
-    /* image container: square area inside red frame */
+    /* image container: square area with border */
     .frame-img {
       width: 100%;
       aspect-ratio: 1 / 1;
       overflow: hidden;
       background: #2a0a0a;
       border: 2px solid #000000;
-      margin-bottom: 0.75rem;
-      border-radius: 0px;
+      margin-bottom: 1rem;
     }
 
     .frame-img img {
@@ -119,189 +102,146 @@
       object-fit: cover;
       display: block;
       transition: transform 0.25s ease;
-      border-radius: 0px;
     }
 
     .frame-card:hover .frame-img img {
       transform: scale(1.02);
     }
 
-    /* frame label: white text for contrast on red */
-    .frame-label {
-      font-size: 0.7rem;
-      text-transform: lowercase;
-      letter-spacing: 1px;
-      font-weight: 700;
-      color: #ffffff;
-      background: rgba(0, 0, 0, 0.5);
-      display: inline-block;
-      padding: 0.2rem 0.7rem;
-      font-family: 'Courier Prime', monospace;
-      border-left: 3px solid #ffffff;
-      margin-top: 0.25rem;
-    }
-
-    /* --- PRODUCT CARD STYLES (for structure cap & bomber jkt) --- */
-    .frame-card.product-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
+    /* product name styling — all caps, bold, white */
     .product-title {
       font-family: 'Courier Prime', monospace;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       color: #ffffff;
-      margin: 0.5rem 0 0.25rem 0;
-      line-height: 1.2;
+      margin: 0.5rem 0 0.3rem 0;
+      line-height: 1.3;
       word-break: break-word;
-      text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
     }
 
+    /* price styling with yen symbol */
     .product-price {
       font-family: 'Courier Prime', monospace;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: #ffffff;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.45);
       display: inline-block;
-      padding: 0.2rem 0.6rem;
+      padding: 0.2rem 0.8rem;
       margin-top: 0.3rem;
-      margin-bottom: 0.2rem;
       border: 1px solid #ffffff;
       letter-spacing: 0.5px;
     }
 
-    .frame-card.product-card .frame-label {
-      margin-top: 0.2rem;
-      background: rgba(0, 0, 0, 0.5);
+    /* subtle index label (optional but matches frame vibe) */
+    .frame-label {
+      font-size: 0.6rem;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+      color: #ffcccc;
+      background: rgba(0, 0, 0, 0.4);
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      margin-top: 0.5rem;
+      font-family: 'Courier Prime', monospace;
     }
 
-    /* footer area */
+    /* footer area with "CLOSE WINDOW" button exactly as reference */
     .lookbook-footer {
       text-align: center;
-      margin-top: 2rem;
+      margin-top: 0.5rem;
       border-top: 2px solid #cc3333;
-      padding-top: 1.8rem;
+      padding-top: 2rem;
     }
 
-    .derschutze-quote {
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      font-family: 'Courier Prime', 'Courier New', monospace;
-      color: #ffffff;
-      background: rgba(0, 0, 0, 0.65);
-      display: inline-block;
-      padding: 0.3rem 2rem;
-      margin-bottom: 1.8rem;
-      text-transform: lowercase;
-      border: 2px solid #cc3333;
-      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
-    }
-
-    /* go back button — red and black theme */
-    .back-button {
+    .close-window-btn {
       background: #cc2222;
-      backdrop-filter: none;
       border: 3px solid #000000;
-      padding: 0.8rem 2.2rem;
-      font-size: 1rem;
+      padding: 0.9rem 2.5rem;
+      font-size: 1.1rem;
       font-weight: 700;
       font-family: 'Courier Prime', monospace;
-      text-transform: lowercase;
-      letter-spacing: 2px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
       color: #ffffff;
       border-radius: 0px;
       cursor: pointer;
       transition: all 0.2s ease;
-      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.35);
+      display: inline-block;
     }
 
-    .back-button:hover {
+    .close-window-btn:hover {
       background: #dd3a3a;
-      border-color: #111;
-      color: #fff;
       transform: translate(-2px, -2px);
-      box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.35);
+      box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.4);
     }
 
-    .back-button:active {
+    .close-window-btn:active {
       transform: translate(2px, 2px);
       box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
     }
 
-    /* responsive */
-    @media (max-width: 780px) {
-      .lookbook {
-        padding: 1.5rem;
-      }
+    /* derschutze text at bottom (small, matching original) */
+    .signature {
+      text-align: center;
+      margin-top: 1.8rem;
+      font-size: 0.8rem;
+      color: #ffffff;
+      font-family: 'Courier Prime', monospace;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      opacity: 0.7;
+    }
+
+    /* responsive: tablet & mobile */
+    @media (max-width: 900px) {
       .frames-grid {
-        gap: 1.2rem;
-      }
-      .frame-card {
-        min-width: 140px;
-        max-width: 180px;
-      }
-      .derschutze-quote {
-        font-size: 1.6rem;
-        padding: 0.2rem 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
       }
       .lookbook-header h1 {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+        padding: 0.4rem 1rem;
       }
       .product-title {
-        font-size: 0.7rem;
-      }
-      .product-price {
-        font-size: 0.75rem;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .frames-grid {
-        gap: 1rem;
-      }
-      .frame-card {
-        min-width: 130px;
-        max-width: 160px;
-      }
-      .back-button {
-        padding: 0.6rem 1.2rem;
         font-size: 0.8rem;
       }
-      .derschutze-quote {
-        font-size: 1.4rem;
-      }
-      .product-title {
-        font-size: 0.65rem;
-      }
       .product-price {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
       }
     }
 
-    /* no star characters anywhere */
+    @media (max-width: 550px) {
+      .lookbook {
+        padding: 1.2rem;
+      }
+      .frames-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .close-window-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+      }
+      .lookbook-header h1 {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* no unwanted chars */
     .frame-label::before,
     .frame-label::after,
-    .derschutze-quote::before,
-    .derschutze-quote::after,
-    .back-button::before,
-    .lookbook-header h1::before,
-    .lookbook-header h1::after,
-    .product-title::before,
-    .product-title::after {
+    .close-window-btn::before,
+    .close-window-btn::after {
       content: none !important;
     }
 
     img {
-      background: #331111;
+      background: #2a1111;
     }
   </style>
 </head>
@@ -309,121 +249,156 @@
 
 <div class="lookbook">
   <div class="lookbook-header">
-    <h1>lookbook full collection</h1>
+    <h1>FULL YAMIZAKURA COLLECTION</h1>
   </div>
 
-  <!-- 6 SQUARE FRAMES — ALL RED BACKGROUNDS -->
+  <!-- 8 product frames exactly matching the screenshot data -->
   <div class="frames-grid">
-    <!-- Frame 1: Structure Cap Horn (using (1).jpg) -->
-    <div class="frame-card product-card">
+    <!-- 1. KIMONO JACKET - ¥26,800 -->
+    <div class="frame-card">
       <div class="frame-img">
-        <img src="(1).jpg" alt="structure cap HORN" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/155/300/300'; this.alt='(1).jpg missing, fallback'">
+        <img src="(1).jpg" alt="KIMONO JACKET" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/30/300/300'">
       </div>
-      <div class="product-title">STRUCTURE CAP HORN</div>
-      <div class="product-price">7,800 yon</div>
+      <div class="product-title">KIMONO JACKET</div>
+      <div class="product-price">¥26,800</div>
       <div class="frame-label">i</div>
     </div>
 
-    <!-- Frame 2: BOMBER JKT with image (3).jpg -->
-    <div class="frame-card product-card">
+    <!-- 2. BOMBER JKT - ¥39,900 -->
+    <div class="frame-card">
       <div class="frame-img">
-        <img src="(3).jpg" alt="BOMBER JKT" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/169/300/300'; this.alt='(3).jpg missing, fallback'">
+        <img src="(3).jpg" alt="BOMBER JKT" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/31/300/300'">
       </div>
       <div class="product-title">BOMBER JKT</div>
-      <div class="product-price">12,400 yon</div>
+      <div class="product-price">¥39,900</div>
       <div class="frame-label">ii</div>
     </div>
 
-    <!-- Frame 3: editorial placeholder -->
+    <!-- 3. THE FIRE - ¥7,800 -->
     <div class="frame-card">
       <div class="frame-img">
-        <img src="https://picsum.photos/id/22/300/300" alt="editorial 01" loading="lazy">
+        <img src="https://picsum.photos/id/32/300/300" alt="THE FIRE" loading="lazy">
       </div>
+      <div class="product-title">THE FIRE</div>
+      <div class="product-price">¥7,800</div>
       <div class="frame-label">iii</div>
     </div>
 
-    <!-- Frame 4: editorial placeholder -->
+    <!-- 4. YAMKUKARUKA BAG - ¥22,500 -->
     <div class="frame-card">
       <div class="frame-img">
-        <img src="https://picsum.photos/id/42/300/300" alt="editorial 02" loading="lazy">
+        <img src="https://picsum.photos/id/33/300/300" alt="YAMKUKARUKA BAG" loading="lazy">
       </div>
+      <div class="product-title">YAMKUKARUKA BAG</div>
+      <div class="product-price">¥22,500</div>
       <div class="frame-label">iv</div>
     </div>
 
-    <!-- Frame 5: editorial placeholder -->
+    <!-- 5. OBI BELT - ¥12,400 -->
     <div class="frame-card">
       <div class="frame-img">
-        <img src="https://picsum.photos/id/76/300/300" alt="editorial 03" loading="lazy">
+        <img src="https://picsum.photos/id/34/300/300" alt="OBI BELT" loading="lazy">
       </div>
+      <div class="product-title">OBI BELT</div>
+      <div class="product-price">¥12,400</div>
       <div class="frame-label">v</div>
     </div>
 
-    <!-- Frame 6: extra editorial -->
+    <!-- 6. DARK TOTE - ¥9,200 -->
     <div class="frame-card">
       <div class="frame-img">
-        <img src="https://picsum.photos/id/20/300/300" alt="editorial 04" loading="lazy">
+        <img src="https://picsum.photos/id/35/300/300" alt="DARK TOTE" loading="lazy">
       </div>
+      <div class="product-title">DARK TOTE</div>
+      <div class="product-price">¥9,200</div>
       <div class="frame-label">vi</div>
+    </div>
+
+    <!-- 7. GLOVES - ¥6,500 -->
+    <div class="frame-card">
+      <div class="frame-img">
+        <img src="https://picsum.photos/id/36/300/300" alt="GLOVES" loading="lazy">
+      </div>
+      <div class="product-title">GLOVES</div>
+      <div class="product-price">¥6,500</div>
+      <div class="frame-label">vii</div>
+    </div>
+
+    <!-- 8. SCARF - ¥5,800 -->
+    <div class="frame-card">
+      <div class="frame-img">
+        <img src="https://picsum.photos/id/37/300/300" alt="SCARF" loading="lazy">
+      </div>
+      <div class="product-title">SCARF</div>
+      <div class="product-price">¥5,800</div>
+      <div class="frame-label">viii</div>
     </div>
   </div>
 
   <div class="lookbook-footer">
-    <div class="derschutze-quote">derschutze.</div>
-    <div>
-      <button class="back-button" id="goBackBtn">⌫ go back</button>
-    </div>
+    <button class="close-window-btn" id="closeWindowBtn">CLOSE WINDOW</button>
+    <div class="signature">derschutze.</div>
   </div>
 </div>
 
 <script>
-  // "go back" button functionality
-  const backBtn = document.getElementById('goBackBtn');
-  if (backBtn) {
-    backBtn.addEventListener('click', (e) => {
+  // CLOSE WINDOW functionality: goes back in history or shows gentle fallback
+  const closeBtn = document.getElementById('closeWindowBtn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
       e.preventDefault();
       if (window.history.length > 1) {
         window.history.back();
       } else {
-        const note = document.createElement('div');
-        note.innerText = 'no previous page · edge of archive';
-        note.style.position = 'fixed';
-        note.style.bottom = '30px';
-        note.style.left = '50%';
-        note.style.transform = 'translateX(-50%)';
-        note.style.backgroundColor = '#cc2222';
-        note.style.color = '#ffffff';
-        note.style.padding = '8px 20px';
-        note.style.borderRadius = '0px';
-        note.style.fontFamily = "'Courier Prime', monospace";
-        note.style.fontSize = '0.75rem';
-        note.style.zIndex = '9999';
-        note.style.border = '2px solid black';
-        note.style.boxShadow = '3px 3px 0px rgba(0,0,0,0.3)';
-        note.style.letterSpacing = '0.3px';
-        note.style.textTransform = 'lowercase';
-        document.body.appendChild(note);
+        // fallback: since no previous history, show a subtle message
+        const toast = document.createElement('div');
+        toast.innerText = 'no previous page — end of collection';
+        toast.style.position = 'fixed';
+        toast.style.bottom = '30px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.backgroundColor = '#cc2222';
+        toast.style.color = '#ffffff';
+        toast.style.padding = '8px 20px';
+        toast.style.borderRadius = '0px';
+        toast.style.fontFamily = "'Courier Prime', monospace";
+        toast.style.fontSize = '0.75rem';
+        toast.style.border = '2px solid black';
+        toast.style.boxShadow = '3px 3px 0px rgba(0,0,0,0.3)';
+        toast.style.zIndex = '9999';
+        toast.style.letterSpacing = '0.5px';
+        document.body.appendChild(toast);
         setTimeout(() => {
-          note.style.opacity = '0';
-          setTimeout(() => note.remove(), 700);
+          toast.style.opacity = '0';
+          setTimeout(() => toast.remove(), 800);
         }, 2000);
       }
     });
   }
 
-  console.log('lookbook full collection · RED FRAMES · BOMBER JKT with (3).jpg · STRUCTURE CAP HORN with (1).jpg · background 9.jpg');
+  // use (1).jpg for Kimono Jacket and (3).jpg for Bomber Jkt as requested earlier.
+  // background image remains 9.jpg.
+  console.log('YAMIZAKURA COLLECTION · red frames · 8 items · close window button · full background 9.jpg');
 </script>
 
 <!-- 
-  FINAL SPECIFICATIONS:
-  ✓ ALL FRAMES ARE NOW RED (#cc2222) with black borders
-  ✓ Text on frames (labels, product titles, prices) changed to white for contrast
-  ✓ Background: 9.jpg covers entire page
-  ✓ Header: "lookbook full collection" in typewriter style
-  ✓ STRUCTURE CAP HORN with image (1).jpg, price 7,800 yon
-  ✓ BOMBER JKT with image (3).jpg, price 12,400 yon
-  ✓ Sharp squared edges, no curves, no stars
-  ✓ Go back button functional, now styled red/black
-  ✓ Fully responsive
+  EXACT MATCH TO REFERENCE IMAGE:
+  ✓ Header: "FULL YAMIZAKURA COLLECTION" in uppercase typewriter style
+  ✓ All 8 items displayed exactly as per screenshot:
+    - KIMONO JACKET  ¥26,800
+    - BOMBER JKT     ¥39,900
+    - THE FIRE       ¥7,800
+    - YAMKUKARUKA BAG ¥22,500
+    - OBI BELT       ¥12,400
+    - DARK TOTE      ¥9,200
+    - GLOVES         ¥6,500
+    - SCARF          ¥5,800
+  ✓ Red frames with black borders, sharp edges (squared)
+  ✓ "CLOSE WINDOW" button at bottom
+  ✓ "derschutze." signature
+  ✓ Background uses images (9).jpg full page
+  ✓ Fully responsive grid (4 columns desktop, 2 tablet, 1 mobile)
+  ✓ All prices with ¥ symbol, white text on red frames
 -->
 </body>
 </html>
