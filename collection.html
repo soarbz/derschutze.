@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Art of Impact | Streetwear Collection</title>
-  <!-- Google Fonts & simple reset for clean typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>COLLECTION · IMPACT | STREETWEAR ART</title>
   <style>
+    /* GLOBAL RESET & DARK THEME — inspired by screenshot mood */
     * {
       margin: 0;
       padding: 0;
@@ -14,456 +13,282 @@
     }
 
     body {
-      background-color: #f7f5f0;
-      font-family: 'Inter', sans-serif;
-      color: #1e1b1a;
-      line-height: 1.4;
-      scroll-behavior: smooth;
+      background-color: #0b0a09;   /* deep charcoal, almost darkroom black */
+      font-family: 'Courier New', 'Courier', 'IBM Plex Mono', 'SF Mono', monospace;
+      color: #e6e0d4;
+      line-height: 1.5;
+      font-weight: 400;
+      font-size: 1.05rem;
+      padding: 2rem 1.5rem;
     }
 
-    /* custom containers */
+    /* main container — narrow, typewriter column for focused reading */
     .container {
-      max-width: 1280px;
+      max-width: 880px;
       margin: 0 auto;
-      padding: 0 28px;
+      background-color: rgba(18, 16, 14, 0.7);
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(220, 200, 170, 0.2);
+      border-radius: 24px;
+      padding: 2.8rem 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(210, 180, 140, 0.08) inset;
     }
 
-    /* header & navigation */
-    .site-header {
-      padding: 32px 0 20px;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      margin-bottom: 48px;
-    }
-
-    .header-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .logo h1 {
-      font-family: 'Space Grotesk', monospace;
-      font-weight: 600;
-      font-size: 1.8rem;
+    /* typewriter core styling */
+    h1, h2, h3, p, .signature {
+      font-family: 'Courier New', 'Courier', 'IBM Plex Mono', monospace;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #1f1c1a, #4a3b32);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .logo p {
-      font-size: 0.8rem;
-      letter-spacing: 0.3px;
-      color: #5e5b58;
-      margin-top: 6px;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 32px;
-    }
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 500;
-      color: #2c2826;
-      font-size: 0.95rem;
-      transition: 0.2s;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 4px;
-    }
-    .nav-links a:hover {
-      border-bottom-color: #c7a47b;
-      color: #000;
+    /* header area — minimalist, like a manuscript */
+    .top-header {
+      border-bottom: 2px solid #d5bc8c;
+      display: inline-block;
+      padding-bottom: 6px;
+      margin-bottom: 2.2rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      color: #e7cfaa;
     }
 
-    /* intro impact section — text heavy */
-    .impact-text {
-      background: #ffffffdb;
-      border-radius: 32px;
-      padding: 48px 40px;
-      margin-bottom: 64px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.03);
-      border: 1px solid #eae7e2;
-    }
-
-    .impact-text h2 {
+    .main-title {
       font-size: 2.6rem;
       font-weight: 600;
-      font-family: 'Space Grotesk', sans-serif;
-      letter-spacing: -0.01em;
-      margin-bottom: 24px;
-      border-left: 6px solid #c7a47b;
-      padding-left: 24px;
-    }
-
-    .impact-paragraphs {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-
-    .impact-paragraphs p {
-      font-size: 1.1rem;
-      line-height: 1.55;
-      color: #2a2624;
-      font-weight: 400;
-      max-width: 85%;
-    }
-
-    .impact-paragraphs strong {
-      color: #996e4b;
-      font-weight: 600;
-    }
-
-    @media (max-width: 800px) {
-      .impact-paragraphs p {
-        max-width: 100%;
-      }
-      .impact-text {
-        padding: 32px 24px;
-      }
-      .impact-text h2 {
-        font-size: 2rem;
-      }
-    }
-
-    /* gallery grid — collection showcase */
-    .collection-section {
-      margin-bottom: 80px;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      font-weight: 600;
-      font-family: 'Space Grotesk', sans-serif;
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .section-title span {
-      background: #e1d9d2;
-      width: 48px;
-      height: 2px;
-      display: inline-block;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 32px;
-    }
-
-    .collectible-card {
-      background: #ffffff;
-      border-radius: 28px;
-      overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.3s;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
-      border: 1px solid #ece6df;
-    }
-
-    .collectible-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 36px -12px rgba(0,0,0,0.2);
-    }
-
-    .card-img {
-      width: 100%;
-      aspect-ratio: 1 / 1.2;
-      background: #d9cfc2;
-      object-fit: cover;
-      display: block;
-      transition: all 0.2s;
-    }
-
-    /* placeholder images with abstract streetwear texture — i’ll use SVG / data urls + background styling for demo but semantic img */
-    .card-img {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .card-info {
-      padding: 20px 20px 24px;
-    }
-
-    .card-info h3 {
-      font-weight: 700;
-      font-size: 1.35rem;
-      letter-spacing: -0.2px;
-      margin-bottom: 8px;
-    }
-
-    .card-info .sub {
-      font-size: 0.8rem;
+      line-height: 1.2;
+      margin: 1rem 0 1.2rem 0;
+      letter-spacing: -1px;
+      color: #f2e3cd;
       text-transform: uppercase;
-      color: #996e4b;
-      font-weight: 500;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
+      border-left: 4px solid #c6a56e;
+      padding-left: 1.2rem;
     }
 
-    .card-info p {
-      font-size: 0.9rem;
-      color: #4e4945;
-      line-height: 1.4;
-      margin-bottom: 16px;
-    }
-
-    .price-tag {
-      font-weight: 700;
-      font-family: monospace;
-      font-size: 1.1rem;
-      border-top: 1px dashed #e0d8d0;
-      padding-top: 14px;
-      margin-top: 6px;
+    .main-title span {
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: #bda27e;
       display: inline-block;
+      margin-left: 0.25rem;
     }
 
-    /* second impact segment — deeper art dialogue */
-    .artistic-impact {
-      background: #1e1b1a;
-      color: #f0ede8;
-      border-radius: 40px;
-      padding: 58px 44px;
-      margin: 40px 0 80px;
+    /* all paragraphs = typewriter rhythm */
+    .impact-paragraph {
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
     }
 
-    .artistic-impact h3 {
-      font-size: 2rem;
-      font-family: 'Space Grotesk', sans-serif;
-      margin-bottom: 32px;
-      font-weight: 500;
-      letter-spacing: -0.3px;
-    }
-
-    .impact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 36px;
-    }
-
-    .impact-point {
-      background: rgba(255,255,240,0.05);
-      padding: 24px 20px;
-      border-radius: 28px;
-      backdrop-filter: blur(2px);
-      border: 1px solid rgba(199,164,123,0.25);
-    }
-
-    .impact-point h4 {
-      font-size: 1.6rem;
+    .impact-paragraph strong {
+      color: #efd29e;
       font-weight: 600;
-      margin-bottom: 14px;
-      color: #e1bc9b;
+      border-bottom: 1px dashed #b88b4b;
     }
-    .impact-point p {
-      font-size: 0.98rem;
+
+    .impact-paragraph em {
+      font-style: italic;
+      color: #cbbfaa;
+    }
+
+    hr {
+      margin: 2rem 0;
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, #3f3529, #ddc8a8, #3f3529);
+    }
+
+    /* blockquote / impact highlight */
+    .art-quote {
+      background: rgba(30, 26, 22, 0.7);
+      padding: 1.6rem 2rem;
+      border-left: 6px solid #cfb27c;
+      margin: 2rem 0;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1rem;
+      border-radius: 16px;
+      color: #f0e2cf;
+      font-family: inherit;
+    }
+
+    .art-quote p {
+      margin-bottom: 0.5rem;
+    }
+
+    .art-quote footer {
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      color: #b3946b;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* grid for secondary pillars (still typewriter but clean) */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0 1.8rem;
+    }
+
+    .pillar-card {
+      border-top: 2px solid #5e4c32;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 1.4rem 1.2rem;
+      border-radius: 12px;
+    }
+
+    .pillar-card h4 {
+      font-size: 1.9rem;
+      font-weight: 500;
+      color: #e0c196;
+      margin-bottom: 0.8rem;
+      font-family: inherit;
+    }
+
+    .pillar-card p {
+      font-size: 0.91rem;
       line-height: 1.5;
-      color: #ccc7c2;
+      color: #dad1c4;
     }
 
-    footer {
-      border-top: 1px solid #e0d9d2;
-      padding: 42px 0 40px;
-      margin-top: 20px;
-      text-align: center;
+    .signature-line {
+      margin-top: 2.8rem;
+      text-align: right;
+      border-top: 1px solid #4e3f2f;
+      padding-top: 1.3rem;
       font-size: 0.85rem;
-      color: #6b625c;
+      letter-spacing: 1px;
+      color: #ab947b;
     }
 
-    a {
-      text-decoration: none;
+    /* additional touch: old paper texture but dark — still readable */
+    @media (max-width: 700px) {
+      body {
+        padding: 1rem;
+      }
+      .container {
+        padding: 1.8rem;
+      }
+      .main-title {
+        font-size: 1.8rem;
+      }
+      .impact-paragraph {
+        font-size: 0.95rem;
+      }
     }
 
-    @media (max-width: 680px) {
-      .header-flex {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .impact-text h2 {
-        font-size: 1.9rem;
-      }
-      .artistic-impact {
-        padding: 36px 24px;
-      }
-      .section-title {
-        font-size: 1.7rem;
-      }
+    /* cursor blink optional? not needed, but gives typewriter vibe */
+    .cursor-tip {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background-color: #e3c694;
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: blink 1.2s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* subtle grain (optional) */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(220,200,130,0.02) 1px, transparent 1px);
+      background-size: 24px 24px;
+      z-index: -1;
+    }
+
+    /* ensuring dark background but full contrast */
+    a, .fake-link {
+      color: #e9cf9e;
+      text-decoration: underline dotted;
     }
   </style>
 </head>
 <body>
-
 <div class="container">
-  <header class="site-header">
-    <div class="header-flex">
-      <div class="logo">
-        <h1>// UNBOUND SILHOUETTE</h1>
-        <p>archival streetwear & avant-garde utility</p>
-      </div>
-      <div class="nav-links">
-        <a href="#">COLLECTION</a>
-        <a href="#">EDITORIAL</a>
-        <a href="#">IMPACT</a>
-        <a href="#">ARCHIVE</a>
-      </div>
-    </div>
-  </header>
+  <!-- small header marker: collection codex -->
+  <div class="top-header">⟡ ENTRY N°04 — STREETWEAR MANIFESTO ⟡</div>
+  
+  <!-- main title with typewriter energy -->
+  <h1 class="main-title">
+    THE COLLECTION IMPACT: <span>// ART OF STREETWEAR</span>
+  </h1>
 
-  <!-- first big impact statement: how the collection elevates streetwear art -->
-  <div class="impact-text">
-    <h2>Beyond garments: <br>redefining the canvas of the street.</h2>
-    <div class="impact-paragraphs">
-      <p><strong>This collection isn't just fabric stitched together — it’s a manifesto.</strong> In the evolution of streetwear, the line between fashion and fine art has blurred. Each piece in “Unbound Silhouette” challenges the mundane, embracing raw textures, asymmetric cuts, and graphic storytelling borrowed from urban brutalism. The result is a wardrobe that functions as a portable gallery. The art of streetwear has often been defined by logos and hype drops, but this collection reclaims narrative craftsmanship. Deconstructed tailoring, hand-distressed denim, and screen-printed visual poems bring authenticity back to the foreground.</p>
-      <p>By merging <strong>avant-garde construction</strong> with raw street functionality, the collection transforms the everyday hoodie, cargo, and outerwear into artifacts of self-expression. Where streetwear once borrowed from skate and hip-hop, this new wave pushes into sculptural dimensions — asymmetric zippers become architectural gestures, oversized panels act as abstract murals. The impact lies in the elevation: wearers become walking installations, challenging static fashion norms and inviting dialogue about identity, community, and rebellion. This is how streetwear enters its mature artistic era.</p>
+  <!-- === CORE PARAGRAPHS: how the collection is impactful to the art of streetwear === -->
+  <div class="impact-paragraph">
+    <strong>This collection redefines streetwear as a legitimate artistic medium</strong> — moving beyond logos and seasonal drops into sculptural storytelling. Each garment functions like a canvas, where raw hems, deconstructed tailoring, and abstract screen-printing collide with the raw energy of urban life. Where streetwear once borrowed from skate and hip-hop as pure utility, this body of work injects <em>conceptual art practice</em>: asymmetrical cuts become architectural drawings, oversized panels become murals for the body. The result is a paradigm shift: the streets become a roving gallery, and the wearer a curator.
+  </div>
+
+  <div class="impact-paragraph">
+    <strong>Why does that matter for the art of streetwear?</strong> For decades, the genre flirted with fine art via limited collaborations, but rarely did the clothing itself demand to be read as an artifact. This collection challenges that by prioritizing <strong>narrative rawness, hand-finished distress, and brutalist geometry</strong>. It reminds us that fashion, at its most potent, is a tool for cultural commentary. The impact is immediate: emerging designers now reference deconstruction as a form of visual poetry, and collectors treat each piece like a signed lithograph. Streetwear stops being just "cool" — it becomes intellectually and emotionally resonant.
+  </div>
+
+  <!-- short impactful quote to simulate typewriter notebook -->
+  <div class="art-quote">
+    <p>✦ “Garments as political sketches. Zippers as punctuation. Frayed edges as manifestos. This collection reinserts the hand of the artist onto the street — a vital turn for the language of urban fashion.” ✦</p>
+    <footer>— excerpt, The Impact Archive / streetwear dialetics</footer>
+  </div>
+
+  <div class="impact-paragraph">
+    <strong>Blurring the gallery & sidewalk</strong> — The most disruptive effect of this collection is the dissolution of boundaries between high art and everyday wear. Where traditional streetwear relied on hype, these pieces rely on <strong>material research and sculptural form</strong>. Hand-dyed gradients resemble abstract expressionist canvases; modular straps echo minimalism. This visual vocabulary pushes streetwear toward a new maturity, forcing critics and curators to recognize garments as legitimate contemporary art objects. Art institutions have already begun acquiring similar archival pieces, signaling that the “street” has entered the canon.
+  </div>
+  
+  <div class="impact-paragraph">
+    <strong>Craft as counterculture</strong> — Another crucial layer: by celebrating distressed finishes, upcycled textiles, and visible mending, the collection elevates <em>imperfection</em> as a core aesthetic. In an era of digital perfection, these rough textures recall the tactile spirit of punk zines and graffiti tags. This move directly impacts the future of streetwear art, encouraging new generations to value process, authenticity, and emotional weight over algorithmic trends. The collection establishes that streetwear can be avant-garde without losing its grit.
+  </div>
+
+  <!-- DIVIDING LINE — typewriter separator -->
+  <hr />
+
+  <!-- additional pillars of impact: concise and textual, matching dark/readable theme -->
+  <h3 style="font-family: inherit; font-weight: 600; margin-bottom: 1.2rem; letter-spacing: -0.2px;">◉ FOUR CORE SHIFTS: HOW THIS COLLECTION RESHAPES STREETWEAR ART</h3>
+  <div class="pillars">
+    <div class="pillar-card">
+      <h4>01</h4>
+      <p><strong>From commodity to manifesto</strong> — Each piece rejects passive consumption, instead functioning as an artistic statement about urban decay, identity, and rebellion. The hoodie becomes a canvas for social critique.</p>
+    </div>
+    <div class="pillar-card">
+      <h4>02</h4>
+      <p><strong>Architectural silhouettes</strong> — Asymmetry and radical draping mirror brutalist structures, inviting comparisons to minimalist sculpture. This shifts streetwear into the realm of wearable art installations.</p>
+    </div>
+    <div class="pillar-card">
+      <h4>03</h4>
+      <p><strong>Redefining luxury craft</strong> — Hand-finished edges, custom pigment blends, and zero-waste pattern cutting elevate streetwear to haute artistry while preserving raw street soul.</p>
+    </div>
+    <div class="pillar-card">
+      <h4>04</h4>
+      <p><strong>Legacy for new wave designers</strong> — By deconstructing logos and focusing on texture, this collection frees emerging artists from logo-mania. Authentic storytelling becomes the new status symbol.</p>
     </div>
   </div>
 
-  <!-- COLLECTION GALLERY — core pieces showing the transformative design -->
-  <div class="collection-section">
-    <div class="section-title">
-      <span></span> 
-      FEATURED PIECES — THE ART ARCHIVE
-      <span></span>
-    </div>
-
-    <div class="gallery-grid" id="collectionGrid">
-      <!-- each card uses inline style for unique background images / generated abstract street art textures, also alt description for real images but we'll use representative gradient/image placeholders that evoke streetwear aesthetic -->
-      <!-- Card 1 -->
-      <div class="collectible-card">
-        <div class="card-img" style="background-image: url('https://placecats.com/500/600?random=1'); background-size: cover; background-position: center;"></div>
-        <div class="card-info">
-          <h3>Distortion Zip Parka</h3>
-          <div class="sub">asymmetric · technical shell</div>
-          <p>Deconstructed paneling with raw edge finishes, oversized graphic overlay referencing urban decay and renewal.</p>
-          <div class="price-tag">€389 / ART OBJECT</div>
-        </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="collectible-card">
-        <div class="card-img" style="background-image: url('https://picsum.photos/id/131/500/600'); background-size: cover; background-position: 30% 40%;"></div>
-        <div class="card-info">
-          <h3>Concrete Canvas Cargo</h3>
-          <div class="sub">pigmented dye · modular straps</div>
-          <p>Brutalist pockets, industrial webbing, paint-splatter gradients that mimic gallery abstract expressionism.</p>
-          <div class="price-tag">€279 / limited release</div>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="collectible-card">
-        <div class="card-img" style="background-image: url('https://picsum.photos/id/29/500/600'); background-size: cover; background-position: center 20%;"></div>
-        <div class="card-info">
-          <h3>Monolith Pullover</h3>
-          <div class="sub">hand-finished · wool-blend</div>
-          <p>Sculptural silhouette with integrated mask detail, celebrating the anonymity of urban art movements.</p>
-          <div class="price-tag">€459 / wearable sculpture</div>
-        </div>
-      </div>
-      <!-- Card 4 -->
-      <div class="collectible-card">
-        <div class="card-img" style="background-image: url('https://picsum.photos/id/20/500/600'); background-size: cover; background-position: top;"></div>
-        <div class="card-info">
-          <h3>Layered Archive Vest</h3>
-          <div class="sub">upcycled nylon · graphic quilting</div>
-          <p>Collaged typography fading into abstract brushwork, reimagines archival streetwear as fine art relic.</p>
-          <div class="price-tag">€219 / upcycled series</div>
-        </div>
-      </div>
-      <!-- Card 5 — extra piece to enrich collection -->
-      <div class="collectible-card">
-        <div class="card-img" style="background-image: url('https://picsum.photos/id/169/500/600'); background-size: cover; background-position: 40% 0%;"></div>
-        <div class="card-info">
-          <h3>Rebel Script Denim</h3>
-          <div class="sub">hand-painted · raw hem</div>
-          <p>Hand-painted calligraphy over destroyed denim, merging graffiti heritage with luxury craft.</p>
-          <div class="price-tag">€349 / artist edition</div>
-        </div>
-      </div>
-      <!-- Card 6 -->
-      <div class="collectible-card">
-        <div class="card-img" style="background-image: url('https://picsum.photos/id/146/500/600'); background-size: cover; background-position: 20% 30%;"></div>
-        <div class="card-info">
-          <h3>Fragmented Hoodie</h3>
-          <div class="sub">double-layered · deconstruction</div>
-          <p>Exposed seams, detachable sleeves, and inner graphic layers — a meditation on vulnerability in streetwear.</p>
-          <div class="price-tag">€299 / conceptual piece</div>
-        </div>
-      </div>
-    </div>
+  <div class="impact-paragraph">
+    <strong>Future echoes: the art of streetwear after this collection</strong> — The collection’s greatest impact is psychological. It rewires what collectors and enthusiasts expect from “streetwear.” No longer just a hoodie with a logo, but a sculptural piece woven with intentionality and risk. We're already witnessing a ripple effect: independent brands adopting deconstruction, museum retrospectives on streetwear as an art movement, and a growing audience that values emotional resonance over hype. This collection stands as a milestone, proving that the edge of the street can hold the depth of a gallery — and that the most radical canvas is the one we wear every day.
   </div>
 
-  <!-- SECOND DEEP IMPACT SECTION — artistic & cultural effect on streetwear landscape -->
-  <div class="artistic-impact">
-    <h3>⚡ How this collection rewrites the rules of streetwear art</h3>
-    <div class="impact-grid">
-      <div class="impact-point">
-        <h4>01</h4>
-        <p><strong>From commodity to commentary</strong> — Streetwear was often dismissed as commercial, but this collection adopts critical art practices. Each stitch references socio-political texture, elevating hoodies into protest canvases. The art of streetwear becomes a medium for cultural critique, not just status.</p>
-      </div>
-      <div class="impact-point">
-        <h4>02</h4>
-        <p><strong>Blurring the gallery & sidewalk</strong> — With sculptural cuts and distressed finishes, the pieces resemble mixed-media art. Curators have started to treat garments like this as 'wearable paintings', shifting fashion weeks toward authentic art discourse. This collection amplifies that movement by prioritizing artistic risk over trend cycles.</p>
-      </div>
-      <div class="impact-point">
-        <h4>03</h4>
-        <p><strong>Redefining craftsmanship in streetwear</strong> — Hand-finished edges, custom-dyed fabrics, and zero-waste pattern cutting mirror practices in fine art studios. The impact ripples through emerging designers, showing that streetwear can be both raw and meticulously crafted, changing consumer expectations forever.</p>
-      </div>
-      <div class="impact-point">
-        <h4>04</h4>
-        <p><strong>Cultivating a new visual language</strong> — Abstract iconography replaces logos. This challenges the logo-centric history of streetwear and opens space for collaborative artist-led collections, turning garments into limited edition art prints. The ripple effect democratizes the intersection of fashion and contemporary art.</p>
-      </div>
-    </div>
+  <!-- final word: impact conclusion (typewriter tone) -->
+  <div class="art-quote" style="background: rgba(25, 22, 19, 0.9);">
+    <p>⏤ “The art of streetwear has evolved beyond trends into a legitimate avant-garde language. This collection doesn’t just dress the body — it provokes, challenges, and archives the spirit of the moment.” ⏤</p>
+    <footer>cultural analysis · streetwear art foundation</footer>
   </div>
 
-  <!-- Final textual layer: how the collection impacts future of streetwear as art movement -->
-  <div style="background: #fefaf5; border-radius: 32px; padding: 44px 36px; margin-bottom: 56px; border: 1px solid #ece2d8;">
-    <div style="max-width: 900px; margin: 0 auto;">
-      <h3 style="font-size: 1.8rem; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 20px; font-family: 'Space Grotesk';">Legacy & the future of streetwear as avant-garde art</h3>
-      <p style="font-size: 1.05rem; line-height: 1.55; margin-bottom: 20px;">The “Unbound Silhouette” collection doesn't simply follow trends — it creates a paradigm shift. By treating each garment as an individual art object, it demands that the industry reconsiders what streetwear can communicate. For decades, streetwear oscillated between subculture uniform and luxury appropriation. This collection breaks that cycle, emphasizing <strong>process, material research, and emotional resonance</strong>. In streetwear’s new golden era, artistic integrity becomes the ultimate luxury.</p>
-      <p style="font-size: 1.05rem; line-height: 1.55;">Moreover, the collection’s limited-run model, hand-finished details, and commitment to upcycling reinforce that environmental consciousness is part of the art. As young creatives and collectors look for pieces with depth, this collection becomes a benchmark: clothes that ask questions rather than just cover the body. Streetwear, through this lens, transforms into a living archive of urban visual culture — and <strong>that is the most profound impact of all</strong>.</p>
-    </div>
+  <div class="signature-line">
+    [ collection // unbound silhouettes ] &nbsp;&nbsp;⟡&nbsp;&nbsp; impact manifesto v.2 &nbsp;&nbsp; <span class="cursor-tip"></span>
   </div>
-
-  <footer>
-    <p>© 2025 UNBOUND SILHOUETTE — Where streetwear meets contemporary art practice. All pieces represent limited artistic editions.</p>
-    <p style="margin-top: 12px;"> collection codex · impact essay · curated by Studio Noa</p>
-  </footer>
 </div>
 
-<!--  add a subtle script to ensure dynamic loading is fine, and image fallback for consistency (internal demo) -->
-<script>
-  (function() {
-    // to improve user experience, replace any broken placeholder images with abstract pattern if needed?
-    // This is optional, but we ensure that images that don’t load get a stylish default pattern.
-    const images = document.querySelectorAll('.card-img');
-    images.forEach(img => {
-      const bgImg = img.style.backgroundImage;
-      if (!bgImg || bgImg === 'none') {
-        img.style.backgroundImage = `url('https://via.placeholder.com/600x800/ccc6bd/4c3f35?text=streetwear+canvas')`;
-      }
-      // tiny error handling for cross-origin? not needed but ensures visual consistency
-      // also added a backup for placecats possibly blocking? we use multi-source picsum are safe.
-    });
-    // if any image doesn't load due to network restrictions, nice abstract gradient fallback
-    for (let imgDiv of images) {
-      const testImg = new Image();
-      let url = imgDiv.style.backgroundImage.slice(5, -2);
-      if (url && url.startsWith('http')) {
-        testImg.onerror = function() {
-          imgDiv.style.backgroundImage = "linear-gradient(145deg, #ab9b8c, #5f554b), url('')";
-          imgDiv.style.backgroundBlendMode = "overlay";
-          imgDiv.style.backgroundSize = "cover";
-        };
-        testImg.src = url;
-      }
-    }
-  })();
-</script>
-
+<!-- additional small CSS trick to ensure any residual background remains dark but text stays luminous -->
 </body>
 </html>
