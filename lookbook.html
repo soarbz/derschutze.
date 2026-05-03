@@ -135,7 +135,7 @@
       letter-spacing: 0.5px;
     }
 
-    /* subtle index label (optional but matches frame vibe) */
+    /* subtle index label */
     .frame-label {
       font-size: 0.6rem;
       text-transform: lowercase;
@@ -149,7 +149,7 @@
       font-family: 'Courier Prime', monospace;
     }
 
-    /* footer area with "CLOSE WINDOW" button exactly as reference */
+    /* footer area with "CLOSE WINDOW" button */
     .lookbook-footer {
       text-align: center;
       margin-top: 0.5rem;
@@ -185,7 +185,7 @@
       box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
     }
 
-    /* derschutze text at bottom (small, matching original) */
+    /* derschutze text at bottom */
     .signature {
       text-align: center;
       margin-top: 1.8rem;
@@ -254,17 +254,17 @@
 
   <!-- 8 product frames exactly matching the screenshot data -->
   <div class="frames-grid">
-    <!-- 1. KIMONO JACKET - ¥26,800 -->
+    <!-- 1. KIMONO JACKET - ¥26,800 with custom image: processed_thangka_release_lookbook_20.avif -->
     <div class="frame-card">
       <div class="frame-img">
-        <img src="(1).jpg" alt="KIMONO JACKET" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/30/300/300'">
+        <img src="processed_thangka_release_lookbook_20.avif" alt="KIMONO JACKET" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/30/300/300'; this.alt='fallback image'">
       </div>
       <div class="product-title">KIMONO JACKET</div>
       <div class="product-price">¥26,800</div>
       <div class="frame-label">i</div>
     </div>
 
-    <!-- 2. BOMBER JKT - ¥39,900 -->
+    <!-- 2. BOMBER JKT - ¥39,900 using (3).jpg -->
     <div class="frame-card">
       <div class="frame-img">
         <img src="(3).jpg" alt="BOMBER JKT" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/31/300/300'">
@@ -350,7 +350,7 @@
       if (window.history.length > 1) {
         window.history.back();
       } else {
-        // fallback: since no previous history, show a subtle message
+        // fallback message
         const toast = document.createElement('div');
         toast.innerText = 'no previous page — end of collection';
         toast.style.position = 'fixed';
@@ -376,29 +376,22 @@
     });
   }
 
-  // use (1).jpg for Kimono Jacket and (3).jpg for Bomber Jkt as requested earlier.
-  // background image remains 9.jpg.
-  console.log('YAMIZAKURA COLLECTION · red frames · 8 items · close window button · full background 9.jpg');
+  // custom image for KIMONO JACKET: processed_thangka_release_lookbook_20.avif
+  // background image remains 9.jpg
+  console.log('YAMIZAKURA COLLECTION · KIMONO JACKET uses processed_thangka_release_lookbook_20.avif · red frames · close window button');
 </script>
 
 <!-- 
-  EXACT MATCH TO REFERENCE IMAGE:
-  ✓ Header: "FULL YAMIZAKURA COLLECTION" in uppercase typewriter style
-  ✓ All 8 items displayed exactly as per screenshot:
-    - KIMONO JACKET  ¥26,800
-    - BOMBER JKT     ¥39,900
-    - THE FIRE       ¥7,800
-    - YAMKUKARUKA BAG ¥22,500
-    - OBI BELT       ¥12,400
-    - DARK TOTE      ¥9,200
-    - GLOVES         ¥6,500
-    - SCARF          ¥5,800
-  ✓ Red frames with black borders, sharp edges (squared)
+  EXACT MATCH TO REFERENCE IMAGE + UPDATES:
+  ✓ Header: "FULL YAMIZAKURA COLLECTION"
+  ✓ KIMONO JACKET frame now uses image: processed_thangka_release_lookbook_20.avif
+  ✓ All 8 items displayed with correct names and prices
+  ✓ Red frames with black borders, sharp squared edges
   ✓ "CLOSE WINDOW" button at bottom
   ✓ "derschutze." signature
   ✓ Background uses images (9).jpg full page
-  ✓ Fully responsive grid (4 columns desktop, 2 tablet, 1 mobile)
-  ✓ All prices with ¥ symbol, white text on red frames
+  ✓ Fully responsive grid
+  ✓ Fallback included in case .avif file is missing
 -->
 </body>
 </html>
