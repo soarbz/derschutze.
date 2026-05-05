@@ -181,6 +181,36 @@
       border-radius: 14px;
     }
 
+    /* Go Back Button */
+    .go-back-wrapper {
+      margin-top: 1.8rem;
+      text-align: center;
+    }
+
+    .go-back-btn {
+      display: inline-block;
+      font-family: 'Courier New', 'Courier', monospace;
+      background: transparent;
+      border: 1.5px solid #b3482f;
+      padding: 0.6rem 1.8rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #e2bc9e;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+    }
+
+    .go-back-btn:hover {
+      background: #b3482f;
+      color: #1a0a0a;
+      border-color: #e2bc9e;
+    }
+
     .footer-note {
       margin-top: 1.2rem;
       font-size: 0.65rem;
@@ -199,6 +229,10 @@
       }
       .frame-container {
         min-height: 130px;
+      }
+      .go-back-btn {
+        padding: 0.5rem 1.4rem;
+        font-size: 0.75rem;
       }
     }
   </style>
@@ -248,12 +282,27 @@
       </div>
     </div>
 
+    <!-- Go Back Button -->
+    <div class="go-back-wrapper">
+      <button class="go-back-btn" onclick="goBack()">GO BACK</button>
+    </div>
+
     <div class="footer-note">
       RED MANIFESTO // UNBOUND SILHOUETTE
     </div>
   </div>
 
   <script>
+    // Go back function - navigates to previous page in history
+    function goBack() {
+      if (document.referrer && window.history.length > 1) {
+        window.history.back();
+      } else {
+        // Fallback in case there's no history: redirect to a default or just reload
+        window.location.href = '/';
+      }
+    }
+
     // simple note: to add an image later, replace content of #imageSlot with an img tag
     console.log("Ready: replace placeholder with <img src='your-image.jpg'> inside frame-container");
   </script>
