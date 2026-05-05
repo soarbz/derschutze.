@@ -65,7 +65,7 @@
       flex-wrap: wrap;
     }
 
-    /* LEFT SIDEBAR - ENLARGED, no text, just image */
+    /* LEFT SIDEBAR - ENLARGED, no text, just image with images (1).jpg */
     .left-sidebar {
       flex: 1.2;
       min-width: 300px;
@@ -314,10 +314,10 @@
   </div>
 
   <div class="collection-wrapper">
-    <!-- LEFT SIDEBAR - ENLARGED FRAME with only picture (no text) -->
+    <!-- LEFT SIDEBAR - ENLARGED FRAME with images (1).jpg (no text) -->
     <div class="left-sidebar">
       <div class="sidebar-img">
-        <img src="https://picsum.photos/id/104/800/1000" alt="editorial" loading="lazy" onerror="this.src='https://picsum.photos/id/119/800/1000'">
+        <img src="images (1).jpg" alt="editorial visual" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/104/800/1000'; this.alt='fallback image'">
       </div>
     </div>
 
@@ -393,7 +393,7 @@
         <div class="frame-label">vii</div>
       </div>
 
-      <!-- 8. SCARF - ¥5,800 with 2026-04-21-14-2.webp -->
+      <!-- 8. SCARF - ¥5,800 -->
       <div class="frame-card">
         <div class="frame-img">
           <img src="2026-04-21-14-2.webp" alt="SCARF" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/37/300/300'; this.alt='fallback image'">
@@ -445,14 +445,14 @@
     });
   }
 
-  console.log('YAMIZAKURA COLLECTION · SCARF frame updated with 2026-04-21-14-2.webp');
+  console.log('YAMIZAKURA COLLECTION · Left frame now uses images (1).jpg · all product images assigned');
 </script>
 
 <!-- 
   FINAL UPDATES:
-  ✓ SCARF frame now uses image: 2026-04-21-14-2.webp
-  ✓ Left editorial frame: text removed, only image, enlarged
-  ✓ All other product images maintained:
+  ✓ Left editorial frame now uses image: images (1).jpg (with space in filename)
+  ✓ Left frame has no text, only the image, enlarged
+  ✓ All product images maintained:
     - KIMONO JACKET: processed_thangka_release_lookbook_20.avif
     - MARGIELA ZUKO: processed_thangka_release_lookbook_29.avif
     - THE FIRE: processed_thangka_release_lookbook_37.webp
@@ -460,6 +460,7 @@
     - OBI BELT: 2024-11-13-1-2-1-2-3.webp
     - DARK TOTE: processed_thangka_release_lookbook_22.webp
     - SAKURA PANTS: processed_thangka_release_lookbook_25.avif
+    - SCARF: 2026-04-21-14-2.webp
   ✓ Background: 9.jpg full page
   ✓ Red frames, black borders, close window button, derschutze signature
   ✓ Fully responsive layout
