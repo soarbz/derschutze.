@@ -1,5 +1,3 @@
-Here is the HTML document with the OBI BELT frame updated to use the `2024-11-13-1-2-1-2-3.webp` image.
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +29,7 @@ Here is the HTML document with the OBI BELT frame updated to use the `2024-11-13
 
     /* main container: dark overlay to make red frames pop */
     .lookbook {
-      max-width: 1300px;
+      max-width: 1500px;
       width: 100%;
       background: rgba(0, 0, 0, 0.6);
       border: none;
@@ -39,7 +37,7 @@ Here is the HTML document with the OBI BELT frame updated to use the `2024-11-13
       padding: 2rem 2rem 2rem 2rem;
     }
 
-    /* header area — exactly "FULL YAMIZAKURA COLLECTION" as in screenshot */
+    /* header area — exactly "FULL YAMIZAKURA COLLECTION" */
     .lookbook-header {
       text-align: center;
       margin-bottom: 2.5rem;
@@ -59,12 +57,76 @@ Here is the HTML document with the OBI BELT frame updated to use the `2024-11-13
       border: 2px solid #cc3333;
     }
 
-    /* ---------- GRID: 8 items exactly as reference (2 rows x 4 columns on desktop) ---------- */
+    /* main wrapper that holds both sidebar and grid */
+    .collection-wrapper {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    /* LEFT SIDEBAR - ENLARGED to be BIGGER like the whole frame (taller, wider) */
+    .left-sidebar {
+      flex: 1.2;
+      min-width: 280px;
+      max-width: 380px;
+      background: #cc2222;
+      border: 3px solid #000000;
+      box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-self: stretch;
+      transition: transform 0.2s ease, box-shadow 0.2s;
+    }
+
+    .left-sidebar:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.5);
+      background: #dd3a3a;
+    }
+
+    .sidebar-img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border: 2px solid #000000;
+      margin-bottom: 1.2rem;
+      background: #2a0a0a;
+    }
+
+    .sidebar-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .left-sidebar:hover .sidebar-img img {
+      transform: scale(1.02);
+    }
+
+    .sidebar-text {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 0.6rem;
+      text-align: center;
+      border: 1px solid #ffffff;
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
+
+    /* ---------- GRID: 8 items exactly as reference ---------- */
     .frames-grid {
+      flex: 3;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.8rem;
-      margin-bottom: 3rem;
     }
 
     /* each frame: RED background, black border, sharp edges, product card style */
@@ -200,20 +262,39 @@ Here is the HTML document with the OBI BELT frame updated to use the `2024-11-13
     }
 
     /* responsive: tablet & mobile */
-    @media (max-width: 900px) {
+    @media (max-width: 1100px) {
+      .collection-wrapper {
+        flex-direction: column;
+      }
+      .left-sidebar {
+        max-width: 100%;
+        flex-direction: row;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      .sidebar-img {
+        max-width: 280px;
+        aspect-ratio: 1 / 1;
+      }
       .frames-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
       }
+    }
+
+    @media (max-width: 700px) {
+      .frames-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .left-sidebar {
+        flex-direction: column;
+      }
+      .sidebar-img {
+        max-width: 100%;
+      }
       .lookbook-header h1 {
-        font-size: 1.4rem;
-        padding: 0.4rem 1rem;
-      }
-      .product-title {
-        font-size: 0.8rem;
-      }
-      .product-price {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
       }
     }
 
@@ -221,16 +302,9 @@ Here is the HTML document with the OBI BELT frame updated to use the `2024-11-13
       .lookbook {
         padding: 1.2rem;
       }
-      .frames-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-      }
       .close-window-btn {
         padding: 0.6rem 1.5rem;
         font-size: 0.9rem;
-      }
-      .lookbook-header h1 {
-        font-size: 1.2rem;
       }
     }
 
@@ -238,7 +312,9 @@ Here is the HTML document with the OBI BELT frame updated to use the `2024-11-13
     .frame-label::before,
     .frame-label::after,
     .close-window-btn::before,
-    .close-window-btn::after {
+    .close-window-btn::after,
+    .sidebar-text::before,
+    .sidebar-text::after {
       content: none !important;
     }
 
@@ -254,86 +330,96 @@ Here is the HTML document with the OBI BELT frame updated to use the `2024-11-13
     <h1>FULL YAMIZAKURA COLLECTION</h1>
   </div>
 
-  <!-- 8 product frames exactly matching the screenshot data -->
-  <div class="frames-grid">
-    <!-- 1. KIMONO JACKET - ¥26,800 with custom image: processed_thangka_release_lookbook_20.avif -->
-    <div class="frame-card">
-      <div class="frame-img">
-        <img src="processed_thangka_release_lookbook_20.avif" alt="KIMONO JACKET" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/30/300/300'; this.alt='fallback image'">
+  <div class="collection-wrapper">
+    <!-- LEFT SIDEBAR - ENLARGED FRAME with YAMIZURA EDITORIAL (bigger, more prominent) -->
+    <div class="left-sidebar">
+      <div class="sidebar-img">
+        <img src="https://picsum.photos/id/104/600/800" alt="yamizura editorial" loading="lazy" onerror="this.src='https://picsum.photos/id/119/600/800'">
       </div>
-      <div class="product-title">KIMONO JACKET</div>
-      <div class="product-price">¥26,800</div>
-      <div class="frame-label">i</div>
+      <div class="sidebar-text">✦ YAMIZURA EDITORIAL ✦</div>
     </div>
 
-    <!-- 2. MARGIELA ZUKO (formerly BOMBER JKT) - ¥39,900 with processed_thangka_release_lookbook_29.avif -->
-    <div class="frame-card">
-      <div class="frame-img">
-        <img src="processed_thangka_release_lookbook_29.avif" alt="MARGIELA ZUKO" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/31/300/300'">
+    <!-- 8 product frames exactly matching the screenshot data -->
+    <div class="frames-grid">
+      <!-- 1. KIMONO JACKET - ¥26,800 -->
+      <div class="frame-card">
+        <div class="frame-img">
+          <img src="processed_thangka_release_lookbook_20.avif" alt="KIMONO JACKET" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/30/300/300'; this.alt='fallback image'">
+        </div>
+        <div class="product-title">KIMONO JACKET</div>
+        <div class="product-price">¥26,800</div>
+        <div class="frame-label">i</div>
       </div>
-      <div class="product-title">MARGIELA ZUKO</div>
-      <div class="product-price">¥39,900</div>
-      <div class="frame-label">ii</div>
-    </div>
 
-    <!-- 3. THE FIRE - ¥7,800 with processed_thangka_release_lookbook_37.webp -->
-    <div class="frame-card">
-      <div class="frame-img">
-        <img src="processed_thangka_release_lookbook_37.webp" alt="THE FIRE" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/32/300/300'; this.alt='fallback image'">
+      <!-- 2. MARGIELA ZUKO - ¥39,900 -->
+      <div class="frame-card">
+        <div class="frame-img">
+          <img src="processed_thangka_release_lookbook_29.avif" alt="MARGIELA ZUKO" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/31/300/300'">
+        </div>
+        <div class="product-title">MARGIELA ZUKO</div>
+        <div class="product-price">¥39,900</div>
+        <div class="frame-label">ii</div>
       </div>
-      <div class="product-title">THE FIRE</div>
-      <div class="product-price">¥7,800</div>
-      <div class="frame-label">iii</div>
-    </div>
 
-    <!-- 4. YAMKUKARUKA BAG - ¥22,500 with processed_thangka_release_lookbook_28.avif -->
-    <div class="frame-card">
-      <div class="frame-img">
-        <img src="processed_thangka_release_lookbook_28.avif" alt="YAMKUKARUKA BAG" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/33/300/300'; this.alt='fallback image'">
+      <!-- 3. THE FIRE - ¥7,800 -->
+      <div class="frame-card">
+        <div class="frame-img">
+          <img src="processed_thangka_release_lookbook_37.webp" alt="THE FIRE" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/32/300/300'; this.alt='fallback image'">
+        </div>
+        <div class="product-title">THE FIRE</div>
+        <div class="product-price">¥7,800</div>
+        <div class="frame-label">iii</div>
       </div>
-      <div class="product-title">YAMKUKARUKA BAG</div>
-      <div class="product-price">¥22,500</div>
-      <div class="frame-label">iv</div>
-    </div>
 
-    <!-- 5. OBI BELT - ¥12,400 with 2024-11-13-1-2-1-2-3.webp -->
-    <div class="frame-card">
-      <div class="frame-img">
-        <img src="2024-11-13-1-2-1-2-3.webp" alt="OBI BELT" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/34/300/300'; this.alt='fallback image'">
+      <!-- 4. YAMKUKARUKA BAG - ¥22,500 -->
+      <div class="frame-card">
+        <div class="frame-img">
+          <img src="processed_thangka_release_lookbook_28.avif" alt="YAMKUKARUKA BAG" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/33/300/300'; this.alt='fallback image'">
+        </div>
+        <div class="product-title">YAMKUKARUKA BAG</div>
+        <div class="product-price">¥22,500</div>
+        <div class="frame-label">iv</div>
       </div>
-      <div class="product-title">OBI BELT</div>
-      <div class="product-price">¥12,400</div>
-      <div class="frame-label">v</div>
-    </div>
 
-    <!-- 6. DARK TOTE - ¥9,200 -->
-    <div class="frame-card">
-      <div class="frame-img">
-        <img src="https://picsum.photos/id/35/300/300" alt="DARK TOTE" loading="lazy">
+      <!-- 5. OBI BELT - ¥12,400 -->
+      <div class="frame-card">
+        <div class="frame-img">
+          <img src="2024-11-13-1-2-1-2-3.webp" alt="OBI BELT" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/34/300/300'; this.alt='fallback image'">
+        </div>
+        <div class="product-title">OBI BELT</div>
+        <div class="product-price">¥12,400</div>
+        <div class="frame-label">v</div>
       </div>
-      <div class="product-title">DARK TOTE</div>
-      <div class="product-price">¥9,200</div>
-      <div class="frame-label">vi</div>
-    </div>
 
-    <!-- 7. GLOVES - ¥6,500 -->
-    <div class="frame-card">
-      <div class="frame-img">
-        <img src="https://picsum.photos/id/36/300/300" alt="GLOVES" loading="lazy">
+      <!-- 6. DARK TOTE - ¥9,200 with processed_thangka_release_lookbook_22.webp -->
+      <div class="frame-card">
+        <div class="frame-img">
+          <img src="processed_thangka_release_lookbook_22.webp" alt="DARK TOTE" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/35/300/300'; this.alt='fallback image'">
+        </div>
+        <div class="product-title">DARK TOTE</div>
+        <div class="product-price">¥9,200</div>
+        <div class="frame-label">vi</div>
       </div>
-      <div class="product-title">GLOVES</div>
-      <div class="product-price">¥6,500</div>
-      <div class="frame-label">vii</div>
-    </div>
 
-    <!-- 8. SCARF - ¥5,800 -->
-    <div class="frame-card">
-      <div class="frame-img">
-        <img src="https://picsum.photos/id/37/300/300" alt="SCARF" loading="lazy">
+      <!-- 7. GLOVES - ¥6,500 -->
+      <div class="frame-card">
+        <div class="frame-img">
+          <img src="https://picsum.photos/id/36/300/300" alt="GLOVES" loading="lazy">
+        </div>
+        <div class="product-title">GLOVES</div>
+        <div class="product-price">¥6,500</div>
+        <div class="frame-label">vii</div>
       </div>
-      <div class="product-title">SCARF</div>
-      <div class="product-price">¥5,800</div>
-      <div class="frame-label">viii</div>
+
+      <!-- 8. SCARF - ¥5,800 -->
+      <div class="frame-card">
+        <div class="frame-img">
+          <img src="https://picsum.photos/id/37/300/300" alt="SCARF" loading="lazy">
+        </div>
+        <div class="product-title">SCARF</div>
+        <div class="product-price">¥5,800</div>
+        <div class="frame-label">viii</div>
+      </div>
     </div>
   </div>
 
@@ -352,7 +438,6 @@ Here is the HTML document with the OBI BELT frame updated to use the `2024-11-13
       if (window.history.length > 1) {
         window.history.back();
       } else {
-        // fallback message
         const toast = document.createElement('div');
         toast.innerText = 'no previous page — end of collection';
         toast.style.position = 'fixed';
@@ -378,32 +463,22 @@ Here is the HTML document with the OBI BELT frame updated to use the `2024-11-13
     });
   }
 
-  // custom images:
-  // - KIMONO JACKET: processed_thangka_release_lookbook_20.avif
-  // - MARGIELA ZUKO: processed_thangka_release_lookbook_29.avif
-  // - THE FIRE: processed_thangka_release_lookbook_37.webp
-  // - YAMKUKARUKA BAG: processed_thangka_release_lookbook_28.avif
-  // - OBI BELT: 2024-11-13-1-2-1-2-3.webp
-  // background image remains 9.jpg
-  console.log('YAMIZAKURA COLLECTION · OBI BELT uses 2024-11-13-1-2-1-2-3.webp · red frames · close window button');
+  console.log('YAMIZAKURA COLLECTION · Left editorial frame ENLARGED (bigger) · DARK TOTE now uses processed_thangka_release_lookbook_22.webp');
 </script>
 
 <!-- 
-  EXACT MATCH TO REFERENCE IMAGE + UPDATES:
-  ✓ Header: "FULL YAMIZAKURA COLLECTION"
-  ✓ KIMONO JACKET frame uses image: processed_thangka_release_lookbook_20.avif
-  ✓ MARGIELA ZUKO frame uses image: processed_thangka_release_lookbook_29.avif
-  ✓ THE FIRE frame uses image: processed_thangka_release_lookbook_37.webp
-  ✓ YAMKUKARUKA BAG frame uses image: processed_thangka_release_lookbook_28.avif
-  ✓ OBI BELT frame now uses image: 2024-11-13-1-2-1-2-3.webp
-  ✓ All 8 items displayed with correct names and prices
-  ✓ Red frames with black borders, sharp squared edges
-  ✓ "CLOSE WINDOW" button at bottom
-  ✓ "derschutze." signature
-  ✓ Background uses images (9).jpg full page
-  ✓ Fully responsive grid
-  ✓ Fallbacks included in case images are missing
+  FINAL UPDATES:
+  ✓ Left editorial frame (YAMIZURA EDITORIAL) ENLARGED — now significantly bigger (flex: 1.2, min-width 280px, max-width 380px, taller aspect ratio)
+  ✓ DARK TOTE frame updated with image: processed_thangka_release_lookbook_22.webp
+  ✓ All other product images maintained:
+    - KIMONO JACKET: processed_thangka_release_lookbook_20.avif
+    - MARGIELA ZUKO: processed_thangka_release_lookbook_29.avif
+    - THE FIRE: processed_thangka_release_lookbook_37.webp
+    - YAMKUKARUKA BAG: processed_thangka_release_lookbook_28.avif
+    - OBI BELT: 2024-11-13-1-2-1-2-3.webp
+  ✓ Background: 9.jpg full page
+  ✓ Red frames, black borders, close window button, derschutze signature
+  ✓ Fully responsive layout
 -->
 </body>
 </html>
-```
