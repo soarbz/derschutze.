@@ -1,474 +1,665 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>YAMIZAKURA · lookbook collection</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>DERCHUTZE — DARK RED LABEL</title>
+    <!-- Google Fonts: Courier Prime (monospace, clean, brutal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons for socials) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* ---------- GLOBAL: background image (9).jpg covering ENTIRE page ---------- */
-    body {
-      background-image: url('9.jpg');
-      background-size: cover;
-      background-position: center center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      background-color: #0a0505;
-      font-family: 'Courier Prime', 'Courier New', Courier, monospace;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem 1.5rem;
-    }
+        /* --- FULLSCREEN BACKGROUND IMAGE: Screenshot 2026-04-20 115358.png --- */
+        body {
+            background-image: url('Screenshot 2026-04-20 115358.png');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            overflow-x: hidden;
+            color: #8b1a1a;
+            scroll-behavior: smooth;
+            position: relative;
+        }
 
-    /* main container: dark overlay to make red frames pop */
-    .lookbook {
-      max-width: 1400px;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      border: none;
-      border-radius: 0px;
-      padding: 2rem 2rem 2rem 2rem;
-    }
+        /* deep black overlay (solid, not faded) for overall readability */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.88);
+            z-index: 0;
+            pointer-events: none;
+        }
 
-    /* header area — exactly "FULL YAMIZAKURA COLLECTION" as in screenshot */
-    .lookbook-header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
+        /* floating particle canvas (very subtle, dark mood) */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.25;
+        }
 
-    .lookbook-header h1 {
-      font-size: 2rem;
-      letter-spacing: 0.03em;
-      font-weight: 700;
-      color: #ffffff;
-      font-family: 'Courier Prime', 'Courier New', monospace;
-      text-transform: uppercase;
-      text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
-      background: rgba(0, 0, 0, 0.5);
-      display: inline-block;
-      padding: 0.5rem 2rem;
-      border: 2px solid #cc3333;
-    }
+        .site-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 2rem 5rem;
+        }
 
-    /* main wrapper that holds both sidebar and grid */
-    .collection-wrapper {
-      display: flex;
-      gap: 2rem;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-    }
+        /* navbar — dark red & black */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 1rem 0 2rem 0;
+            border-bottom: 2px solid #8b1a1a;
+            margin-bottom: 3rem;
+        }
 
-    /* LEFT SIDEBAR - empty space now filled with an editorial image */
-    .left-sidebar {
-      flex: 0.8;
-      min-width: 180px;
-      max-width: 260px;
-      background: #cc2222;
-      border: 3px solid #000000;
-      box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.35);
-      padding: 0.8rem;
-      display: flex;
-      flex-direction: column;
-      align-self: stretch;
-    }
+        .logo-area h1 {
+            font-size: 2rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+            color: #8b1a1a;
+            text-transform: uppercase;
+        }
 
-    .sidebar-img {
-      width: 100%;
-      aspect-ratio: 1 / 1.2;
-      overflow: hidden;
-      border: 2px solid #000000;
-      margin-bottom: 1rem;
-    }
+        .logo-area p {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: #a52a2a;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
 
-    .sidebar-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.25s ease;
-    }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
 
-    .left-sidebar:hover .sidebar-img img {
-      transform: scale(1.02);
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: #8b1a1a;
+            transition: 0.2s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-    .sidebar-text {
-      font-family: 'Courier Prime', monospace;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #ffffff;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 0.4rem;
-      text-align: center;
-      border: 1px solid #ffffff;
-    }
+        .nav-links a:hover {
+            color: #c0392b;
+            transform: translateY(-2px);
+        }
 
-    /* ---------- GRID: 8 items exactly as reference ---------- */
-    .frames-grid {
-      flex: 3;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.8rem;
-    }
+        /* Hero — dark red text, sharp edges */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 3rem 0 5rem 0;
+        }
 
-    /* each frame: RED background, black border, sharp edges, product card style */
-    .frame-card {
-      background: #cc2222;
-      border-radius: 0px;
-      padding: 1.2rem 1rem 1.2rem 1rem;
-      transition: transform 0.2s ease, box-shadow 0.2s, background 0.2s;
-      box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.35);
-      border: 3px solid #000000;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      cursor: default;
-    }
+        .hero h2 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #8b1a1a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-    .frame-card:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.45);
-      background: #dd3a3a;
-      border-color: #111;
-    }
+        .hero .sub {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            margin-top: 1rem;
+            font-weight: 400;
+            color: #a52a2a;
+            background: rgba(0,0,0,0.4);
+            display: inline-block;
+            padding: 0.3rem 1.5rem;
+            border-radius: 0px;
+            border: 1px solid #8b1a1a;
+        }
 
-    /* image container: square area with border */
-    .frame-img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      background: #2a0a0a;
-      border: 2px solid #000000;
-      margin-bottom: 1rem;
-    }
+        .tagline {
+            font-size: 0.8rem;
+            margin-top: 1.2rem;
+            color: #b03a2e;
+            max-width: 520px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
 
-    .frame-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.25s ease;
-    }
+        /* Collection Card — solid dark background, dark red accents */
+        .collection-highlight {
+            background: #0a0a0a;
+            border-radius: 0px;
+            padding: 2.5rem 2rem;
+            margin: 2rem 0 2rem;
+            border: 1px solid #8b1a1a;
+            box-shadow: none;
+            text-align: center;
+        }
 
-    .frame-card:hover .frame-img img {
-      transform: scale(1.02);
-    }
+        .collection-highlight h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #b33b2b;
+        }
 
-    /* product name styling — all caps, bold, white */
-    .product-title {
-      font-family: 'Courier Prime', monospace;
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #ffffff;
-      margin: 0.5rem 0 0.3rem 0;
-      line-height: 1.3;
-      word-break: break-word;
-    }
+        .new-badge {
+            background: #4a0e0e;
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 0px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #e6b8a8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid #8b1a1a;
+        }
 
-    /* price styling with yen symbol */
-    .product-price {
-      font-family: 'Courier Prime', monospace;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #ffffff;
-      background: rgba(0, 0, 0, 0.45);
-      display: inline-block;
-      padding: 0.2rem 0.8rem;
-      margin-top: 0.3rem;
-      border: 1px solid #ffffff;
-      letter-spacing: 0.5px;
-    }
+        .collection-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
 
-    /* subtle index label */
-    .frame-label {
-      font-size: 0.6rem;
-      text-transform: lowercase;
-      letter-spacing: 1px;
-      font-weight: 500;
-      color: #ffcccc;
-      background: rgba(0, 0, 0, 0.4);
-      display: inline-block;
-      padding: 0.15rem 0.6rem;
-      margin-top: 0.5rem;
-      font-family: 'Courier Prime', monospace;
-    }
+        .product-card {
+            background: #111111;
+            border-radius: 0px;
+            padding: 1rem;
+            width: 200px;
+            transition: 0.2s ease;
+            border: 1px solid #5e1818;
+        }
 
-    /* footer area with "CLOSE WINDOW" button */
-    .lookbook-footer {
-      text-align: center;
-      margin-top: 0.5rem;
-      border-top: 2px solid #cc3333;
-      padding-top: 2rem;
-    }
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #a3261a;
+            background: #1c0808;
+        }
 
-    .close-window-btn {
-      background: #cc2222;
-      border: 3px solid #000000;
-      padding: 0.9rem 2.5rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      font-family: 'Courier Prime', monospace;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: #ffffff;
-      border-radius: 0px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.35);
-      display: inline-block;
-    }
+        .product-img {
+            background: #1f0a0a;
+            border-radius: 0px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #b34a3a;
+            font-family: 'Courier Prime', monospace;
+            border: 1px solid #551a1a;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-    .close-window-btn:hover {
-      background: #dd3a3a;
-      transform: translate(-2px, -2px);
-      box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.4);
-    }
+        .product-card h4 {
+            font-weight: 700;
+            letter-spacing: 0;
+            color: #c9513f;
+        }
 
-    .close-window-btn:active {
-      transform: translate(2px, 2px);
-      box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
-    }
+        .price {
+            color: #b64836;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
 
-    /* derschutze text at bottom */
-    .signature {
-      text-align: center;
-      margin-top: 1.8rem;
-      font-size: 0.8rem;
-      color: #ffffff;
-      font-family: 'Courier Prime', monospace;
-      text-transform: lowercase;
-      letter-spacing: 1px;
-      opacity: 0.7;
-    }
+        /* ========== ART SECTION with FULL BACKGROUND IMAGE (9).jfif ========== */
+        .art-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5rem 0;
+            padding: 2.5rem 2rem;
+            border-radius: 0px;
+            border: 2px solid #8b1a1a;
+            background-image: url('(9).jfif');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .art-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.65);
+            z-index: -1;
+            pointer-events: none;
+        }
 
-    /* responsive: tablet & mobile */
-    @media (max-width: 1000px) {
-      .collection-wrapper {
-        flex-direction: column;
-      }
-      .left-sidebar {
-        max-width: 100%;
-        flex-direction: row;
-        align-items: center;
-        gap: 1rem;
-      }
-      .sidebar-img {
-        max-width: 180px;
-        aspect-ratio: 1 / 1;
-      }
-      .frames-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-    }
+        .art-text {
+            flex: 1;
+            min-width: 240px;
+            position: relative;
+            z-index: 2;
+        }
 
-    @media (max-width: 700px) {
-      .frames-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-      }
-      .left-sidebar {
-        flex-direction: column;
-      }
-      .sidebar-img {
-        max-width: 100%;
-      }
-      .lookbook-header h1 {
-        font-size: 1.2rem;
-      }
-    }
+        .art-text h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            font-family: 'Courier Prime', monospace;
+            color: #e65c48;
+            text-shadow: 1px 1px 0px #2f0a0a;
+            letter-spacing: 1px;
+        }
 
-    @media (max-width: 550px) {
-      .lookbook {
-        padding: 1.2rem;
-      }
-      .close-window-btn {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.9rem;
-      }
-    }
+        .art-text p {
+            margin-top: 1rem;
+            line-height: 1.5;
+            color: #f5dbd0;
+            font-weight: 400;
+            text-shadow: 0px 0px 3px rgba(0,0,0,0.9);
+            max-width: 550px;
+        }
 
-    /* no unwanted chars */
-    .frame-label::before,
-    .frame-label::after,
-    .close-window-btn::before,
-    .close-window-btn::after,
-    .sidebar-text::before,
-    .sidebar-text::after {
-      content: none !important;
-    }
+        .art-icon {
+            font-size: 2rem;
+            background: rgba(30, 8, 8, 0.85);
+            padding: 1rem 1.8rem;
+            border-radius: 0px;
+            color: #e05a44;
+            border: 1px solid #8b1a1a;
+            backdrop-filter: blur(2px);
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+        }
 
-    img {
-      background: #2a1111;
-    }
-  </style>
+        /* ========== ABOUT THE BRAND SECTION ========== */
+        .about-brand {
+            background: #0a0505;
+            border: 1px solid #6b1c1c;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        .about-brand h3 {
+            font-size: 1.8rem;
+            color: #c04432;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .about-brand p {
+            max-width: 850px;
+            margin: 0 auto 1rem auto;
+            line-height: 1.6;
+            color: #ddb7a8;
+            font-size: 0.9rem;
+        }
+        .about-brand .brand-highlight {
+            margin-top: 1.5rem;
+            font-weight: 700;
+            color: #bc5a46;
+            letter-spacing: 0.5px;
+        }
+
+        /* button — dark red base */
+        button {
+            background: #5e1515;
+            border: none;
+            padding: 10px 32px;
+            border-radius: 0px;
+            font-weight: 700;
+            font-family: 'Courier Prime', monospace;
+            color: #f0cfc0;
+            letter-spacing: 1.5px;
+            margin-top: 1.5rem;
+            cursor: pointer;
+            transition: 0.15s;
+            border: 1px solid #9e3020;
+        }
+
+        button:active {
+            transform: translateY(2px);
+            background: #3e0e0e;
+        }
+
+        /* ========== SOCIAL FOOTER with derchutze. text ========== */
+        .social-footer {
+            margin-top: 4rem;
+            text-align: center;
+            border-top: 1px solid #6b1c1c;
+            padding-top: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-links a {
+            color: #b54533;
+            font-size: 1.8rem;
+            transition: 0.2s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            color: #e05a44;
+            transform: translateY(-3px);
+        }
+        
+        .derchutze-footer {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #b54533;
+            margin: 1rem 0 1rem;
+            text-transform: lowercase;
+            font-family: 'Courier Prime', monospace;
+            border: none;
+            display: inline-block;
+        }
+        
+        .copyright {
+            font-size: 0.7rem;
+            color: #9a4e3e;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+        
+        .brand-motto {
+            display: inline-flex;
+            gap: 0.8rem;
+            background: rgba(30, 8, 8, 0.8);
+            padding: 0.5rem 1.2rem;
+            border-radius: 0px;
+            margin-bottom: 1rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #cc7766;
+            border: 1px solid #8b1a1a;
+        }
+
+        @media (max-width: 750px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .site-content {
+                padding: 1rem;
+            }
+            .navbar {
+                flex-direction: column;
+            }
+            .art-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .art-text h2 {
+                font-size: 2rem;
+            }
+            .social-links {
+                gap: 1.5rem;
+            }
+            .social-links a {
+                font-size: 1.5rem;
+            }
+            .about-brand {
+                padding: 1.5rem;
+            }
+            .derchutze-footer {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="lookbook">
-  <div class="lookbook-header">
-    <h1>FULL YAMIZAKURA COLLECTION</h1>
-  </div>
+<!-- Canvas for atmospheric particles (very subtle dark red tint) -->
+<canvas id="darkCanvas" width="800" height="800"></canvas>
 
-  <div class="collection-wrapper">
-    <!-- LEFT SIDEBAR - previously empty space, now filled with an editorial image -->
-    <div class="left-sidebar">
-      <div class="sidebar-img">
-        <img src="https://picsum.photos/id/104/400/500" alt="editorial visual" loading="lazy" onerror="this.src='https://picsum.photos/id/119/400/500'">
-      </div>
-      <div class="sidebar-text">✦ yamizura editorial ✦</div>
+<div class="site-content">
+    <div class="navbar">
+        <div class="logo-area">
+            <h1>DERCHUTZE</h1>
+            <p>STREETWEAR | TOKYO</p>
+        </div>
+        <div class="nav-links">
+            <a href="#">LOOKBOOK</a>
+            <a href="#">COLLECTION</a>
+            <a href="#">EDITORIAL</a>
+            <a href="#">CORE</a>
+        </div>
     </div>
 
-    <!-- 8 product frames exactly matching the screenshot data -->
-    <div class="frames-grid">
-      <!-- 1. KIMONO JACKET - ¥26,800 with custom image: processed_thangka_release_lookbook_20.avif -->
-      <div class="frame-card">
-        <div class="frame-img">
-          <img src="processed_thangka_release_lookbook_20.avif" alt="KIMONO JACKET" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/30/300/300'; this.alt='fallback image'">
+    <div class="hero">
+        <div class="brand-motto">
+            LIMITED EDITION // FALL WINTER
         </div>
-        <div class="product-title">KIMONO JACKET</div>
-        <div class="product-price">¥26,800</div>
-        <div class="frame-label">i</div>
-      </div>
-
-      <!-- 2. MARGIELA ZUKO - ¥39,900 with processed_thangka_release_lookbook_29.avif -->
-      <div class="frame-card">
-        <div class="frame-img">
-          <img src="processed_thangka_release_lookbook_29.avif" alt="MARGIELA ZUKO" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/31/300/300'">
-        </div>
-        <div class="product-title">MARGIELA ZUKO</div>
-        <div class="product-price">¥39,900</div>
-        <div class="frame-label">ii</div>
-      </div>
-
-      <!-- 3. THE FIRE - ¥7,800 with processed_thangka_release_lookbook_37.webp -->
-      <div class="frame-card">
-        <div class="frame-img">
-          <img src="processed_thangka_release_lookbook_37.webp" alt="THE FIRE" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/32/300/300'; this.alt='fallback image'">
-        </div>
-        <div class="product-title">THE FIRE</div>
-        <div class="product-price">¥7,800</div>
-        <div class="frame-label">iii</div>
-      </div>
-
-      <!-- 4. YAMKUKARUKA BAG - ¥22,500 with processed_thangka_release_lookbook_28.avif -->
-      <div class="frame-card">
-        <div class="frame-img">
-          <img src="processed_thangka_release_lookbook_28.avif" alt="YAMKUKARUKA BAG" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/33/300/300'; this.alt='fallback image'">
-        </div>
-        <div class="product-title">YAMKUKARUKA BAG</div>
-        <div class="product-price">¥22,500</div>
-        <div class="frame-label">iv</div>
-      </div>
-
-      <!-- 5. OBI BELT - ¥12,400 with 2024-11-13-1-2-1-2-3.webp -->
-      <div class="frame-card">
-        <div class="frame-img">
-          <img src="2024-11-13-1-2-1-2-3.webp" alt="OBI BELT" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/34/300/300'; this.alt='fallback image'">
-        </div>
-        <div class="product-title">OBI BELT</div>
-        <div class="product-price">¥12,400</div>
-        <div class="frame-label">v</div>
-      </div>
-
-      <!-- 6. DARK TOTE - ¥9,200 -->
-      <div class="frame-card">
-        <div class="frame-img">
-          <img src="https://picsum.photos/id/35/300/300" alt="DARK TOTE" loading="lazy">
-        </div>
-        <div class="product-title">DARK TOTE</div>
-        <div class="product-price">¥9,200</div>
-        <div class="frame-label">vi</div>
-      </div>
-
-      <!-- 7. GLOVES - ¥6,500 -->
-      <div class="frame-card">
-        <div class="frame-img">
-          <img src="https://picsum.photos/id/36/300/300" alt="GLOVES" loading="lazy">
-        </div>
-        <div class="product-title">GLOVES</div>
-        <div class="product-price">¥6,500</div>
-        <div class="frame-label">vii</div>
-      </div>
-
-      <!-- 8. SCARF - ¥5,800 -->
-      <div class="frame-card">
-        <div class="frame-img">
-          <img src="https://picsum.photos/id/37/300/300" alt="SCARF" loading="lazy">
-        </div>
-        <div class="product-title">SCARF</div>
-        <div class="product-price">¥5,800</div>
-        <div class="frame-label">viii</div>
-      </div>
+        <h2>THE FUTURE<br>OF STREETWEAR</h2>
+        <div class="sub">DERCHUTZE | THE ART OF FASHION</div>
+        <div class="tagline">TOKYO — RAW TEXTURE. SILENT PRESENCE.</div>
+        <button onclick="alert('NEW COLLECTION PRE-ORDER — LIMITED EDITION')">ENTER COLLECTION →</button>
     </div>
-  </div>
+    
+    <!-- YAMIZAKURA COLLECTION -->
+    <div class="collection-highlight">
+        <div class="new-badge">NEW COLLECTION OUT // LIMITED</div>
+        <h3>YAMIZAKURA</h3>
+        <div class="collection-grid">
+            <!-- CARD 1: KIMONO JACKET -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="processed_thangka_release_lookbook_35 (1).webp" alt="KIMONO JACKET">
+                </div>
+                <h4>KIMONO JACKET</h4>
+                <div class="price">¥26,800</div>
+            </div>
+            <!-- CARD 2: BOMBER JKT -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="processed_thangka_release_lookbook_43.avif" alt="BOMBER JACKET">
+                </div>
+                <h4>BOMBER JKT</h4>
+                <div class="price">¥39,900</div>
+            </div>
+            <!-- CARD 3: THE FIRE -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="processed_thangka_release_lookbook_37.webp" alt="THE FIRE">
+                </div>
+                <h4>THE FIRE</h4>
+                <div class="price">¥7,800</div>
+            </div>
+            <!-- CARD 4: YAMKUKARUKA BAG -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="processed_thangka_release_lookbook_27.webp" alt="YAMKUKARUKA BAG">
+                </div>
+                <h4>YAMKUKARUKA BAG</h4>
+                <div class="price">¥22,500</div>
+            </div>
+        </div>
+        <div style="margin-top: 20px; font-size: 0.7rem; letter-spacing: 1px; color: #bb6a58;">500 UNITS // MADE IN JAPAN</div>
+    </div>
 
-  <div class="lookbook-footer">
-    <button class="close-window-btn" id="closeWindowBtn">CLOSE WINDOW</button>
-    <div class="signature">derschutze.</div>
-  </div>
+    <!-- THE ART OF FASHION — FULL RECTANGLE BACKGROUND (9).jfif -->
+    <div class="art-section">
+        <div class="art-text">
+            <h2>THE ART<br>OF FASHION</h2>
+            <p>Silhouette, shadow, and substance. DERCHUTZE redefines Tokyo streetwear through uncompromising cuts, deep dark red signatures, and raw craftsmanship. No performance — only presence.</p>
+            <button style="background: #6e1a1a; margin-top: 1rem; border: 1px solid #c93f2b;" onclick="alert('MANIFESTO: CORE IDENTITY')">READ MANIFESTO</button>
+        </div>
+        <div class="art-icon">
+            RED
+        </div>
+    </div>
+
+    <!-- ABOUT THE BRAND SECTION -->
+    <div class="about-brand">
+        <h3>ABOUT DERCHUTZE</h3>
+        <p>Founded in the shadows of Tokyo's underground fashion scene, DERCHUTZE is a rebellion against the ordinary. We merge traditional Japanese garment philosophy with brutalist streetwear architecture. Every stitch, every cut, every drop of dark red is intentional — a nod to the transient beauty of blossoms and the permanence of steel.</p>
+        <p>Our collections are crafted for those who move in silence: the architects of their own reality. We don't follow trends. We carve new paths through darkness. Raw textures, monochromatic palettes, and an unwavering commitment to authenticity define the DERCHUTZE identity.</p>
+        <div class="brand-highlight">〄 無常 (MUJŌ) — THE BEAUTY OF IMPERMANENCE 〄</div>
+    </div>
+    
+    <!-- brand philosophy block -->
+    <div style="background: #080202; border-radius: 0px; padding: 1.8rem; text-align: center; margin: 2rem 0; border: 1px solid #8b1a1a;">
+        <span style="font-size: 1.5rem; font-weight: 700; color: #b54432;">RED // BLOOM // VOID</span>
+        <p style="max-width: 700px; margin: 0.8rem auto 0; font-weight: 300; letter-spacing: 0.3px; color: #bb6a58;">
+            “Dark blossoms — transient, sharp, authentic. Streetwear as ritual.”<br>— DERCHUTZE STUDIO
+        </p>
+        <div style="display: flex; justify-content: center; gap: 0.8rem; margin-top: 1rem;">
+            <span style="background:#2a0c0c; padding: 3px 14px; border-radius: 0px; font-size: 0.65rem; font-weight: 500; color:#d9907a;">#derchutze</span>
+            <span style="background:#2a0c0c; padding: 3px 14px; border-radius: 0px; font-size: 0.65rem; font-weight: 500; color:#d9907a;">#tokyored</span>
+        </div>
+    </div>
+    
+    <!-- SOCIAL FOOTER with derchutze. text (replaces the see more button) -->
+    <div class="social-footer">
+        <div class="social-links">
+            <a href="https://instagram.com/derchutze" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://tiktok.com/@derchutze" target="_blank" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://snapchat.com/add/derchutze" target="_blank" aria-label="Snapchat">
+                <i class="fab fa-snapchat"></i>
+            </a>
+        </div>
+        <div class="derchutze-footer">derchutze.</div>
+        <div class="copyright">
+            <p>© 2026 DERCHUTZE — TOKYO. ALL RIGHTS RESERVED. DARK RED LABEL // SHIBUYA</p>
+            <p style="margin-top: 0.4rem;">FOLLOW US: @DERCHUTZE</p>
+        </div>
+    </div>
 </div>
 
 <script>
-  // CLOSE WINDOW functionality: goes back in history or shows gentle fallback
-  const closeBtn = document.getElementById('closeWindowBtn');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        const toast = document.createElement('div');
-        toast.innerText = 'no previous page — end of collection';
-        toast.style.position = 'fixed';
-        toast.style.bottom = '30px';
-        toast.style.left = '50%';
-        toast.style.transform = 'translateX(-50%)';
-        toast.style.backgroundColor = '#cc2222';
-        toast.style.color = '#ffffff';
-        toast.style.padding = '8px 20px';
-        toast.style.borderRadius = '0px';
-        toast.style.fontFamily = "'Courier Prime', monospace";
-        toast.style.fontSize = '0.75rem';
-        toast.style.border = '2px solid black';
-        toast.style.boxShadow = '3px 3px 0px rgba(0,0,0,0.3)';
-        toast.style.zIndex = '9999';
-        toast.style.letterSpacing = '0.5px';
-        document.body.appendChild(toast);
-        setTimeout(() => {
-          toast.style.opacity = '0';
-          setTimeout(() => toast.remove(), 800);
-        }, 2000);
-      }
-    });
-  }
-
-  console.log('YAMIZAKURA COLLECTION · Left sidebar now filled with editorial image · all product images assigned');
+    (function() {
+        // very subtle dark particle system with slight red tint (atmospheric)
+        const canvas = document.getElementById('darkCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        const PARTICLE_COUNT = 55;
+        
+        function initCanvas() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+        
+        class DarkParticle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height - height * 0.2;
+                this.size = 2 + Math.random() * 5;
+                this.speedY = 0.3 + Math.random() * 0.9;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.opacity = 0.2 + Math.random() * 0.3;
+            }
+            
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y > height + 30 || this.x < -50 || this.x > width + 50) {
+                    this.reset();
+                }
+                if (this.x < -30) this.x = width + 20;
+                if (this.x > width + 30) this.x = -20;
+            }
+            
+            reset() {
+                this.x = Math.random() * width;
+                this.y = -15 - Math.random() * 30;
+                this.speedY = 0.4 + Math.random() * 1.0;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.size = 1.5 + Math.random() * 4;
+            }
+            
+            draw(ctx) {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.beginPath();
+                ctx.rect(this.x, this.y, this.size * 0.7, this.size * 1.2);
+                ctx.fillStyle = `rgba(130, 30, 20, ${this.opacity * 0.8})`;
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+        
+        function initParticles() {
+            particles = [];
+            for (let i=0; i<PARTICLE_COUNT; i++) {
+                let p = new DarkParticle();
+                p.x = Math.random() * width;
+                p.y = Math.random() * height;
+                particles.push(p);
+            }
+        }
+        
+        function animate() {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, width, height);
+            for (let p of particles) {
+                p.update();
+                p.draw(ctx);
+            }
+            requestAnimationFrame(animate);
+        }
+        
+        function handleResize() {
+            initCanvas();
+            initParticles();
+        }
+        
+        initCanvas();
+        initParticles();
+        animate();
+        window.addEventListener('resize', () => handleResize());
+    })();
 </script>
-
-<!-- 
-  FINAL UPDATES:
-  ✓ Added a left sidebar (previously empty space) with an editorial image and text
-  ✓ Sidebar styled with matching red frame, black border, squared edges
-  ✓ All product images maintained:
-    - KIMONO JACKET: processed_thangka_release_lookbook_20.avif
-    - MARGIELA ZUKO: processed_thangka_release_lookbook_29.avif
-    - THE FIRE: processed_thangka_release_lookbook_37.webp
-    - YAMKUKARUKA BAG: processed_thangka_release_lookbook_28.avif
-    - OBI BELT: 2024-11-13-1-2-1-2-3.webp
-  ✓ Background: 9.jpg full page
-  ✓ Red frames, black borders, close window button, derschutze signature
-  ✓ Fully responsive layout
--->
 </body>
 </html>
