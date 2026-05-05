@@ -106,8 +106,6 @@
       transform: scale(1.02);
     }
 
-    /* remove text - no sidebar-text element anymore */
-
     /* ---------- GRID: 8 items exactly as reference ---------- */
     .frames-grid {
       flex: 3;
@@ -316,7 +314,7 @@
   </div>
 
   <div class="collection-wrapper">
-    <!-- LEFT SIDEBAR - ENLARGED FRAME with only picture (no text, just image) -->
+    <!-- LEFT SIDEBAR - ENLARGED FRAME with only picture (no text) -->
     <div class="left-sidebar">
       <div class="sidebar-img">
         <img src="https://picsum.photos/id/104/800/1000" alt="editorial" loading="lazy" onerror="this.src='https://picsum.photos/id/119/800/1000'">
@@ -385,7 +383,7 @@
         <div class="frame-label">vi</div>
       </div>
 
-      <!-- 7. SAKURA PANTS (formerly GLOVES) - ¥6,500 with processed_thangka_release_lookbook_25.avif -->
+      <!-- 7. SAKURA PANTS - ¥6,500 -->
       <div class="frame-card">
         <div class="frame-img">
           <img src="processed_thangka_release_lookbook_25.avif" alt="SAKURA PANTS" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/36/300/300'; this.alt='fallback image'">
@@ -395,10 +393,10 @@
         <div class="frame-label">vii</div>
       </div>
 
-      <!-- 8. SCARF - ¥5,800 -->
+      <!-- 8. SCARF - ¥5,800 with 2026-04-21-14-2.webp -->
       <div class="frame-card">
         <div class="frame-img">
-          <img src="https://picsum.photos/id/37/300/300" alt="SCARF" loading="lazy">
+          <img src="2026-04-21-14-2.webp" alt="SCARF" loading="lazy" onerror="this.onerror=null; this.src='https://picsum.photos/id/37/300/300'; this.alt='fallback image'">
         </div>
         <div class="product-title">SCARF</div>
         <div class="product-price">¥5,800</div>
@@ -447,14 +445,13 @@
     });
   }
 
-  console.log('YAMIZAKURA COLLECTION · Left editorial frame: text removed, image enlarged · GLOVES → SAKURA PANTS with processed_thangka_release_lookbook_25.avif');
+  console.log('YAMIZAKURA COLLECTION · SCARF frame updated with 2026-04-21-14-2.webp');
 </script>
 
 <!-- 
   FINAL UPDATES:
-  ✓ Left editorial frame: text "YAMIZURA EDITORIAL" REMOVED — now only picture
-  ✓ Left frame made BIGGER (min-width 300px, max-width 420px, larger aspect ratio)
-  ✓ GLOVES renamed to SAKURA PANTS with image: processed_thangka_release_lookbook_25.avif
+  ✓ SCARF frame now uses image: 2026-04-21-14-2.webp
+  ✓ Left editorial frame: text removed, only image, enlarged
   ✓ All other product images maintained:
     - KIMONO JACKET: processed_thangka_release_lookbook_20.avif
     - MARGIELA ZUKO: processed_thangka_release_lookbook_29.avif
@@ -462,6 +459,7 @@
     - YAMKUKARUKA BAG: processed_thangka_release_lookbook_28.avif
     - OBI BELT: 2024-11-13-1-2-1-2-3.webp
     - DARK TOTE: processed_thangka_release_lookbook_22.webp
+    - SAKURA PANTS: processed_thangka_release_lookbook_25.avif
   ✓ Background: 9.jpg full page
   ✓ Red frames, black borders, close window button, derschutze signature
   ✓ Fully responsive layout
